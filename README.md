@@ -7,6 +7,7 @@ Chaque conversion détruit le parchemin et coûte au pj demandeur 1000 xp par ni
 Exemple : Amenez à Oops un parchemin de "Hâte améliorée", et pour 60000 pos et 6000 xps il vous permettra de lancer "Hâte améliorée" en tant que capacité spéciale 1x/jour.
 
 Renouvelable à volonté avec tous les sorts vanilla, tant que vous avez de quoi payer et des parchemins à fournir.
+Pas de capacité "Identification", le jeu ne la reconnais pas pour l'utiliser.
 
 ---------------------------
 
@@ -18,3 +19,4 @@ Each conversion destroys the scroll and costs the claimant 1000 xp per spell lev
 Example: Bring Oops a scroll of "Improved Haste", and for 60000 pos and 6000 xps it will allow you to cast "Improved Haste" as a special ability 1x/day.
 
 Renewable at will with all vanilla spells, as long as you have enough to pay and scrolls to provide.
+No “Identification” ability, as the game doesn't recognize it for use.
