@@ -1,0 +1,14 @@
+Oops est un magicien que vous pouvez rencontrez à coté de la Tour de Garde, au sud ouest. Il est là pour être accessible aussi bien dans SOA que dans TOB.
+
+Oops peut vous conférer des sorts arcaniques à lancer en tant que capacités spéciales. Pour ça, il vous faut vous présenter à Oops avec :
+- Le parchemin du sort que vous voulez gagnez en tant que capacité spéciale.
+- Au moins 10000 pièces d'or
+- Au moins 10000 xp.
+Il ne vous proposera rien si vous n'avez pas ça, et vous pourrez demander une capacité pour chaque parchemin que vous avez en votre possession (195 possibilités) si vous avez assez d'or et d'xp.
+
+Gagner une capacité vous coûtera le parchemin correspondant, 10000 pièces d'or par niveau du sort et 1000 xp par niveau du sort.
+
+C'est répétable à volonté tant que vous avez ce qu'il faut.
+Les temps d'incantation des capacités spéciales restent celles des sorts émulés.
+Le mod ne gère pas (encore) les sorts ajoutés par des mods.
+Certains sorts sont proposés deux fois, c'est parce qu'il existe 2 versions du parchemin (trouvé ou acheté, prix différent).

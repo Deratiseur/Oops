@@ -1,0 +1,416 @@
+BACKUP ~Derats_Oops/Backup~
+AUTHOR ~Deratiseur, at the_deratiseur@hotmail.com~
+VERSION ~v1~
+
+AUTO_TRA ~Derats_Illum/Languages/%s~
+
+ALWAYS
+	ACTION_DEFINE_ARRAY px_noconvert BEGIN END
+	ACTION_DEFINE_ARRAY px_reload BEGIN
+	pxoops.tra
+	END
+	LAF HANDLE_CHARSETS
+		INT_VAR
+		infer_charset = 1
+		STR_VAR
+		tra_path = EVAL ~%MOD_FOLDER%/Languages~
+		noconvert_array = px_noconvert
+		reload_array = px_reload
+	END
+END
+
+LANGUAGE ~Francais~	~French~
+	~Derats_Oops/Languages/French/Pxoops.tra~
+
+	LANGUAGE ~English~	~English~
+	~Derats_Oops/Languages/English/Pxoops.tra~
+
+BEGIN @0
+REQUIRE_PREDICATE GAME_IS ~TOB BGT EET BG2EE~ @0009
+
+COMPILE EVALUATE_BUFFER ~Derats_Oops/Divers/pxoops.d~
+EXTEND_BOTTOM ~AR3000.BCS~	~Derats_Oops/Divers/AR3000.baf~
+
+COPY	~Derats_Oops/Divers/pxoops.cre~	~override~	SAY NAME1 @0	SAY NAME2 @0
+COPY	~Derats_Oops/Divers/pxog2101.spl~	~override~	SAY 0xce @10001
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2201.spl~	SAY 0xce @10002	WRITE_ASCII 0xae ~pxo2201~ #8	WRITE_LONG 0x12e "-2000"
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2301.spl~	SAY 0xce @10003	WRITE_ASCII 0xae ~pxo2301~ #8	WRITE_LONG 0x12e "-3000"
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2401.spl~	SAY 0xce @10004	WRITE_ASCII 0xae ~pxo2401~ #8	WRITE_LONG 0x12e "-4000"
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2501.spl~	SAY 0xce @10005	WRITE_ASCII 0xae ~pxo2501~ #8	WRITE_LONG 0x12e "-5000"
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2601.spl~	SAY 0xce @10006	WRITE_ASCII 0xae ~pxo2601~ #8	WRITE_LONG 0x12e "-6000"
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2701.spl~	SAY 0xce @10007	WRITE_ASCII 0xae ~pxo2701~ #8	WRITE_LONG 0x12e "-7000"
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2803.spl~	SAY 0xce @10008	WRITE_ASCII 0xae ~pxo2803~ #8	WRITE_LONG 0x12e "-8000"
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2902.spl~	SAY 0xce @10009	WRITE_ASCII 0xae ~pxo2902~ #8	WRITE_LONG 0x12e "-9000"
+
+COPY_EXISTING	~spwi101.spl~			~override/pxo2101.spl~
+				~spwi102.spl~			~override/pxo2102.spl~
+				~spwi103.spl~			~override/pxo2103.spl~
+				~spwi104.spl~			~override/pxo2104.spl~
+				~spwi105.spl~			~override/pxo2105.spl~
+				~spwi106.spl~			~override/pxo2106.spl~
+				~spwi107.spl~			~override/pxo2107.spl~
+				~spwi108.spl~			~override/pxo2108.spl~
+				~spwi111.spl~			~override/pxo2111.spl~
+				~spwi112.spl~			~override/pxo2112.spl~
+				~spwi113.spl~			~override/pxo2113.spl~
+				~spwi114.spl~			~override/pxo2114.spl~
+				~spwi115.spl~			~override/pxo2115.spl~
+				~spwi116.spl~			~override/pxo2116.spl~
+				~spwi117.spl~			~override/pxo2117.spl~
+				~spwi118.spl~			~override/pxo2118.spl~
+				~spwi120.spl~			~override/pxo2120.spl~
+				~spwi123.spl~			~override/pxo2123.spl~
+				~spwi125.spl~			~override/pxo2125.spl~
+				~spwi201.spl~			~override/pxo2201.spl~
+				~spwi202.spl~			~override/pxo2202.spl~
+				~spwi203.spl~			~override/pxo2203.spl~
+				~spwi205.spl~			~override/pxo2205.spl~
+				~spwi206.spl~			~override/pxo2206.spl~
+				~spwi207.spl~			~override/pxo2207.spl~
+				~spwi208.spl~			~override/pxo2208.spl~
+				~spwi209.spl~			~override/pxo2209.spl~
+				~spwi210.spl~			~override/pxo2210.spl~
+				~spwi211.spl~			~override/pxo2211.spl~
+				~spwi212.spl~			~override/pxo2212.spl~
+				~spwi213.spl~			~override/pxo2213.spl~
+				~spwi214.spl~			~override/pxo2214.spl~
+				~spwi215.spl~			~override/pxo2215.spl~
+				~spwi217.spl~			~override/pxo2217.spl~
+				~spwi218.spl~			~override/pxo2218.spl~
+				~spwi219.spl~			~override/pxo2219.spl~
+				~spwi220.spl~			~override/pxo2220.spl~
+				~spwi221.spl~			~override/pxo2221.spl~
+				~spwi223.spl~			~override/pxo2223.spl~
+				~spwi224.spl~			~override/pxo2224.spl~
+				~spwi301.spl~			~override/pxo2301.spl~
+				~spwi302.spl~			~override/pxo2302.spl~
+				~spwi303.spl~			~override/pxo2303.spl~
+				~spwi304.spl~			~override/pxo2304.spl~
+				~spwi305.spl~			~override/pxo2305.spl~
+				~spwi306.spl~			~override/pxo2306.spl~
+				~spwi307.spl~			~override/pxo2307.spl~
+				~spwi308.spl~			~override/pxo2308.spl~
+				~spwi309.spl~			~override/pxo2309.spl~
+				~spwi310.spl~			~override/pxo2310.spl~
+				~spwi311.spl~			~override/pxo2311.spl~
+				~spwi312.spl~			~override/pxo2312.spl~
+				~spwi313.spl~			~override/pxo2313.spl~
+				~spwi314.spl~			~override/pxo2314.spl~
+				~spwi316.spl~			~override/pxo2316.spl~
+				~spwi317.spl~			~override/pxo2317.spl~
+				~spwi318.spl~			~override/pxo2318.spl~
+				~spwi319.spl~			~override/pxo2319.spl~
+				~spwi320.spl~			~override/pxo2320.spl~
+				~spwi321.spl~			~override/pxo2321.spl~
+				~spwi322.spl~			~override/pxo2322.spl~
+				~spwi324.spl~			~override/pxo2324.spl~
+				~spwi325.spl~			~override/pxo2325.spl~
+				~spwi326.spl~			~override/pxo2326.spl~
+				~spwi401.spl~			~override/pxo2401.spl~
+				~spwi402.spl~			~override/pxo2402.spl~
+				~spwi403.spl~			~override/pxo2403.spl~
+				~spwi404.spl~			~override/pxo2404.spl~
+				~spwi405.spl~			~override/pxo2405.spl~
+				~spwi406.spl~			~override/pxo2406.spl~
+				~spwi407.spl~			~override/pxo2407.spl~
+				~spwi408.spl~			~override/pxo2408.spl~
+				~spwi409.spl~			~override/pxo2409.spl~
+				~spwi410.spl~			~override/pxo2410.spl~
+				~spwi411.spl~			~override/pxo2411.spl~
+				~spwi412.spl~			~override/pxo2412.spl~
+				~spwi413.spl~			~override/pxo2413.spl~
+				~spwi414.spl~			~override/pxo2414.spl~
+				~spwi415.spl~			~override/pxo2415.spl~
+				~spwi416.spl~			~override/pxo2416.spl~
+				~spwi417.spl~			~override/pxo2417.spl~
+				~spwi418.spl~			~override/pxo2418.spl~
+				~spwi419.spl~			~override/pxo2419.spl~
+				~spwi420.spl~			~override/pxo2420.spl~
+				~spwi421.spl~			~override/pxo2421.spl~
+				~spwi423.spl~			~override/pxo2423.spl~
+				~spwi424.spl~			~override/pxo2424.spl~
+				~spwi425.spl~			~override/pxo2425.spl~
+				~spwi501.spl~			~override/pxo2501.spl~
+				~spwi502.spl~			~override/pxo2502.spl~
+				~spwi503.spl~			~override/pxo2503.spl~
+				~spwi504.spl~			~override/pxo2504.spl~
+				~spwi505.spl~			~override/pxo2505.spl~
+				~spwi506.spl~			~override/pxo2506.spl~
+				~spwi507.spl~			~override/pxo2507.spl~
+				~spwi508.spl~			~override/pxo2508.spl~
+				~spwi509.spl~			~override/pxo2509.spl~
+				~spwi510.spl~			~override/pxo2510.spl~
+				~spwi511.spl~			~override/pxo2511.spl~
+				~spwi512.spl~			~override/pxo2512.spl~
+				~spwi513.spl~			~override/pxo2513.spl~
+				~spwi514.spl~			~override/pxo2514.spl~
+				~spwi515.spl~			~override/pxo2515.spl~
+				~spwi516.spl~			~override/pxo2516.spl~
+				~spwi517.spl~			~override/pxo2517.spl~
+				~spwi518.spl~			~override/pxo2518.spl~
+				~spwi519.spl~			~override/pxo2519.spl~
+				~spwi520.spl~			~override/pxo2520.spl~
+				~spwi521.spl~			~override/pxo2521.spl~
+				~spwi522.spl~			~override/pxo2522.spl~
+				~spwi523.spl~			~override/pxo2523.spl~
+				~spwi601.spl~			~override/pxo2601.spl~
+				~spwi602.spl~			~override/pxo2602.spl~
+				~spwi603.spl~			~override/pxo2603.spl~
+				~spwi604.spl~			~override/pxo2604.spl~
+				~spwi605.spl~			~override/pxo2605.spl~
+				~spwi606.spl~			~override/pxo2606.spl~
+				~spwi607.spl~			~override/pxo2607.spl~
+				~spwi608.spl~			~override/pxo2608.spl~
+				~spwi609.spl~			~override/pxo2609.spl~
+				~spwi611.spl~			~override/pxo2611.spl~
+				~spwi612.spl~			~override/pxo2612.spl~
+				~spwi613.spl~			~override/pxo2613.spl~
+				~spwi614.spl~			~override/pxo2614.spl~
+				~spwi615.spl~			~override/pxo2615.spl~
+				~spwi616.spl~			~override/pxo2616.spl~
+				~spwi617.spl~			~override/pxo2617.spl~
+				~spwi618.spl~			~override/pxo2618.spl~
+				~spwi619.spl~			~override/pxo2619.spl~
+				~spwi620.spl~			~override/pxo2620.spl~
+				~spwi621.spl~			~override/pxo2621.spl~
+				~spwi622.spl~			~override/pxo2622.spl~
+				~spwi623.spl~			~override/pxo2623.spl~
+				~spwi624.spl~			~override/pxo2624.spl~
+				~spwi625.spl~			~override/pxo2625.spl~
+				~spwi701.spl~			~override/pxo2701.spl~
+				~spwi702.spl~			~override/pxo2702.spl~
+				~spwi703.spl~			~override/pxo2703.spl~
+				~spwi704.spl~			~override/pxo2704.spl~
+				~spwi705.spl~			~override/pxo2705.spl~
+				~spwi707.spl~			~override/pxo2707.spl~
+				~spwi708.spl~			~override/pxo2708.spl~
+				~spwi710.spl~			~override/pxo2710.spl~
+				~spwi711.spl~			~override/pxo2711.spl~
+				~spwi712.spl~			~override/pxo2712.spl~
+				~spwi713.spl~			~override/pxo2713.spl~
+				~spwi714.spl~			~override/pxo2714.spl~
+				~spwi715.spl~			~override/pxo2715.spl~
+				~spwi716.spl~			~override/pxo2716.spl~
+				~spwi717.spl~			~override/pxo2717.spl~
+				~spwi718.spl~			~override/pxo2718.spl~
+				~spwi719.spl~			~override/pxo2719.spl~
+				~spwi720.spl~			~override/pxo2720.spl~
+				~spwi721.spl~			~override/pxo2721.spl~
+				~spwi722.spl~			~override/pxo2722.spl~
+				~spwi803.spl~			~override/pxo2803.spl~
+				~spwi804.spl~			~override/pxo2804.spl~
+				~spwi805.spl~			~override/pxo2805.spl~
+				~spwi807.spl~			~override/pxo2807.spl~
+				~spwi808.spl~			~override/pxo2808.spl~
+				~spwi809.spl~			~override/pxo2809.spl~
+				~spwi810.spl~			~override/pxo2810.spl~
+				~spwi811.spl~			~override/pxo2811.spl~
+				~spwi812.spl~			~override/pxo2812.spl~
+				~spwi813.spl~			~override/pxo2813.spl~
+				~spwi815.spl~			~override/pxo2815.spl~
+				~spwi816.spl~			~override/pxo2816.spl~
+				~spwi817.spl~			~override/pxo2817.spl~
+				~spwi818.spl~			~override/pxo2818.spl~
+				~spwi902.spl~			~override/pxo2902.spl~
+				~spwi903.spl~			~override/pxo2903.spl~
+				~spwi905.spl~			~override/pxo2905.spl~
+				~spwi907.spl~			~override/pxo2907.spl~
+				~spwi908.spl~			~override/pxo2908.spl~
+				~spwi909.spl~			~override/pxo2909.spl~
+				~spwi910.spl~			~override/pxo2910.spl~
+				~spwi911.spl~			~override/pxo2911.spl~
+				~spwi912.spl~			~override/pxo2912.spl~
+				~spwi913.spl~			~override/pxo2913.spl~
+				~spwi914.spl~			~override/pxo2914.spl~
+				~spwi915.spl~			~override/pxo2915.spl~
+				~spwi916.spl~			~override/pxo2916.spl~
+				~spwi917.spl~			~override/pxo2917.spl~
+				~spwi918.spl~			~override/pxo2918.spl~
+				~spwi920.spl~			~override/pxox920.spl~
+				WRITE_LONG 0x18 (THIS | 49152) WRITE_BYTE 0x1c 4
+				GET_OFFSET_ARRAY headerOffsets SPL_V10_HEADERS
+				PHP_EACH headerOffsets AS _ => headerOffset BEGIN	WRITE_BYTE (headerOffset + 0x2) 4 END		
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2102.spl~	WRITE_ASCII 0xae ~pxo2102~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2103.spl~	WRITE_ASCII 0xae ~pxo2103~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2104.spl~	WRITE_ASCII 0xae ~pxo2104~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2105.spl~	WRITE_ASCII 0xae ~pxo2105~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2106.spl~	WRITE_ASCII 0xae ~pxo2106~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2107.spl~	WRITE_ASCII 0xae ~pxo2107~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2108.spl~	WRITE_ASCII 0xae ~pxo2108~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2111.spl~	WRITE_ASCII 0xae ~pxo2111~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2112.spl~	WRITE_ASCII 0xae ~pxo2112~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2113.spl~	WRITE_ASCII 0xae ~pxo2113~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2114.spl~	WRITE_ASCII 0xae ~pxo2114~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2115.spl~	WRITE_ASCII 0xae ~pxo2115~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2116.spl~	WRITE_ASCII 0xae ~pxo2116~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2117.spl~	WRITE_ASCII 0xae ~pxo2117~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2118.spl~	WRITE_ASCII 0xae ~pxo2118~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2120.spl~	WRITE_ASCII 0xae ~pxo2120~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2123.spl~	WRITE_ASCII 0xae ~pxo2123~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxog2125.spl~	WRITE_ASCII 0xae ~pxo2125~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2202.spl~	WRITE_ASCII 0xae ~pxo2202~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2203.spl~	WRITE_ASCII 0xae ~pxo2203~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2205.spl~	WRITE_ASCII 0xae ~pxo2205~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2206.spl~	WRITE_ASCII 0xae ~pxo2206~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2207.spl~	WRITE_ASCII 0xae ~pxo2207~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2208.spl~	WRITE_ASCII 0xae ~pxo2208~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2209.spl~	WRITE_ASCII 0xae ~pxo2209~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2210.spl~	WRITE_ASCII 0xae ~pxo2210~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2211.spl~	WRITE_ASCII 0xae ~pxo2211~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2212.spl~	WRITE_ASCII 0xae ~pxo2212~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2213.spl~	WRITE_ASCII 0xae ~pxo2213~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2214.spl~	WRITE_ASCII 0xae ~pxo2214~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2215.spl~	WRITE_ASCII 0xae ~pxo2215~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2217.spl~	WRITE_ASCII 0xae ~pxo2217~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2218.spl~	WRITE_ASCII 0xae ~pxo2218~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2219.spl~	WRITE_ASCII 0xae ~pxo2219~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2220.spl~	WRITE_ASCII 0xae ~pxo2220~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2221.spl~	WRITE_ASCII 0xae ~pxo2221~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2223.spl~	WRITE_ASCII 0xae ~pxo2223~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxog2224.spl~	WRITE_ASCII 0xae ~pxo2225~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2302.spl~	WRITE_ASCII 0xae ~pxo2302~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2303.spl~	WRITE_ASCII 0xae ~pxo2303~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2304.spl~	WRITE_ASCII 0xae ~pxo2304~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2305.spl~	WRITE_ASCII 0xae ~pxo2305~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2306.spl~	WRITE_ASCII 0xae ~pxo2306~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2307.spl~	WRITE_ASCII 0xae ~pxo2307~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2308.spl~	WRITE_ASCII 0xae ~pxo2308~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2309.spl~	WRITE_ASCII 0xae ~pxo2309~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2310.spl~	WRITE_ASCII 0xae ~pxo2310~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2311.spl~	WRITE_ASCII 0xae ~pxo2311~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2312.spl~	WRITE_ASCII 0xae ~pxo2312~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2313.spl~	WRITE_ASCII 0xae ~pxo2313~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2314.spl~	WRITE_ASCII 0xae ~pxo2314~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2316.spl~	WRITE_ASCII 0xae ~pxo2316~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2317.spl~	WRITE_ASCII 0xae ~pxo2317~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2318.spl~	WRITE_ASCII 0xae ~pxo2318~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2319.spl~	WRITE_ASCII 0xae ~pxo2319~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2320.spl~	WRITE_ASCII 0xae ~pxo2320~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2321.spl~	WRITE_ASCII 0xae ~pxo2321~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2322.spl~	WRITE_ASCII 0xae ~pxo2322~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2324.spl~	WRITE_ASCII 0xae ~pxo2324~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2325.spl~	WRITE_ASCII 0xae ~pxo2325~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2326.spl~	WRITE_ASCII 0xae ~pxo2326~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2402.spl~	WRITE_ASCII 0xae ~pxo2402~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2403.spl~	WRITE_ASCII 0xae ~pxo2403~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2404.spl~	WRITE_ASCII 0xae ~pxo2404~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2405.spl~	WRITE_ASCII 0xae ~pxo2405~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2406.spl~	WRITE_ASCII 0xae ~pxo2406~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2407.spl~	WRITE_ASCII 0xae ~pxo2407~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2408.spl~	WRITE_ASCII 0xae ~pxo2408~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2409.spl~	WRITE_ASCII 0xae ~pxo2409~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2410.spl~	WRITE_ASCII 0xae ~pxo2410~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2411.spl~	WRITE_ASCII 0xae ~pxo2411~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2412.spl~	WRITE_ASCII 0xae ~pxo2412~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2413.spl~	WRITE_ASCII 0xae ~pxo2413~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2414.spl~	WRITE_ASCII 0xae ~pxo2414~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2415.spl~	WRITE_ASCII 0xae ~pxo2415~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2416.spl~	WRITE_ASCII 0xae ~pxo2416~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2417.spl~	WRITE_ASCII 0xae ~pxo2417~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2418.spl~	WRITE_ASCII 0xae ~pxo2418~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2419.spl~	WRITE_ASCII 0xae ~pxo2419~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2420.spl~	WRITE_ASCII 0xae ~pxo2420~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2421.spl~	WRITE_ASCII 0xae ~pxo2421~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2423.spl~	WRITE_ASCII 0xae ~pxo2423~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2424.spl~	WRITE_ASCII 0xae ~pxo2424~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxog2425.spl~	WRITE_ASCII 0xae ~pxo2425~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2502.spl~	WRITE_ASCII 0xae ~pxo2502~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2503.spl~	WRITE_ASCII 0xae ~pxo2503~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2504.spl~	WRITE_ASCII 0xae ~pxo2504~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2505.spl~	WRITE_ASCII 0xae ~pxo2505~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2506.spl~	WRITE_ASCII 0xae ~pxo2506~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2507.spl~	WRITE_ASCII 0xae ~pxo2507~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2508.spl~	WRITE_ASCII 0xae ~pxo2508~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2509.spl~	WRITE_ASCII 0xae ~pxo2509~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2510.spl~	WRITE_ASCII 0xae ~pxo2510~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2511.spl~	WRITE_ASCII 0xae ~pxo2511~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2512.spl~	WRITE_ASCII 0xae ~pxo2512~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2513.spl~	WRITE_ASCII 0xae ~pxo2513~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2514.spl~	WRITE_ASCII 0xae ~pxo2514~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2515.spl~	WRITE_ASCII 0xae ~pxo2515~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2516.spl~	WRITE_ASCII 0xae ~pxo2516~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2517.spl~	WRITE_ASCII 0xae ~pxo2517~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2518.spl~	WRITE_ASCII 0xae ~pxo2518~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2519.spl~	WRITE_ASCII 0xae ~pxo2519~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2520.spl~	WRITE_ASCII 0xae ~pxo2520~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2521.spl~	WRITE_ASCII 0xae ~pxo2521~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2522.spl~	WRITE_ASCII 0xae ~pxo2522~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxog2523.spl~	WRITE_ASCII 0xae ~pxo2523~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2602.spl~	WRITE_ASCII 0xae ~pxo2602~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2603.spl~	WRITE_ASCII 0xae ~pxo2603~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2604.spl~	WRITE_ASCII 0xae ~pxo2604~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2605.spl~	WRITE_ASCII 0xae ~pxo2605~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2606.spl~	WRITE_ASCII 0xae ~pxo2606~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2607.spl~	WRITE_ASCII 0xae ~pxo2607~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2608.spl~	WRITE_ASCII 0xae ~pxo2608~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2609.spl~	WRITE_ASCII 0xae ~pxo2609~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2611.spl~	WRITE_ASCII 0xae ~pxo2611~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2612.spl~	WRITE_ASCII 0xae ~pxo2612~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2613.spl~	WRITE_ASCII 0xae ~pxo2613~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2614.spl~	WRITE_ASCII 0xae ~pxo2614~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2615.spl~	WRITE_ASCII 0xae ~pxo2615~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2616.spl~	WRITE_ASCII 0xae ~pxo2616~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2617.spl~	WRITE_ASCII 0xae ~pxo2617~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2618.spl~	WRITE_ASCII 0xae ~pxo2618~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2619.spl~	WRITE_ASCII 0xae ~pxo2619~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2620.spl~	WRITE_ASCII 0xae ~pxo2620~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2621.spl~	WRITE_ASCII 0xae ~pxo2621~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2622.spl~	WRITE_ASCII 0xae ~pxo2622~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2623.spl~	WRITE_ASCII 0xae ~pxo2623~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2624.spl~	WRITE_ASCII 0xae ~pxo2624~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxog2625.spl~	WRITE_ASCII 0xae ~pxo2625~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2702.spl~	WRITE_ASCII 0xae ~pxo2702~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2703.spl~	WRITE_ASCII 0xae ~pxo2703~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2704.spl~	WRITE_ASCII 0xae ~pxo2704~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2705.spl~	WRITE_ASCII 0xae ~pxo2705~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2707.spl~	WRITE_ASCII 0xae ~pxo2707~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2708.spl~	WRITE_ASCII 0xae ~pxo2708~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2710.spl~	WRITE_ASCII 0xae ~pxo2710~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2711.spl~	WRITE_ASCII 0xae ~pxo2711~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2712.spl~	WRITE_ASCII 0xae ~pxo2712~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2713.spl~	WRITE_ASCII 0xae ~pxo2713~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2714.spl~	WRITE_ASCII 0xae ~pxo2714~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2715.spl~	WRITE_ASCII 0xae ~pxo2715~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2716.spl~	WRITE_ASCII 0xae ~pxo2716~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2717.spl~	WRITE_ASCII 0xae ~pxo2717~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2718.spl~	WRITE_ASCII 0xae ~pxo2718~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2719.spl~	WRITE_ASCII 0xae ~pxo2719~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2720.spl~	WRITE_ASCII 0xae ~pxo2720~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2721.spl~	WRITE_ASCII 0xae ~pxo2721~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxog2722.spl~	WRITE_ASCII 0xae ~pxo2722~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxog2804.spl~	WRITE_ASCII 0xae ~pxo2804~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxog2805.spl~	WRITE_ASCII 0xae ~pxo2805~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxog2807.spl~	WRITE_ASCII 0xae ~pxo2807~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxog2808.spl~	WRITE_ASCII 0xae ~pxo2808~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxog2809.spl~	WRITE_ASCII 0xae ~pxo2809~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxog2810.spl~	WRITE_ASCII 0xae ~pxo2810~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxog2811.spl~	WRITE_ASCII 0xae ~pxo2811~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxog2812.spl~	WRITE_ASCII 0xae ~pxo2812~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxog2813.spl~	WRITE_ASCII 0xae ~pxo2813~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxog2815.spl~	WRITE_ASCII 0xae ~pxo2815~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxog2816.spl~	WRITE_ASCII 0xae ~pxo2816~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxog2817.spl~	WRITE_ASCII 0xae ~pxo2817~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxog2818.spl~	WRITE_ASCII 0xae ~pxo2818~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2903.spl~	WRITE_ASCII 0xae ~pxo2903~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2905.spl~	WRITE_ASCII 0xae ~pxo2905~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2907.spl~	WRITE_ASCII 0xae ~pxo2907~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2908.spl~	WRITE_ASCII 0xae ~pxo2908~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2909.spl~	WRITE_ASCII 0xae ~pxo2909~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2910.spl~	WRITE_ASCII 0xae ~pxo2910~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2911.spl~	WRITE_ASCII 0xae ~pxo2911~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2912.spl~	WRITE_ASCII 0xae ~pxo2912~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2913.spl~	WRITE_ASCII 0xae ~pxo2913~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2914.spl~	WRITE_ASCII 0xae ~pxo2914~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2915.spl~	WRITE_ASCII 0xae ~pxo2915~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2916.spl~	WRITE_ASCII 0xae ~pxo2916~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2917.spl~	WRITE_ASCII 0xae ~pxo2917~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2918.spl~	WRITE_ASCII 0xae ~pxo2918~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxog2920.spl~	WRITE_ASCII 0xae ~pxo2920~ #8
+
+ACTION_IF GAME_IS ~BG2EE EET~ THEN BEGIN
+COPY_EXISTING	~spwi315.spl~			~override/pxo2315.spl~
+				WRITE_LONG 0x18 (THIS | 49152) WRITE_BYTE 0x1c 4
+				GET_OFFSET_ARRAY headerOffsets SPL_V10_HEADERS
+				PHP_EACH headerOffsets AS _ => headerOffset BEGIN	WRITE_BYTE (headerOffset + 0x2) 4 END
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2325.spl~	WRITE_ASCII 0xae ~pxo2315~ #8
+END

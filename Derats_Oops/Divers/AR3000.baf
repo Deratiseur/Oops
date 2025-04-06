@@ -1,0 +1,8 @@
+IF
+	Global("Pxop3000","GLOBAL",0)
+	AreaCheck("AR3000")
+THEN
+	RESPONSE #100
+		SetGlobal("Pxop3000","GLOBAL",1)
+		CreateCreature("Pxoops",[795.2663],12)
+END
