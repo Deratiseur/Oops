@@ -10,7 +10,9 @@
 [Link to original Mod Forum](https://www.baldursgateworld.fr/viewtopic.php?t=34841)
 
 ## Description:
+
 -------------
+
 Vous trouverez Oops le magicien à coté de la Tour de Garde, au sud ouest. Il est là pour être accessible aussi bien dans SOA que dans TOB.
 
 Amenez un parchemin de sort à Oops, dites lui que vous voulez que le sort inscrit sur le parchemin devienne une de vos capacités spéciales, et si vous avez ce qu'il faut, vous obtiendrez une nouvelle capacité spéciale.\
