@@ -29,6 +29,6 @@ You'll find Oops the magician next to the Watchtower, to the south-west. It's th
 Take a spell scroll to Oops, tell him you want the spell on the scroll to become one of your special abilities, and if you have what it takes, you'll get a new special ability.
 Each conversion destroys the scroll and costs the claimant 1000 xp per spell level and 10000 gp per spell level.
 
-Example: Bring Oops a scroll of "Improved Haste", and for 60000 pos and 6000 gps it will allow you to cast "Improved Haste" as a special ability 1x/day.
+Example: Bring Oops a scroll of "Improved Haste", and for 60000 gps and 6000 xp it will allow you to cast "Improved Haste" as a special ability 1x/day.
 
 Renewable at will with all vanilla spells (Except Identify), as long as you have enough to pay and scrolls to provide.
