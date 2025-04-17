@@ -1,0 +1,7 @@
+v1 : première mise en ligne
+
+v2 : Ajout d'une vérification de l'xp dans le dialogue (plus possible d'infinité à 0 xp)
+     Ajout de la gestion des sorts de l'Interplan.
+     Ajout du sort "Courbespace" du mod "test your mettle".
+	 
+	 

@@ -1,8 +1,8 @@
 BACKUP ~Derats_Oops/Backup~
 AUTHOR ~Deratiseur, at the_deratiseur@hotmail.com~
-VERSION ~v1~
+VERSION ~v2~
 
-AUTO_TRA ~Derats_Illum/Languages/%s~
+AUTO_TRA ~Derats_Oops/Languages/%s~ /////%s~
 
 ALWAYS
 	ACTION_DEFINE_ARRAY px_noconvert BEGIN END
@@ -27,6 +27,12 @@ LANGUAGE ~Francais~	~French~
 
 BEGIN @0
 REQUIRE_PREDICATE GAME_IS ~TOB BGT EET BG2EE~ @0009
+
+DEFINE_PATCH_FUNCTION SPELL_TO_INNATE BEGIN
+	WRITE_LONG 0x18 (THIS | 49152) WRITE_BYTE 0x1c 4
+				GET_OFFSET_ARRAY headerOffsets SPL_V10_HEADERS
+				PHP_EACH headerOffsets AS _ => headerOffset BEGIN	WRITE_BYTE (headerOffset + 0x2) 4 END
+END	
 
 COMPILE EVALUATE_BUFFER ~Derats_Oops/Divers/pxoops.d~
 EXTEND_BOTTOM ~AR3000.BCS~	~Derats_Oops/Divers/AR3000.baf~
@@ -226,10 +232,8 @@ COPY_EXISTING	~spwi101.spl~			~override/pxo2101.spl~
 				~spwi916.spl~			~override/pxo2916.spl~
 				~spwi917.spl~			~override/pxo2917.spl~
 				~spwi918.spl~			~override/pxo2918.spl~
-				~spwi920.spl~			~override/pxox920.spl~
-				WRITE_LONG 0x18 (THIS | 49152) WRITE_BYTE 0x1c 4
-				GET_OFFSET_ARRAY headerOffsets SPL_V10_HEADERS
-				PHP_EACH headerOffsets AS _ => headerOffset BEGIN	WRITE_BYTE (headerOffset + 0x2) 4 END		
+				~spwi920.spl~			~override/pxox920.spl~	LPF SPELL_TO_INNATE END
+
 COPY_EXISTING	~pxog2101.spl~			~override/pxog2102.spl~	WRITE_ASCII 0xae ~pxo2102~ #8
 COPY_EXISTING	~pxog2101.spl~			~override/pxog2103.spl~	WRITE_ASCII 0xae ~pxo2103~ #8
 COPY_EXISTING	~pxog2101.spl~			~override/pxog2104.spl~	WRITE_ASCII 0xae ~pxo2104~ #8
@@ -408,9 +412,410 @@ COPY_EXISTING	~pxog2902.spl~			~override/pxog2918.spl~	WRITE_ASCII 0xae ~pxo2918
 COPY_EXISTING	~pxog2902.spl~			~override/pxog2920.spl~	WRITE_ASCII 0xae ~pxo2920~ #8
 
 ACTION_IF GAME_IS ~BG2EE EET~ THEN BEGIN
-COPY_EXISTING	~spwi315.spl~			~override/pxo2315.spl~
-				WRITE_LONG 0x18 (THIS | 49152) WRITE_BYTE 0x1c 4
-				GET_OFFSET_ARRAY headerOffsets SPL_V10_HEADERS
-				PHP_EACH headerOffsets AS _ => headerOffset BEGIN	WRITE_BYTE (headerOffset + 0x2) 4 END
-COPY_EXISTING	~pxog2301.spl~			~override/pxog2325.spl~	WRITE_ASCII 0xae ~pxo2315~ #8
+COPY_EXISTING	~spwi315.spl~			~override/pxo2315.spl~	LPF SPELL_TO_INNATE END
+COPY_EXISTING	~pxog2301.spl~			~override/pxog2315.spl~	WRITE_ASCII 0xae ~pxo2315~ #8
 END
+
+/////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////   INTERPLAN   ///////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+
+ACTION_IF FILE_EXISTS_IN_GAME ~pxl2visi.spl~ THEN BEGIN
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FIRE_EXPLOSION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIex2l.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ANTI_SPELLS_SHIELD~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIresi.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_DEORIES_MAGICAL_PARTICLES~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIpart.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FIRE_BURST~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIecla.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_REPULSION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIrpul.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ACCURACY~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIprec.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FLAME_PULSE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIpuls.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SNAKE_STRIKE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIcsou.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_STAFF_OF_POWER~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIbatp.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_HEXABLADES~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIhexa.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FALSE_LIFE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoItamp.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_HACHITOZAS_INSTINCTIVE_VISION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIvisi.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FIGHTING_FEAT~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIprou.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_DOOM_CLAWS~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIgrif.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_TENSERS_DEADLY_STRIKES~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoItens.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_BIGDIBS_IMMEASURABLE_STRENGTH~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIforc.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_CHARGED_WEAPON~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIarma.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SUMMON_APPETIZING_CHICKENS~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIpoul.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SCREAMING_SKULL_OF_PANDEMONIUM~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIcran.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_DEORIE_MARVELOUS_AURA~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIaura.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SCOURGE_OF_FIENDS~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIflea.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_POWERWORD_STOP~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIstop.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SPELL_STEAL~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIvlso.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_A_STEP_IN_THE_SHADOW~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIpob.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ACIDIC_GRIP~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIpaci.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_BOOM_BOOM_POTIONS~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIbbom.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_AMBIDEXTRY~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIdobb.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_STATIC_DISCHARGE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIdech.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SPIDER_FORM~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIfara.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FANTOM_BOW_CREATION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIarci.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_NATURES_CONTACT~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoInatu.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FRENZIED_SKELETON~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIsque.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_POISON_NOVA~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoInova.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_MAJOR_REFLECTED_IMAGE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIimag.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_PHANTASMAL_KILLER~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIas2s.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_KELEGZES_FURIOUS_FIST~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIpoig.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FAERIES_SHIELD~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIfees.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_PROTECTIVES_WINDS~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIvent.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ELECTRONULLIFICATION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoInull.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ELECTRICAL_CONFLAGRATION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIboul.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_MOVING_GROUND~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIroul.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SANDFALL~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIsabl.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FIREBRAND~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIbrad.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_EXPLOSIVE_MISSILES~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoImexp.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_MNEMONIC_CORRUPTION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIcorr.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_DANCING_BLADES~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIlame.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_MAGICAL_CANON~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIcano.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_MAZARONS_FABULOUS_FIREBALL~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIbfir.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_PRECOGNITION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIaven.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_STROKE_OF_LUCK~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIcoup.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ENSURED_MAGIC~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoImagi.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ACIDIC_BREATH~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIsofl.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_LUBATHS_ACCELERATOR~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIacce.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_PUNCTURE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIvmp.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_MAZARONS_FANTASTIC_TRIAD~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoItria.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ANTI-ATTACK_SHIELDS~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIbaar.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_VULNERABILITY_TO_WEAPONS~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIvuln.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ALABASTINES_MAGIC_CONVERSION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIalab.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FIGHTING_FURY~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIfure.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SCION_OF_THE_FLAME~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIflam.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_BUBBLING_BLOOD~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIsang.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_DEORIES_MEMORISATION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoImemo.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_KELEGZES_SLASHING_CHAOS~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIchao.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SWARM_OF_CHROMATIC_MISSILES~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIchro.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SOVEREIGN_SELF~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIsouv.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_COLD_BITE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIgelu.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ANTI_IMPACT_ARMOR~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIchoc.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_UNSPEAKABLE_BEAUTY~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIinno.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_GILIPURS_MAGIC_SLIPPERS~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIgili.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_POLYMORPH_FAMILIAR~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIfaml.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SHARDS_OF_ICE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIpgla.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_STARBLADE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIleto.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_DEORIES_ANARCHIC_RECALL~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIrapp.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_AFFLICTION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIaffl.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SALYVIAS_MAGIC_ARROW~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIflec.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_MAJOR_ENCHANT_WEAPON~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIaenc.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_RAINBOW_MISSILE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoImarc.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FIRE_FORM~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIfrmf.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_LIGHTNING_WEB~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoItoil.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_RALORNS_DRAGON_KILLING_MISSILE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoImiss.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ICE_ORB~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIorbe.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ANTIMAGIC_SPHERE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIaant.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_IMAGED_ALLY~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIcoge.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_PURGE_OF_MAGIC~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIpurg.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_CONNECTION_TO_NATURE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoInt2.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_HACHITOZAS_TROOP_IMPROVEMENT~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIachi.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ANIMATE_AIR~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIanma.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_DEORIES_MAJOR_MEMORISATION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoImem2.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_CREATE_EXPLOSIVE_MINION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIsexp.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_EYE_OF_POWER~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIoeil.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_TROLL_KILLING_CLOUD~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoInuag.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_WALKING_DEADS~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIsqma.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_BREATH_OF_PORPHATYS~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIso2u.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ASSASSIN_STRIKE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIfrap.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ELECTRIC_ARM~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIbrel.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_EXPLODING_TELEPORTATIONS~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoItele.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_KORRELOS_DISCREET_SLAUGHTERER~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIkorr.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_MASS_RAGE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIrage.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_RESONANT_SPONTANEOUS_COMBUSTION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIcomb.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FIRE_CALL~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIapfe.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_KELEGZES_VENGEFUL_DISCHARGES~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIveng.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SPIDER_INVOCATION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIarai.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_KELEGZES_LIGHTNING_SPHERE~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIelec.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_MAZARONS_FORMIDABLE_TETRAD~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoItetr.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SPECTRAL_MAGE_CREATION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIxspe.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ENERGY_ASSAULT~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIassa.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_MAJOR_MAGIC_CONVERSION~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIal2b.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_TOUCH_OF_THE_ABYSS~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIabys.spl~	LPF SPELL_TO_INNATE END
+ACTION_IF FILE_EXISTS_IN_GAME ~pxl2assa.spl~ THEN BEGIN
+COPY_EXISTING	~pxl2assa.spl~			~override/pxoIassa.spl~
+				~pxl2al2b.spl~			~override/pxoIal2b.spl~
+				~pxl2abys.spl~			~override/pxoIabys.spl~	LPF SPELL_TO_INNATE END
+END
+COPY_EXISTING	~pxl2obli.spl~			~override/pxoIobli.spl~
+				~pxl2sun.spl~			~override/pxoIsun.spl~
+				~pxl2ca4n.spl~			~override/pxoIca4n.spl~
+				~pxl2gnua.spl~			~override/pxoIgnua.spl~
+				~pxl2arna.spl~			~override/pxoIarna.spl~
+				~pxl2ctem.spl~			~override/pxoIctem.spl~
+				~pxl2maid.spl~			~override/pxoImaid.spl~
+				~pxl2glob.spl~			~override/pxoIglob.spl~
+				~pxl2elxi.spl~			~override/pxoIelxi.spl~
+				~pxl2prob.spl~			~override/pxoIprob.spl~
+				~pxl2bomb.spl~			~override/pxoIbomb.spl~
+				~pxl2pqd.spl~			~override/pxoIpqd.spl~
+				~pxl2dweo.spl~			~override/pxoIdweo.spl~
+				~pxl2enne.spl~			~override/pxoIenne.spl~
+				~pxl2gdco.spl~			~override/pxoIgdco.spl~
+				~pxl2son.spl~			~override/pxoIson.spl~
+				~pxl2hurl.spl~			~override/pxoIhurl.spl~
+				~pxl2bson.spl~			~override/pxoIbson.spl~
+				~pxl2bson.spl~			~override/pxoIchdw.spl~
+				~pxl2rupt.spl~			~override/pxoIrupt.spl~
+				~pxl2port.spl~			~override/pxoIport.spl~	LPF SPELL_TO_INNATE END
+
+COPY_EXISTING	~pxog2101.spl~			~override/pxogex2l.spl~	WRITE_ASCII 0xae ~pxoIex2l.spl~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxogresi.spl~	WRITE_ASCII 0xae ~pxoIresi.spl~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxogpart.spl~	WRITE_ASCII 0xae ~pxoIpart.spl~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxogecla.spl~	WRITE_ASCII 0xae ~pxoIecla.spl~ #8
+COPY_EXISTING	~pxog2101.spl~			~override/pxogrpul.spl~	WRITE_ASCII 0xae ~pxoIrpul.spl~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxogprec.spl~	WRITE_ASCII 0xae ~pxoIprec.spl~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxogpuls.spl~	WRITE_ASCII 0xae ~pxoIpuls.spl~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxogcsou.spl~	WRITE_ASCII 0xae ~pxoIcsou.spl~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxogbatp.spl~	WRITE_ASCII 0xae ~pxoIbatp.spl~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxoghexa.spl~	WRITE_ASCII 0xae ~pxoIhexa.spl~ #8
+COPY_EXISTING	~pxog2201.spl~			~override/pxogtamp.spl~	WRITE_ASCII 0xae ~pxoItamp.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogvisi.spl~	WRITE_ASCII 0xae ~pxoIvisi.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogprou.spl~	WRITE_ASCII 0xae ~pxoIprou.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxoggrif.spl~	WRITE_ASCII 0xae ~pxoIgrif.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogtens.spl~	WRITE_ASCII 0xae ~pxoItens.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogforc.spl~	WRITE_ASCII 0xae ~pxoIforc.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogarma.spl~	WRITE_ASCII 0xae ~pxoIarma.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogpoul.spl~	WRITE_ASCII 0xae ~pxoIpoul.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogcran.spl~	WRITE_ASCII 0xae ~pxoIcran.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogaura.spl~	WRITE_ASCII 0xae ~pxoIaura.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogflea.spl~	WRITE_ASCII 0xae ~pxoIflea.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogstop.spl~	WRITE_ASCII 0xae ~pxoIstop.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogvlso.spl~	WRITE_ASCII 0xae ~pxoIvlso.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogpob.spl~	WRITE_ASCII 0xae ~pxoIpob.spl~	#8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogpaci.spl~	WRITE_ASCII 0xae ~pxoIpaci.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogbbom.spl~	WRITE_ASCII 0xae ~pxoIbbom.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogdobb.spl~	WRITE_ASCII 0xae ~pxoIdobb.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogdech.spl~	WRITE_ASCII 0xae ~pxoIdech.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxogfara.spl~	WRITE_ASCII 0xae ~pxoIfara.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxogarci.spl~	WRITE_ASCII 0xae ~pxoIarci.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxognatu.spl~	WRITE_ASCII 0xae ~pxoInatu.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxogsque.spl~	WRITE_ASCII 0xae ~pxoIsque.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxognova.spl~	WRITE_ASCII 0xae ~pxoInova.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxogimag.spl~	WRITE_ASCII 0xae ~pxoIimag.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxogas2s.spl~	WRITE_ASCII 0xae ~pxoIas2s.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxogpoig.spl~	WRITE_ASCII 0xae ~pxoIpoig.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxogfees.spl~	WRITE_ASCII 0xae ~pxoIfees.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxogvent.spl~	WRITE_ASCII 0xae ~pxoIvent.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxognull.spl~	WRITE_ASCII 0xae ~pxoInull.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxogboul.spl~	WRITE_ASCII 0xae ~pxoIboul.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxogroul.spl~	WRITE_ASCII 0xae ~pxoIroul.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxogsabl.spl~	WRITE_ASCII 0xae ~pxoIsabl.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxogbrad.spl~	WRITE_ASCII 0xae ~pxoIbrad.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxogmexp.spl~	WRITE_ASCII 0xae ~pxoImexp.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxogcorr.spl~	WRITE_ASCII 0xae ~pxoIcorr.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxoglame.spl~	WRITE_ASCII 0xae ~pxoIlame.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxogcano.spl~	WRITE_ASCII 0xae ~pxoIcano.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxogbfir.spl~	WRITE_ASCII 0xae ~pxoIbfir.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxogaven.spl~	WRITE_ASCII 0xae ~pxoIaven.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxogcou.spl~	WRITE_ASCII 0xae ~pxoIcoup.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxogmagi.spl~	WRITE_ASCII 0xae ~pxoImagi.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxogsofl.spl~	WRITE_ASCII 0xae ~pxoIsofl.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxogacce.spl~	WRITE_ASCII 0xae ~pxoIacce.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxogvmp.spl~	WRITE_ASCII 0xae ~pxoIvmp.spl~	#8
+COPY_EXISTING	~pxog2501.spl~			~override/pxogtria.spl~	WRITE_ASCII 0xae ~pxoItria.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxogbaar.spl~	WRITE_ASCII 0xae ~pxoIbaar.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxogvuln.spl~	WRITE_ASCII 0xae ~pxoIvuln.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxogalab.spl~	WRITE_ASCII 0xae ~pxoIalab.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxogfure.spl~	WRITE_ASCII 0xae ~pxoIfure.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxogflam.spl~	WRITE_ASCII 0xae ~pxoIflam.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxogsang.spl~	WRITE_ASCII 0xae ~pxoIsang.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxogmemo.spl~	WRITE_ASCII 0xae ~pxoImemo.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxogchao.spl~	WRITE_ASCII 0xae ~pxoIchao.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxogchro.spl~	WRITE_ASCII 0xae ~pxoIchro.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxogsouv.spl~	WRITE_ASCII 0xae ~pxoIsouv.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxoggelu.spl~	WRITE_ASCII 0xae ~pxoIgelu.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxogchoc.spl~	WRITE_ASCII 0xae ~pxoIchoc.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxoginno.spl~	WRITE_ASCII 0xae ~pxoIinno.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxoggili.spl~	WRITE_ASCII 0xae ~pxoIgili.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxogfaml.spl~	WRITE_ASCII 0xae ~pxoIfaml.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxopgla.spl~	WRITE_ASCII 0xae ~pxoIpgla.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogleto.spl~	WRITE_ASCII 0xae ~pxoIleto.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxograpp.spl~	WRITE_ASCII 0xae ~pxoIrapp.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogaffl.spl~	WRITE_ASCII 0xae ~pxoIaffl.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogflec.spl~	WRITE_ASCII 0xae ~pxoIflec.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogaenc.spl~	WRITE_ASCII 0xae ~pxoIaenc.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogmarc.spl~	WRITE_ASCII 0xae ~pxoImarc.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogfrmf.spl~	WRITE_ASCII 0xae ~pxoIfrmf.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogtoil.spl~	WRITE_ASCII 0xae ~pxoItoil.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogmiss.spl~	WRITE_ASCII 0xae ~pxoImiss.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogorbe.spl~	WRITE_ASCII 0xae ~pxoIorbe.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogaant.spl~	WRITE_ASCII 0xae ~pxoIaant.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogcoge.spl~	WRITE_ASCII 0xae ~pxoIcoge.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogpurg.spl~	WRITE_ASCII 0xae ~pxoIpurg.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxognt2.spl~	WRITE_ASCII 0xae ~pxoInt2.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogachi.spl~	WRITE_ASCII 0xae ~pxoIachi.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxoganma.spl~	WRITE_ASCII 0xae ~pxoIanma.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogmem2.spl~	WRITE_ASCII 0xae ~pxoImem2.spl~ #8
+COPY_EXISTING	~pxog2701.spl~			~override/pxogsexp.spl~	WRITE_ASCII 0xae ~pxoIsexp.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxogoeil.spl~	WRITE_ASCII 0xae ~pxoIoeil.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxognuag.spl~	WRITE_ASCII 0xae ~pxoInuag.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxogsqma.spl~	WRITE_ASCII 0xae ~pxoIsqma.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxogso2u.spl~	WRITE_ASCII 0xae ~pxoIso2u.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxogfrap.spl~	WRITE_ASCII 0xae ~pxoIfrap.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxogbrel.spl~	WRITE_ASCII 0xae ~pxoIbrel.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxogtele.spl~	WRITE_ASCII 0xae ~pxoItele.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxogkorr.spl~	WRITE_ASCII 0xae ~pxoIkorr.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxograge.spl~	WRITE_ASCII 0xae ~pxoIrage.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxogcomb.spl~	WRITE_ASCII 0xae ~pxoIcomb.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxogapfe.spl~	WRITE_ASCII 0xae ~pxoIapfe.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxogveng.spl~	WRITE_ASCII 0xae ~pxoIveng.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxogarai.spl~	WRITE_ASCII 0xae ~pxoIarai.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxogelec.spl~	WRITE_ASCII 0xae ~pxoIelec.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxogtetr.spl~	WRITE_ASCII 0xae ~pxoItetr.spl~ #8
+COPY_EXISTING	~pxog2803.spl~			~override/pxogxspe.spl~	WRITE_ASCII 0xae ~pxoIxspe.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogassa.spl~	WRITE_ASCII 0xae ~pxoIassa.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogal2b.spl~	WRITE_ASCII 0xae ~pxoIal2b.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogabys.spl~	WRITE_ASCII 0xae ~pxoIabys.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogobli.spl~	WRITE_ASCII 0xae ~pxoIobli.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogsun.spl~	WRITE_ASCII 0xae ~pxoIsun.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogca4n.spl~	WRITE_ASCII 0xae ~pxoIca4n.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxoggnua.spl~	WRITE_ASCII 0xae ~pxoIgnua.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogarna.spl~	WRITE_ASCII 0xae ~pxoIarna.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogctem.spl~	WRITE_ASCII 0xae ~pxoIctem.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogmaid.spl~	WRITE_ASCII 0xae ~pxoImaid.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogglob.spl~	WRITE_ASCII 0xae ~pxoIglob.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogelxi.spl~	WRITE_ASCII 0xae ~pxoIelxi.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogprob.spl~	WRITE_ASCII 0xae ~pxoIprob.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogbom.spl~	WRITE_ASCII 0xae ~pxoIbomb.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogpqd.spl~	WRITE_ASCII 0xae ~pxoIpqd.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogdweo.spl~	WRITE_ASCII 0xae ~pxoIdweo.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogenne.spl~	WRITE_ASCII 0xae ~pxoIenne.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxoggdco.spl~	WRITE_ASCII 0xae ~pxoIgdco.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogson.spl~	WRITE_ASCII 0xae ~pxoIson.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxoghurl.spl~	WRITE_ASCII 0xae ~pxoIhurl.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxogbson.spl~	WRITE_ASCII 0xae ~pxoIbson.spl~ #8
+COPY_EXISTING	~pxog2501.spl~			~override/pxogchdw.spl~	WRITE_ASCII 0xae ~pxoIchdw.spl~ #8
+COPY_EXISTING	~pxog2401.spl~			~override/pxogrupt.spl~	WRITE_ASCII 0xae ~pxoIrupt.spl~ #8
+COPY_EXISTING	~pxog2601.spl~			~override/pxogport.spl~	WRITE_ASCII 0xae ~pxoIport.spl~ #8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////   MODS EN VRAC   //////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+ACTION_IF FILE_EXISTS_IN_GAME ~A7#SPW1.itm~ THEN BEGIN
+COPY_EXISTING	~A7#SPW1.spl~			~override/pxoIxcrb.spl~	LPF SPELL_TO_INNATE END
+COPY_EXISTING	~pxog2803.spl~			~override/pxogxcrb.spl~	WRITE_ASCII 0xae ~pxoIxcrb.spl~ #8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////   IWDEE - SCS / IWDIFICATION   ///////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+/*LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_EXPEDITIOUS_RETREAT~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~		~override/pxoIw101.spl~	LPF SPELL_TO_INNATE END
+  
+COPY_EXISTING ~pxoops.dlg~ ~override~
+    DECOMPILE_AND_PATCH BEGIN
+REPLACE_TEXTUALLY ~CDIA981~ ~cdia%spell_num%~
+END*/
