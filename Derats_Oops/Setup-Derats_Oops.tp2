@@ -420,7 +420,7 @@ END
 ///////////////////////////////////   INTERPLAN   ///////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
 
-ACTION_IF FILE_EXISTS_IN_GAME ~pxl2visi.spl~ THEN BEGIN
+ACTION_IF FILE_EXISTS_IN_GAME ~pxl2visi.itm~ THEN BEGIN
 LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FIRE_EXPLOSION~	RET spell_res	END
 COPY_EXISTING	~%spell_res%.spl~		~override/pxoIex2l.spl~	LPF SPELL_TO_INNATE END
 LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ANTI_SPELLS_SHIELD~	RET spell_res	END
