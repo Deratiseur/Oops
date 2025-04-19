@@ -1304,14 +1304,243 @@ IF ~~ THEN BEGIN Transformation SAY @5
       DO ~TakePartyGold(80000) DestroyGold(80000)
 	  TakePartyItemNum("A7#SPW1",1) DestroyItem("A7#SPW1")
 	  ReallyForceSpellRes("pxogxcrb",LastTalkedToBy)~ GOTO Autrechose
-	IF ~PartyGoldGT(9999)	XPGT(LastTalkedToBy,999) NumItemsPartyGT("CDIA981",0)~ THEN  REPLY @3001
+	IF ~PartyGoldGT(9999)	XPGT(LastTalkedToBy,999) NumItemsPartyGT("cdia%pxoscs11_num%",0)~ THEN  REPLY @2011
       DO ~TakePartyGold(10000) DestroyGold(10000)
-	  TakePartyItemNum("CDIA981",1) DestroyItem("CDIA981")
-	  ReallyForceSpellRes("pxoIw101",LastTalkedToBy)~ GOTO Autrechose
+	  TakePartyItemNum("cdia%pxoscs11%",1) DestroyItem("cdia%pxoscs11_num%")
+	  ReallyForceSpellRes("pxogCs11",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(9999)	XPGT(LastTalkedToBy,999) NumItemsPartyGT("cdia%pxoscs12_num%",0)~ THEN  REPLY @2012
+      DO ~TakePartyGold(10000) DestroyGold(10000)
+	  TakePartyItemNum("cdia%pxoscs12%",1) DestroyItem("cdia%pxoscs12_num%")
+	  ReallyForceSpellRes("pxogCs12",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(19999)	XPGT(LastTalkedToBy,1999) NumItemsPartyGT("cdia%pxoscs21_num%",0)~ THEN  REPLY @2021
+      DO ~TakePartyGold(20000) DestroyGold(20000)
+	  TakePartyItemNum("cdia%pxoscs21%",1) DestroyItem("cdia%pxoscs21_num%")
+	  ReallyForceSpellRes("pxogCs21",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(19999)	XPGT(LastTalkedToBy,1999) NumItemsPartyGT("cdia%pxoscs22_num%",0)~ THEN  REPLY @2022
+      DO ~TakePartyGold(20000) DestroyGold(20000)
+	  TakePartyItemNum("cdia%pxoscs22%",1) DestroyItem("cdia%pxoscs22_num%")
+	  ReallyForceSpellRes("pxogCs22",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(29999)	XPGT(LastTalkedToBy,2999) NumItemsPartyGT("cdia%pxoscs31_num%",0)~ THEN  REPLY @2031
+      DO ~TakePartyGold(30000) DestroyGold(30000)
+	  TakePartyItemNum("cdia%pxoscs31%",1) DestroyItem("cdia%pxoscs31_num%")
+	  ReallyForceSpellRes("pxogCs31",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(49999)	XPGT(LastTalkedToBy,4999) NumItemsPartyGT("cdia%pxoscs51_num%",0)~ THEN  REPLY @2051
+      DO ~TakePartyGold(50000) DestroyGold(50000)
+	  TakePartyItemNum("cdia%pxoscs51%",1) DestroyItem("cdia%pxoscs51_num%")
+	  ReallyForceSpellRes("pxogCs51",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(79999)	XPGT(LastTalkedToBy,7999) NumItemsPartyGT("cdia%pxoscs81_num%",0)~ THEN  REPLY @2081
+      DO ~TakePartyGold(80000) DestroyGold(80000)
+	  TakePartyItemNum("cdia%pxoscs81%",1) DestroyItem("cdia%pxoscs81_num%")
+	  ReallyForceSpellRes("pxogCs81",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(89999)	XPGT(LastTalkedToBy,8999) NumItemsPartyGT("cdia%pxoscs91_num%",0)~ THEN  REPLY @2091
+      DO ~TakePartyGold(90000) DestroyGold(90000)
+	  TakePartyItemNum("cdia%pxoscs91%",1) DestroyItem("cdia%pxoscs91_num%")
+	  ReallyForceSpellRes("pxogCs91",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(89999)	XPGT(LastTalkedToBy,8999) NumItemsPartyGT("cdia%pxoscs92_num%",0)~ THEN  REPLY @2092
+      DO ~TakePartyGold(90000) DestroyGold(90000)
+	  TakePartyItemNum("cdia%pxoscs92%",1) DestroyItem("cdia%pxoscs92_num%")
+	  ReallyForceSpellRes("pxogCs92",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(89999)	XPGT(LastTalkedToBy,8999) NumItemsPartyGT("cdia%pxoscs93_num%",0)~ THEN  REPLY @2093
+      DO ~TakePartyGold(90000) DestroyGold(90000)
+	  TakePartyItemNum("cdia%pxoscs93%",1) DestroyItem("cdia%pxoscs93_num%")
+	  ReallyForceSpellRes("pxogCs93",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(9999)	XPGT(LastTalkedToBy,999) NumItemsPartyGT("cdia%pxoiwd11_num%",0)~ THEN  REPLY @3011
+      DO ~TakePartyGold(10000) DestroyGold(10000)
+	  TakePartyItemNum("cdia%pxoiwd11_num%",1) DestroyItem("cdia%pxoiwd11_num%")
+	  ReallyForceSpellRes("pxogIw11",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(19999)	XPGT(LastTalkedToBy,1999) NumItemsPartyGT("cdia%pxoiwd21_num%",0)~ THEN  REPLY @3021
+      DO ~TakePartyGold(20000) DestroyGold(20000)
+	  TakePartyItemNum("cdia%pxoiwd21_num%",1) DestroyItem("cdia%pxoiwd21_num%")
+	  ReallyForceSpellRes("pxogIw21",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(19999)	XPGT(LastTalkedToBy,1999) NumItemsPartyGT("cdia%pxoiwd22_num%",0)~ THEN  REPLY @3022
+      DO ~TakePartyGold(20000) DestroyGold(20000)
+	  TakePartyItemNum("cdia%pxoiwd22_num%",1) DestroyItem("cdia%pxoiwd22_num%")
+	  ReallyForceSpellRes("pxogIw22",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(19999)	XPGT(LastTalkedToBy,1999) NumItemsPartyGT("cdia%pxoiwd23_num%",0)~ THEN  REPLY @3023
+      DO ~TakePartyGold(20000) DestroyGold(20000)
+	  TakePartyItemNum("cdia%pxoiwd23_num%",1) DestroyItem("cdia%pxoiwd23_num%")
+	  ReallyForceSpellRes("pxogIw23",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(29999)	XPGT(LastTalkedToBy,2999) NumItemsPartyGT("cdia%pxoiwd31_num%",0)~ THEN  REPLY @3031
+      DO ~TakePartyGold(30000) DestroyGold(30000)
+	  TakePartyItemNum("cdia%pxoiwd31_num%",1) DestroyItem("cdia%pxoiwd31_num%")
+	  ReallyForceSpellRes("pxogIw31",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(29999)	XPGT(LastTalkedToBy,2999) NumItemsPartyGT("cdia%pxoiwd32_num%",0)~ THEN  REPLY @3032
+      DO ~TakePartyGold(30000) DestroyGold(30000)
+	  TakePartyItemNum("cdia%pxoiwd32_num%",1) DestroyItem("cdia%pxoiwd32_num%")
+	  ReallyForceSpellRes("pxogIw32",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(39999)	XPGT(LastTalkedToBy,3999) NumItemsPartyGT("cdia%pxoiwd41_num%",0)~ THEN  REPLY @3041
+      DO ~TakePartyGold(40000) DestroyGold(40000)
+	  TakePartyItemNum("cdia%pxoiwd41_num%",1) DestroyItem("cdia%pxoiwd41_num%")
+	  ReallyForceSpellRes("pxogIw41",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(39999)	XPGT(LastTalkedToBy,3999) NumItemsPartyGT("cdia%pxoiwd42_num%",0)~ THEN  REPLY @3042
+      DO ~TakePartyGold(40000) DestroyGold(40000)
+	  TakePartyItemNum("cdia%pxoiwd42_num%",1) DestroyItem("cdia%pxoiwd42_num%")
+	  ReallyForceSpellRes("pxogIw42",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(39999)	XPGT(LastTalkedToBy,3999) NumItemsPartyGT("cdia%pxoiwd43_num%",0)~ THEN  REPLY @3043
+      DO ~TakePartyGold(40000) DestroyGold(40000)
+	  TakePartyItemNum("cdia%pxoiwd43_num%",1) DestroyItem("cdia%pxoiwd43_num%")
+	  ReallyForceSpellRes("pxogIw43",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(39999)	XPGT(LastTalkedToBy,3999) NumItemsPartyGT("cdia%pxoiwd44_num%",0)~ THEN  REPLY @3044
+      DO ~TakePartyGold(40000) DestroyGold(40000)
+	  TakePartyItemNum("cdia%pxoiwd44_num%",1) DestroyItem("cdia%pxoiwd44_num%")
+	  ReallyForceSpellRes("pxogIw44",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(39999)	XPGT(LastTalkedToBy,3999) NumItemsPartyGT("cdia%pxoiwd45_num%",0)~ THEN  REPLY @3045
+      DO ~TakePartyGold(40000) DestroyGold(40000)
+	  TakePartyItemNum("cdia%pxoiwd45_num%",1) DestroyItem("cdia%pxoiwd45_num%")
+	  ReallyForceSpellRes("pxogIw45",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(39999)	XPGT(LastTalkedToBy,3999) NumItemsPartyGT("cdia%pxoiwd46_num%",0)~ THEN  REPLY @3046
+      DO ~TakePartyGold(40000) DestroyGold(40000)
+	  TakePartyItemNum("cdia%pxoiwd46_num%",1) DestroyItem("cdia%pxoiwd46_num%")
+	  ReallyForceSpellRes("pxogIw46",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(39999)	XPGT(LastTalkedToBy,3999) NumItemsPartyGT("cdia%pxoiwd47_num%",0)~ THEN  REPLY @3047
+      DO ~TakePartyGold(40000) DestroyGold(40000)
+	  TakePartyItemNum("cdia%pxoiwd47_num%",1) DestroyItem("cdia%pxoiwd47_num%")
+	  ReallyForceSpellRes("pxogIw47",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(39999)	XPGT(LastTalkedToBy,3999) NumItemsPartyGT("cdia%pxoiwd48_num%",0)~ THEN  REPLY @3048
+      DO ~TakePartyGold(40000) DestroyGold(40000)
+	  TakePartyItemNum("cdia%pxoiwd48_num%",1) DestroyItem("cdia%pxoiwd48_num%")
+	  ReallyForceSpellRes("pxogIw48",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(49999)	XPGT(LastTalkedToBy,4999) NumItemsPartyGT("cdia%pxoiwd51_num%",0)~ THEN  REPLY @3051
+      DO ~TakePartyGold(50000) DestroyGold(50000)
+	  TakePartyItemNum("cdia%pxoiwd51_num%",1) DestroyItem("cdia%pxoiwd51_num%")
+	  ReallyForceSpellRes("pxogIw51",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(49999)	XPGT(LastTalkedToBy,4999) NumItemsPartyGT("cdia%pxoiwd52_num%",0)~ THEN  REPLY @3052
+      DO ~TakePartyGold(50000) DestroyGold(50000)
+	  TakePartyItemNum("cdia%pxoiwd52_num%",1) DestroyItem("cdia%pxoiwd52_num%")
+	  ReallyForceSpellRes("pxogIw52",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(49999)	XPGT(LastTalkedToBy,4999) NumItemsPartyGT("cdia%pxoiwd53_num%",0)~ THEN  REPLY @3053
+      DO ~TakePartyGold(50000) DestroyGold(50000)
+	  TakePartyItemNum("cdia%pxoiwd53_num%",1) DestroyItem("cdia%pxoiwd53_num%")
+	  ReallyForceSpellRes("pxogIw53",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(49999)	XPGT(LastTalkedToBy,4999) NumItemsPartyGT("cdia%pxoiwd54_num%",0)~ THEN  REPLY @3054
+      DO ~TakePartyGold(50000) DestroyGold(50000)
+	  TakePartyItemNum("cdia%pxoiwd54_num%",1) DestroyItem("cdia%pxoiwd54_num%")
+	  ReallyForceSpellRes("pxogIw54",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(59999)	XPGT(LastTalkedToBy,5999) NumItemsPartyGT("cdia%pxoiwd61_num%",0)~ THEN  REPLY @3061
+      DO ~TakePartyGold(60000) DestroyGold(60000)
+	  TakePartyItemNum("cdia%pxoiwd61_num%",1) DestroyItem("cdia%pxoiwd61_num%")
+	  ReallyForceSpellRes("pxogIw61",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(59999)	XPGT(LastTalkedToBy,5999) NumItemsPartyGT("cdia%pxoiwd62_num%",0)~ THEN  REPLY @3062
+      DO ~TakePartyGold(60000) DestroyGold(60000)
+	  TakePartyItemNum("cdia%pxoiwd62_num%",1) DestroyItem("cdia%pxoiwd62_num%")
+	  ReallyForceSpellRes("pxogIw62",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(59999)	XPGT(LastTalkedToBy,5999) NumItemsPartyGT("cdia%pxoiwd63_num%",0)~ THEN  REPLY @3063
+      DO ~TakePartyGold(60000) DestroyGold(60000)
+	  TakePartyItemNum("cdia%pxoiwd63_num%",1) DestroyItem("cdia%pxoiwd63_num%")
+	  ReallyForceSpellRes("pxogIw63",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(59999)	XPGT(LastTalkedToBy,5999) NumItemsPartyGT("cdia%pxoiwd64_num%",0)~ THEN  REPLY @3064
+      DO ~TakePartyGold(60000) DestroyGold(60000)
+	  TakePartyItemNum("cdia%pxoiwd64_num%",1) DestroyItem("cdia%pxoiwd64_num%")
+	  ReallyForceSpellRes("pxogIw64",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(59999)	XPGT(LastTalkedToBy,5999) NumItemsPartyGT("cdia%pxoiwd65_num%",0)~ THEN  REPLY @3065
+      DO ~TakePartyGold(60000) DestroyGold(60000)
+	  TakePartyItemNum("cdia%pxoiwd65_num%",1) DestroyItem("cdia%pxoiwd65_num%")
+	  ReallyForceSpellRes("pxogIw65",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(59999)	XPGT(LastTalkedToBy,5999) NumItemsPartyGT("cdia%pxoiwd66_num%",0)~ THEN  REPLY @3066
+      DO ~TakePartyGold(60000) DestroyGold(60000)
+	  TakePartyItemNum("cdia%pxoiwd66_num%",1) DestroyItem("cdia%pxoiwd66_num%")
+	  ReallyForceSpellRes("pxogIw66",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(59999)	XPGT(LastTalkedToBy,5999) NumItemsPartyGT("cdia%pxoiwd67_num%",0)~ THEN  REPLY @3067
+      DO ~TakePartyGold(60000) DestroyGold(60000)
+	  TakePartyItemNum("cdia%pxoiwd67_num%",1) DestroyItem("cdia%pxoiwd67_num%")
+	  ReallyForceSpellRes("pxogIw67",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(59999)	XPGT(LastTalkedToBy,5999) NumItemsPartyGT("cdia%pxoiwd68_num%",0)~ THEN  REPLY @3068
+      DO ~TakePartyGold(60000) DestroyGold(60000)
+	  TakePartyItemNum("cdia%pxoiwd68_num%",1) DestroyItem("cdia%pxoiwd68_num%")
+	  ReallyForceSpellRes("pxogIw68",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(69999)	XPGT(LastTalkedToBy,6999) NumItemsPartyGT("cdia%pxoiwd71_num%",0)~ THEN  REPLY @3071
+      DO ~TakePartyGold(70000) DestroyGold(70000)
+	  TakePartyItemNum("cdia%pxoiwd71_num%",1) DestroyItem("cdia%pxoiwd71_num%")
+	  ReallyForceSpellRes("pxogIw71",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(69999)	XPGT(LastTalkedToBy,6999) NumItemsPartyGT("cdia%pxoiwd72_num%",0)~ THEN  REPLY @3072
+      DO ~TakePartyGold(70000) DestroyGold(70000)
+	  TakePartyItemNum("cdia%pxoiwd72_num%",1) DestroyItem("cdia%pxoiwd72_num%")
+	  ReallyForceSpellRes("pxogIw72",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(69999)	XPGT(LastTalkedToBy,6999) NumItemsPartyGT("cdia%pxoiwd73num%",0)~ THEN  REPLY @3073
+      DO ~TakePartyGold(70000) DestroyGold(70000)
+	  TakePartyItemNum("cdia%pxoiwd73_num%",1) DestroyItem("cdia%pxoiwd73_num%")
+	  ReallyForceSpellRes("pxogIw73",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(69999)	XPGT(LastTalkedToBy,6999) NumItemsPartyGT("cdia%pxoiwd74_num%",0)~ THEN  REPLY @3074
+      DO ~TakePartyGold(70000) DestroyGold(70000)
+	  TakePartyItemNum("cdia%pxoiwd74_num%",1) DestroyItem("cdia%pxoiwd74_num%")
+	  ReallyForceSpellRes("pxogIw74",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(69999)	XPGT(LastTalkedToBy,6999) NumItemsPartyGT("cdia%pxoiwd75_num%",0)~ THEN  REPLY @3075
+      DO ~TakePartyGold(70000) DestroyGold(70000)
+	  TakePartyItemNum("cdia%pxoiwd75_num%",1) DestroyItem("cdia%pxoiwd75_num%")
+	  ReallyForceSpellRes("pxogIw75",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(69999)	XPGT(LastTalkedToBy,6999) NumItemsPartyGT("cdia%pxoiwd76_num%",0)~ THEN  REPLY @3076
+      DO ~TakePartyGold(70000) DestroyGold(70000)
+	  TakePartyItemNum("cdia%pxoiwd76_num%",1) DestroyItem("cdia%pxoiwd76_num%")
+	  ReallyForceSpellRes("pxogIw76",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(79999)	XPGT(LastTalkedToBy,7999) NumItemsPartyGT("cdia%pxoiwd81_num%",0)~ THEN  REPLY @3081
+      DO ~TakePartyGold(80000) DestroyGold(80000)
+	  TakePartyItemNum("cdia%pxoiwd81_num%",1) DestroyItem("cdia%pxoiwd81_num%")
+	  ReallyForceSpellRes("pxogIw81",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(79999)	XPGT(LastTalkedToBy,7999) NumItemsPartyGT("cdia%pxoiwd82_num%",0)~ THEN  REPLY @3082
+      DO ~TakePartyGold(80000) DestroyGold(80000)
+	  TakePartyItemNum("cdia%pxoiwd82_num%",1) DestroyItem("cdia%pxoiwd82_num%")
+	  ReallyForceSpellRes("pxogIw82",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(79999)	XPGT(LastTalkedToBy,7999) NumItemsPartyGT("cdia%pxoiwd83_num%",0)~ THEN  REPLY @3083
+      DO ~TakePartyGold(80000) DestroyGold(80000)
+	  TakePartyItemNum("cdia%pxoiwd83_num%",1) DestroyItem("cdia%pxoiwd83_num%")
+	  ReallyForceSpellRes("pxogIw83",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(79999)	XPGT(LastTalkedToBy,7999) NumItemsPartyGT("cdia%pxoiwd84_num%",0)~ THEN  REPLY @3084
+      DO ~TakePartyGold(80000) DestroyGold(80000)
+	  TakePartyItemNum("cdia%pxoiwd84_num%",1) DestroyItem("cdia%pxoiwd84_num%")
+	  ReallyForceSpellRes("pxogIw84",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(89999)	XPGT(LastTalkedToBy,8999) NumItemsPartyGT("cdia%pxoiwd91_num%",0)~ THEN  REPLY @3091
+      DO ~TakePartyGold(90000) DestroyGold(90000)
+	  TakePartyItemNum("cdia%pxoiwd91_num%",1) DestroyItem("cdia%pxoiwd91_num%")
+	  ReallyForceSpellRes("pxogIw91",LastTalkedToBy)~ GOTO Autrechose
+IF ~PartyGoldGT(399999)	XPGT(LastTalkedToBy,137999) NumItemsPartyGT("tacprsp",0) !PartyHasItem("WA2ROBE")~ THEN  REPLY @50  GOTO Multiclercno
+IF ~PartyGoldGT(399999)	XPGT(LastTalkedToBy,137999) NumItemsPartyGT("tacprsp",0) PartyHasItem("WA2ROBE")~ THEN  REPLY @50  GOTO Multiclercok
+IF ~PartyGoldGT(399999)	XPGT(LastTalkedToBy,145999) PartyHasItem("wm_sbook") !PartyHasItem("RING39")~ THEN  REPLY @60  GOTO Entropieno
+IF ~PartyGoldGT(399999)	XPGT(LastTalkedToBy,145999) PartyHasItem("wm_sbook") PartyHasItem("RING39")~ THEN  REPLY @60  GOTO Entropieok
+IF ~PartyGoldGT(299999)	XPGT(LastTalkedToBy,87999) PartyHasItem("pxl2abzn") !PartyHasItem("pxl2disc")~ THEN  REPLY @80  GOTO Flammesno
+IF ~PartyGoldGT(299999)	XPGT(LastTalkedToBy,87999) PartyHasItem("pxl2abzn") PartyHasItem("pxl2disc")~ THEN  REPLY @80  GOTO Flammesok 
 IF ~~ THEN REPLY @7 EXIT
 END
 
 IF ~~ THEN BEGIN Autrechose	SAY @6
 	IF ~XPGT(LastTalkedToBy,9999) PartyGoldGT(9999)~ THEN REPLY @8 GOTO Transformation
 	IF ~~ THEN REPLY @7 EXIT
+END
+
+IF ~~ THEN BEGIN Multiclercno	SAY @51
+	IF ~~ THEN REPLY @53 EXIT
+END
+	
+IF ~~ THEN BEGIN Multiclercok	SAY @51 = @52
+	IF ~~ THEN REPLY @48
+	DO ~TakePartyGold(400000) DestroyGold(400000)
+	  TakePartyItemNum("wm_sbook",1) DestroyItem("wm_sbook")
+	  TakePartyItemNum("WA2ROBE",1) DestroyItem("WA2ROBE")
+	  ReallyForceSpellRes("pxogml",LastTalkedToBy)~ GOTO Autrechose
+	IF ~~ THEN REPLY @55 EXIT
+END
+
+IF ~~ THEN BEGIN Entropieno	SAY @61
+	IF ~~ THEN REPLY @63 EXIT
+END
+	
+IF ~~ THEN BEGIN Entropieok	SAY @61 = @62
+	IF ~~ THEN REPLY @48
+	DO ~TakePartyGold(400000) DestroyGold(400000)
+	  TakePartyItemNum("wm_sbook",1) DestroyItem("wm_sbook")
+	  TakePartyItemNum("RING39",1) DestroyItem("RING39")
+	  ReallyForceSpellRes("pxogentr",LastTalkedToBy)~ GOTO Autrechose
+	IF ~~ THEN REPLY @65 EXIT
+END
+
+IF ~~ THEN BEGIN Flammesno	SAY @81
+	IF ~~ THEN REPLY @83 EXIT
+END
+	
+IF ~~ THEN BEGIN Flammesok	SAY @81 = @82
+	IF ~~ THEN REPLY @48
+	DO ~TakePartyGold(300000) DestroyGold(300000)
+	  TakePartyItemNum("pxl2abzn",1) DestroyItem("pxl2abzn")
+	  TakePartyItemNum("pxl2disc",1) DestroyItem("pxl2disc")
+	  ReallyForceSpellRes("pxogabzn",LastTalkedToBy)~ GOTO Autrechose
+	IF ~~ THEN REPLY @49 EXIT
 END
