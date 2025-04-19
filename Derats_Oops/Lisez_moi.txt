@@ -24,3 +24,5 @@ Le mod gère aussi :
 	parlez à Oops avec ce grimoire, 400000 pos, 146000 xp et l'Anneau de Gaxx.
 - le grimoire "Grimoire des flammes d'Yratnuthul" du mod l'Interplan. Si vous voulez que ce grimoire devienne 20 capacités spéciales brûlantes,
 	parlez à Oops avec ce grimoire, 300000 pos, 88000 xp et le Discombullateur merveilleux.
+	
+Pour que tous ces sorts/grimoires venus de mods soient pris en compte, vous devez installer Oops APRÈS ces mods.
