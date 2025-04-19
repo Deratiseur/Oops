@@ -23,7 +23,7 @@ Exemple : Amenez à Oops un parchemin de "Hâte améliorée", et pour 60000 pos 
 Renouvelable à volonté avec tous les sorts vanilla (sauf Identification), tant que vous avez de quoi payer et des parchemins à fournir.  
 
 Ça marche avec tous les sorts de base du jeu, les sorts de <a href=https://github.com//Deratiseur/Interplan>L'Interplan</a>, les sorts de IWD et les sorts de SCS.  
-Le mod gère aussi des grimoires tirés de mods (Interplan, Semi Muti Cleric, Wild Mage Addition)
+Le mod gère aussi des grimoires tirés de mods (Interplan, Semi Muti Cleric, Wild Mage Addition).
 
 ---------------------------
 
@@ -36,5 +36,5 @@ Example: Bring Oops a scroll of "Improved Haste", and for 60000 gps and 6000 xp 
 
 Renewable at will with all vanilla spells (Except Identify), as long as you have enough to pay and scrolls to provide.  
 
-It works with all the basic spells in the game, spells from <a href=https://github.com//Deratiseur/Interplan>The Interplane</a>, spells from IWDEE and spells from SCS.
+It works with all the basic spells in the game, spells from <a href=https://github.com//Deratiseur/Interplan>The Interplane</a>, spells from IWDEE and spells from SCS.  
 The mod also manages grimoires taken from other mods (Interplan, Semi Muti Cleric, Wild Mage Addition).
