@@ -10,5 +10,17 @@ Gagner une capacité vous coûtera le parchemin correspondant, 10000 pièces d'or p
 
 C'est répétable à volonté tant que vous avez ce qu'il faut.
 Les temps d'incantation des capacités spéciales restent celles des sorts émulés.
-Le mod ne gère pas (encore) les sorts ajoutés par des mods.
 Certains sorts sont proposés deux fois, c'est parce qu'il existe 2 versions du parchemin (trouvé ou acheté, prix différent).
+
+Le mod gère aussi :
+- les sorts de IWDEE rajouté par IWDification ou SCS.
+- les sorts de l'Interplan.
+- le sort "Courbespace" du mod Test your mettle.
+- les nouveaux sorts arcaniques installés par SCS 35+.
+- le grimoire "Préceptes de la Dame des Mystère" du mod Semi Multi Cleric. Si vous voulez que ce grimoire devienne 23 capacités spéciales divines,
+	parlez à Oops avec ce grimoire, 400000 pos, 138000 xp et la Robe de Vecna.
+	(pourquoi un objet si important ? Parce que le mod originel vous fait perdre 2 de force et de constitution, ce que la conversion par Oops ne fait pas)
+- le grimoire "Livre de sorts de Rhialto" du mod Wild Mage Addition. Si vous voulez que ce grimoire devienne 29 capacités spéciales entropiques,
+	parlez à Oops avec ce grimoire, 400000 pos, 146000 xp et l'Anneau de Gaxx.
+- le grimoire "Grimoire des flammes d'Yratnuthul" du mod l'Interplan. Si vous voulez que ce grimoire devienne 20 capacités spéciales brûlantes,
+	parlez à Oops avec ce grimoire, 300000 pos, 88000 xp et le Discombullateur merveilleux.

@@ -1,22 +1,40 @@
 @0 = ~Oops the magician~
-
 @1 = ~Hello my lord. Looking for new abilities? You've come to the right person.~~Hello my lady. Looking for new abilities? You've come to the right person.~
-
 @2 = ~New abilities? How does it work?~
-
 @3 = ~Ho, it's very simple: bring me a spell scroll and I'll draw energy from it to give you the special ability to cast the corresponding spell once a day. It's not free of course: it will cost you 10,000 gold coins and 1,000 experience points per level of the desired spell. So, is there a spell you'd like to cast?~
-
 @4 = ~Hello, I'd like you to transform a scroll into special ability.~
-
 @5 = ~Okay, what spell are you thinking of?~
-
 @6 = ~And that's it. Anything else?~
-
 @7 = ~No thanks, I don't need your services anymore.~
-
 @8 = ~Yes, I'd like you to transform a scroll into a
 special ability.~
 
+@48 = ~It's okay, do it.~
+@49 = ~No thanks, it's too expensive.~
+@50 = ~I've got a complete grimoire: the Teachings of The Lady. Can you do something with it?~
+@51 = ~Ho... a grimoire containing spells normally of divine order? This is an unusual spell book. I can try to convert everything in it into special abilities, but it's going to take a lot of energy. So I'm going to ask you for a special payment: I'll give you a wholesale price of 400,000 gold coins and I'll also ask you for the Robe of Vecna. It's a smaller investment than it would normally cost you.~ 
+@52 = ~Ha, and it would also cost you 138,000 xp. There are around 140 levels of spells in this grimoire. It's up to you to decide whether you're prepared to pay this price.~
+@53 = ~I don't own this robe. I'll be back.~
+@54 = ~The character has lost 138000 xp.~
+@55 = ~I wouldn't sacrifice this robe for that. No thanks.~
+
+@60 = ~I've got a complete grimoire: the Rhialto's Spellbook. Can you do anything with it?~
+@61 = ~Hum... a grimoire dedicated to Entropy. And with a special ability as well? Are you sure you want to part with this? Well, it's up to you... I can try to convert everything in it into special abilities, but it's going to take a lot of energy. So I'm going to ask you for a special payment: I'll give you a wholesale price of 400,000 gold coins and I'll also ask you for the Ring of Gaxx. It's a smaller investment than it would normally cost you.~
+@62 = ~I forgot to mention that it would also cost you 146,000 xp. There are 146 cumulative spell levels in this grimoire. So, are you willing to pay this price?~
+@63 = ~I don't own this ring. I'll be back.~
+@64 = ~The character has lost 146000 xp.~
+@65 = ~I wouldn't part with this ring for that. No thanks.~
+
+@70 = ~I've got a complete grimoire: the Dillpater's Grimoire. Can you do anything with it?~
+@71 = ~Where did you find this? I'm familiar with this type of work: it's normally found in the hands of incantifiers. And I doubt you've come across one, let alone got it from him. So, how did you get hold of it? That's your business. Yes, I can convert its contents into special abilities, but it's going to take a lot of energy. So I'm going to ask you for a special payment: I'll give you a wholesale price of 500,000 gold coins, plus a  the Deck of Many Things and a Staff of the Magi. It's a smaller investment than it would normally cost you.~
+@72 = ~And of course, it would also cost you a not inconsiderable amount of xp: 173,000 xps to be precise. So, are you prepared to pay this price? ~
+@73 = ~I don't own these items. I'll come back ~
+
+@80 = ~ I've got a complete grimoire: Yratnuthul's Grimoire of Flames. Can you do anything with it?~
+@81 = ~Hou... ! What kind of book is this? Spells below normal level? The mage who compiled this must have been pretty experienced to pull off such a feat! So yes, I can convert its contents into special abilities, but that's going to take a lot of energy. So in this case I'm going to ask you for a special payment: I'll give you a wholesale price of 300,000 gold coins and I'll also ask you for the marvellous Discombulator. It's a smaller investment than it would normally cost you.~
+@82 = ~And it would also cost you 88,000 xps, don't forget. So, are you prepared to pay that price?~
+@83 = ~I don't own such an item. I'll be back.~
+@84 = ~The character has lost 88000 xp.~
 
 @10001 = ~The character has lost 1000 xp.~
 @10002 = ~The character has lost 2000 xp.~
@@ -43,7 +61,7 @@ special ability.~
 @115 = ~I'd like to gain the ability Shocking Grasp.~
 @116 = ~I'd like to gain the ability Sleep.~
 @117 = ~I'd like to gain the ability Chill Touch.~
-@118 = ~I'd like to gain the ability Chromatic Orb.~
+@118 = ~I'd like to gain the ability Chromatic Orb	.~
 @119 = ~I'd like to gain the ability Larloch's Minor Drain.~
 @120 = ~I'd like to gain the ability Reflected Image.~
 @123 = ~I'd like to gain the ability Find Familiar.~
@@ -110,7 +128,7 @@ special ability.~
 @414 = ~I'd like to gain the ability Spirit Armor.~
 @415 = ~I'd like to gain the ability Polymorph Other.~
 @416 = ~I'd like to gain the ability Polymorph Self.~
-@417 = ~I'd like to gain the ability Enchanted Weapon.~
+@417 = ~I'd like to gain the ability Enchanted Weapon	.~
 @418 = ~I'd like to gain the ability Fire Shield (Red).~
 @419 = ~I'd like to gain the ability Secret Word.~
 @420 = ~I'd like to gain the ability Minor Sequencer.~
@@ -215,6 +233,7 @@ special ability.~
 @917 = ~I'd like to gain the ability Freedom.~
 @918 = ~I'd like to gain the ability Bigby's Crushing Hand.~
 @919 = ~I'd like to gain the ability Wish.~
+
 @1001 = ~I'd like to gain the ability Bouclier contre les sorts.~
 @1002 = ~I'd like to gain the ability Explosion de feu.~
 @1003 = ~I'd like to gain the ability Particules magiques de Déorie.~
@@ -346,5 +365,54 @@ special ability.~
 @1129 = ~I'd like to gain the ability Dweomer universel de Pragadon.~
 @1130 = ~I'd like to gain the ability Tueurs de l'ombre.~
 @1131 = ~I'd like to gain the ability Garde du corps aérien.~
+
 @2001 = ~I'd like to gain the ability Spacewarp.~
-@3001 = ~i'd like to gain the ability Expeditious Retreat.~
+@2001 = ~I'd like to gain the ability Courbespace.~
+@2011 = ~I'd like to gain the ability Stonefist.~
+@2012 = ~I'd like to gain the ability Ice Knife.~
+@2021 = ~I'd like to gain the ability Minor Lightning Bolt.~
+@2022 = ~I'd like to gain the ability Combust.~
+@2031 = ~I'd like to gain the ability Turn Pebble to Boulder.~
+@2051 = ~I'd like to gain the ability Telekinesis.~
+@2081 = ~I'd like to gain the ability Telekinetic Storm.~
+@2091 = ~I'd like to gain the ability Stormbolts.~
+@2092 = ~I'd like to gain the ability Veridon's Icy Ray.~
+@2093 = ~I'd like to gain the ability Create Boneguard.~
+
+@3011 = ~I'd like to gain the ability Expeditious Retreat.~
+@3021 = ~I'd like to gain the ability Snilloc's Snowball Swarm.~
+@3022 = ~I'd like to gain the ability Decastave.~
+@3023 = ~I'd like to gain the ability Cat's Grace.~
+@3031 = ~I'd like to gain the ability Icelance.~
+@3032 = ~I'd like to gain the ability Lance of Disruption.~
+@3041 = ~I'd like to gain the ability Beltyn's Burning Blood.~
+@3042 = ~I'd like to gain the ability Emotion, Courage.~
+@3043 = ~I'd like to gain the ability Emotion, Fear.~
+@3044 = ~I'd like to gain the ability Emotion, Hope.~
+@3045 = ~I'd like to gain the ability Mordenkainen's Force Missiles.~
+@3046 = ~I'd like to gain the ability Shout.~
+@3047 = ~I'd like to gain the ability Vitriolic Sphere.~
+@3048 = ~I'd like to gain the ability Shadow Monsters.~
+@3051 = ~I'd like to gain the ability Shroud of Flame.~
+@3052 = ~I'd like to gain the ability Summon Shadow.~
+@3053 = ~I'd like to gain the ability Conjure Lesser Water Elemental.~
+@3054 = ~I'd like to gain the ability Demi-Shadow Monsters.~
+@3061 = ~I'd like to gain the ability Otiluke's Freezing Sphere.~
+@3062 = ~I'd like to gain the ability Darts of Bone.~
+@3063 = ~I'd like to gain the ability Soul Eater.~
+@3064 = ~I'd like to gain the ability Trollish Fortitude.~
+@3065 = ~I'd like to gain the ability Antimagic Shell.~
+@3066 = ~I'd like to gain the ability Lich Touch.~
+@3067 = ~I'd like to gain the ability Shades.~
+@3068 = ~I'd like to gain the ability Conjure Water Elemental.~
+@3071 = ~I'd like to gain the ability Acid Storm.~
+@3072 = ~I'd like to gain the ability Suffocate.~
+@3073 = ~I'd like to gain the ability Monster Summoning V.~
+@3074 = ~I'd like to gain the ability Mordenkainen's Force Blade.~
+@3075 = ~I'd like to gain the ability Malavon's Rage.~
+@3076 = ~I'd like to gain the ability Seven Eyes.~
+@3081 = ~I'd like to gain the ability Mind Blank.~
+@3082 = ~I'd like to gain the ability Great Shout.~
+@3083 = ~I'd like to gain the ability Iron Body.~
+@3084 = ~I'd like to gain the ability Monster Summoning VI.~
+@3091 = ~I'd like to gain the ability Monster Summoning VII.~
