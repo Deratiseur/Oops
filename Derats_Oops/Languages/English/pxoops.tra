@@ -1,5 +1,5 @@
 @0 = ~Oops the magician~
-@1 = ~Hello my lord. Looking for new abilities? You've come to the right person.~~Hello my lady. Looking for new abilities? You've come to the right person.~
+@1 = ~Hello my <LADYLORD>. Looking for new abilities? You've come to the right person.~
 @2 = ~New abilities? How does it work?~
 @3 = ~Ho, it's very simple: bring me a spell scroll and I'll draw energy from it to give you the special ability to cast the corresponding spell once a day. It's not free of course: it will cost you 10,000 gold coins and 1,000 experience points per level of the desired spell. So, is there a spell you'd like to cast?~
 @4 = ~Hello, I'd like you to transform a scroll into special ability.~
@@ -26,7 +26,7 @@ special ability.~
 @65 = ~I wouldn't part with this ring for that. No thanks.~
 
 @70 = ~I've got a complete grimoire: the Dillpater's Grimoire. Can you do anything with it?~
-@71 = ~Where did you find this? I'm familiar with this type of work: it's normally found in the hands of incantifiers. And I doubt you've come across one, let alone got it from him. So, how did you get hold of it? That's your business. Yes, I can convert its contents into special abilities, but it's going to take a lot of energy. So I'm going to ask you for a special payment: I'll give you a wholesale price of 500,000 gold coins, plus a  the Deck of Many Things and a Staff of the Magi. It's a smaller investment than it would normally cost you.~
+@71 = ~Where did you find this? I'm familiar with this type of work: it's normally found in the hands of incantifiers. And I doubt you've come across one, let alone got it from him. So, how did you get hold of it? That's your business. Yes, I can convert its contents into special abilities, but it's going to take a lot of energy. So I'm going to ask you for a special payment: I'll give you a wholesale price of 500,000 gold coins, plus the Deck of Many Things and a Staff of the Magi. It's a smaller investment than it would normally cost you.~
 @72 = ~And of course, it would also cost you a not inconsiderable amount of xp: 173,000 xps to be precise. So, are you prepared to pay this price? ~
 @73 = ~I don't own these items. I'll come back ~
 
