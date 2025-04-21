@@ -1,5 +1,5 @@
 @0 = ~Oops the magician~
-@1 = ~Hello my lord. Looking for new abilities? You've come to the right person.~~Hello my lady. Looking for new abilities? You've come to the right person.~
+@1 = ~Hello my <LADYLORD>. Looking for new abilities? You've come to the right person.~
 @2 = ~New abilities? How does it work?~
 @3 = ~Ho, it's very simple: bring me a spell scroll and I'll draw energy from it to give you the special ability to cast the corresponding spell once a day. It's not free of course: it will cost you 10,000 gold coins and 1,000 experience points per level of the desired spell. So, is there a spell you'd like to cast?~
 @4 = ~Hello, I'd like you to transform a scroll into special ability.~
