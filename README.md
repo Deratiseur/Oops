@@ -20,9 +20,9 @@ Chaque conversion détruit le parchemin et coûte au pj demandeur 1000 xp par ni
 
 Exemple : Amenez à Oops un parchemin de "Hâte améliorée", et pour 60000 pos et 6000 xps il vous permettra de lancer "Hâte améliorée" en tant que capacité spéciale 1x/jour.
 
-Renouvelable à volonté avec tous les sorts vanilla (sauf Identification), tant que vous avez de quoi payer et des parchemins à fournir.  
+Renouvelable à volonté tant que vous avez de quoi payer et des parchemins à fournir.  
 
-Ça marche avec tous les sorts de base du jeu, les sorts de <a href=https://github.com//Deratiseur/Interplan>L'Interplan</a>, les sorts de IWD et les sorts de SCS.  
+Ça marche avec tous les sorts de base du jeu (sauf Identification), les sorts de <a href=https://github.com//Deratiseur/Interplan>L'Interplan</a>, les sorts de IWDEE et les sorts de SCS.  
 Le mod gère aussi des grimoires tirés de mods (Interplan, Semi Muti Cleric, Wild Mage Addition).
 
 ---------------------------
@@ -34,7 +34,7 @@ Each conversion destroys the scroll and costs the claimant 1000 xp per spell lev
 
 Example: Bring Oops a scroll of "Improved Haste", and for 60000 gps and 6000 xp it will allow you to cast "Improved Haste" as a special ability 1x/day.
 
-Renewable at will with all vanilla spells (Except Identify), as long as you have enough to pay and scrolls to provide.  
+Renewable at will as long as you have enough to pay and scrolls to provide.  
 
-It works with all the basic spells in the game, spells from <a href=https://github.com//Deratiseur/Interplan>The Interplane</a>, spells from IWDEE and spells from SCS.  
+It works with all the basic spells in the game (Except Identify), spells from <a href=https://github.com//Deratiseur/Interplan>The Interplane</a>, spells from IWDEE and spells from SCS.  
 The mod also manages grimoires taken from other mods (Interplan, Semi Muti Cleric, Wild Mage Addition).
