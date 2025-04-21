@@ -4,7 +4,7 @@ Oops peut vous conférer des sorts arcaniques à lancer en tant que capacités spéc
 - Le parchemin du sort que vous voulez gagnez en tant que capacité spéciale.
 - Au moins 10000 pièces d'or
 - Au moins 10000 xp.
-Il ne vous proposera rien si vous n'avez pas ça, et vous pourrez demander une capacité pour chaque parchemin que vous avez en votre possession (195 possibilités) si vous avez assez d'or et d'xp.
+Il ne vous proposera rien si vous n'avez pas ça, et vous pourrez demander une capacité pour chaque parchemin que vous avez en votre possession (335+ possibilités) si vous avez assez d'or et d'xp.
 
 Gagner une capacité vous coûtera le parchemin correspondant, 10000 pièces d'or par niveau du sort et 1000 xp par niveau du sort.
 

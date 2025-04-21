@@ -8,5 +8,5 @@ v3 : Ajout de la gestion des sort de IWDEE (enfin!).
 	 Ajout de la gestion des sorts ajoutés par SCS.
 	 Ajout de la gestion des grimoires (Wild Mage Addition, Semi Multi Cleric, Interplan).
 	 
-	 
-	 
+V4 : Ajout de la traduction Chinoise (Merci MephistoSatanDevil)
+	 Ajout du readme en anglais. 
