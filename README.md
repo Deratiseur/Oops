@@ -36,5 +36,5 @@ Example: Bring Oops a scroll of "Improved Haste", and for 60000 gps and 6000 xp 
 
 Renewable at will as long as you have enough to pay and scrolls to provide.  
 
-It works with all the basic spells in the game (Except Identify), spells from <a href=https://github.com//Deratiseur/Interplan>The Interplane</a>, spells from IWDEE and spells from SCS.  
+It works with all the basic spells in the game (Except Identify), spells from <a href=https://github.com//Deratiseur/Interplan>L'Interplan</a>, spells from IWDEE and spells from SCS.  
 The mod also manages grimoires taken from other mods (<a href=https://github.com//Deratiseur/Interplan>L'Interplan</a>, <a href=https://github.com/Plutonium-X/KIT_Semi_Multi>Semi Muti Cleric</a>, <a href=https://github.com/BGforgeNet/bg2-wildmage>Wild Mage Addition</a>).
