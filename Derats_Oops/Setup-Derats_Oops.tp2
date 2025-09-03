@@ -1,19 +1,21 @@
 BACKUP ~Derats_Oops/Backup~
 AUTHOR ~Deratiseur, at the_deratiseur@hotmail.com~
-VERSION ~v3~
+VERSION ~4.2~
 
 AUTO_TRA ~Derats_Oops/Languages/%s~ /////%s~
 
 ALWAYS
-	ACTION_DEFINE_ARRAY px_noconvert BEGIN install END
-	ACTION_DEFINE_ARRAY px_reload BEGIN	pxoops END
-	LAF HANDLE_CHARSETS
-		INT_VAR
-		infer_charset = 1
-		STR_VAR
-		tra_path = EVAL ~%MOD_FOLDER%/Languages~
-		noconvert_array = px_noconvert
-		reload_array = px_reload
+	ACTION_IF GAME_IS ~BG2EE	EET~ THEN BEGIN
+		ACTION_DEFINE_ARRAY px_noconvert BEGIN install END
+		ACTION_DEFINE_ARRAY px_reload BEGIN	pxoops END
+		LAF HANDLE_CHARSETS
+			INT_VAR
+			infer_charset = 1
+			STR_VAR
+			tra_path = EVAL ~%MOD_FOLDER%/Languages~
+			noconvert_array = px_noconvert
+			reload_array = px_reload
+		END
 	END
 END
 
