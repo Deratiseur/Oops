@@ -1,12 +1,14 @@
-v1 : première mise en ligne
+v1 : premiÃ¨re mise en ligne
 
-v2 : Ajout d'une vérification de l'xp dans le dialogue (plus possible d'infinité à 0 xp)
+v2 : Ajout d'une vÃ©rification de l'xp dans le dialogue (plus possible d'infinitÃ© Ã  0 xp)
      Ajout de la gestion des sorts de l'Interplan.
      Ajout du sort "Courbespace" du mod "test your mettle".
 
 v3 : Ajout de la gestion des sort de IWDEE (enfin!).
-	 Ajout de la gestion des sorts ajoutés par SCS.
+	 Ajout de la gestion des sorts ajoutÃ©s par SCS.
 	 Ajout de la gestion des grimoires (Wild Mage Addition, Semi Multi Cleric, Interplan).
 	 
 V4 : Ajout de la traduction Chinoise (Merci MephistoSatanDevil)
+
 	 Ajout du readme en anglais. 
+v4.1, 2, 3 : corrections diverses.
