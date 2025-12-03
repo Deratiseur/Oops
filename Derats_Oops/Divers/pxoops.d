@@ -892,6 +892,10 @@ IF ~~ THEN BEGIN Transformation SAY @5
       DO ~TakePartyGold(30000) DestroyGold(30000)
 	  TakePartyItemNum("pxl2deca",1) DestroyItem("pxl2deca")
 	  ReallyForceSpellRes("pxogdech",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(29999)	XPGT(LastTalkedToBy,2999) NumItemsPartyGT("pxl2srea",0)~ THEN  REPLY @1132
+      DO ~TakePartyGold(30000) DestroyGold(30000)
+	  TakePartyItemNum("pxl2srea",1) DestroyItem("pxl2srea")
+	  ReallyForceSpellRes("pxogsrea",LastTalkedToBy)~ GOTO Autrechose
 	IF ~PartyGoldGT(39999)	XPGT(LastTalkedToBy,3999) NumItemsPartyGT("pxl2fara",0)~ THEN  REPLY @1030
       DO ~TakePartyGold(40000) DestroyGold(40000)
 	  TakePartyItemNum("pxl2fara",1) DestroyItem("pxl2fara")
@@ -1300,6 +1304,10 @@ IF ~~ THEN BEGIN Transformation SAY @5
       DO ~TakePartyGold(90000) DestroyGold(90000)
 	  TakePartyItemNum("pxl2gdca",1) DestroyItem("pxl2gdca")
 	  ReallyForceSpellRes("pxoggdco",LastTalkedToBy)~ GOTO Autrechose
+	IF ~PartyGoldGT(89999)	XPGT(LastTalkedToBy,8999) NumItemsPartyGT("pxl2enna",0)~ THEN  REPLY @1133
+      DO ~TakePartyGold(90000) DestroyGold(90000)
+	  TakePartyItemNum("pxl2enna",1) DestroyItem("pxl2enna")
+	  ReallyForceSpellRes("pxogenne",LastTalkedToBy)~ GOTO Autrechose
 	IF ~PartyGoldGT(79999)	XPGT(LastTalkedToBy,7999) NumItemsPartyGT("A7#SPW1",0)~ THEN  REPLY @2001
       DO ~TakePartyGold(80000) DestroyGold(80000)
 	  TakePartyItemNum("A7#SPW1",1) DestroyItem("A7#SPW1")
