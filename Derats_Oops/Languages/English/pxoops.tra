@@ -244,7 +244,7 @@ special ability.~
 @1008 = ~I'd like to gain the ability Frappe du serpent.~
 @1009 = ~I'd like to gain the ability Bâton de puissance.~
 @1010 = ~I'd like to gain the ability Hexalames.~
-@1011 = ~I'd like to gain the ability Simulacre de vie.~
+@1011 = ~I'd like to gain the ability Tampon d’énergie.~
 @1012 = ~I'd like to gain the ability Vision instinctive d'Achitoza.~
 @1013 = ~I'd like to gain the ability Prouesse guerrière.~
 @1014 = ~I'd like to gain the ability Griffes du malheur.~
@@ -311,7 +311,7 @@ special ability.~
 @1075 = ~I'd like to gain the ability Innommable beauté.~
 @1076 = ~I'd like to gain the ability Chaussons magiques de Gilipur.~
 @1077 = ~I'd like to gain the ability Métamorphose de familier.~
-@1078 = ~I'd like to gain the ability Éclats de glace.~
+@1078 = ~I'd like to gain the ability Sortie magique de Déorie.~
 @1079 = ~I'd like to gain the ability Lamétoile.~
 @1080 = ~I'd like to gain the ability Rappel anarchique de Déorie.~
 @1081 = ~I'd like to gain the ability Affliction.~
@@ -363,8 +363,10 @@ special ability.~
 @1127 = ~I'd like to gain the ability Bombardement.~
 @1128 = ~I'd like to gain the ability Fusionneur dwéomérique d'Alabastine.~
 @1129 = ~I'd like to gain the ability Dweomer universel de Pragadon.~
-@1130 = ~I'd like to gain the ability Tueurs de l'ombre.~
-@1131 = ~I'd like to gain the ability Garde du corps aérien.~
+@1130 = ~I'd like to gain the ability Ennemi Subconscient.~
+@1131 = ~I'd like to gain the ability Garde du corps vampirique.~
+@1132 = ~I'd like to gain the ability Sortie rapide de Déorie.~
+@1133 = ~I'd like to gain the ability Affaiblissement.~
 
 @2001 = ~I'd like to gain the ability Spacewarp.~
 @2011 = ~I'd like to gain the ability Stonefist.~

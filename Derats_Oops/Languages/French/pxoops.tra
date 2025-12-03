@@ -241,7 +241,7 @@
 @1008 = ~Je voudrais gagner la capacité Frappe du serpent.~
 @1009 = ~Je voudrais gagner la capacité Bâton de puissance.~
 @1010 = ~Je voudrais gagner la capacité Hexalames.~
-@1011 = ~Je voudrais gagner la capacité Simulacre de vie.~
+@1011 = ~Je voudrais gagner la capacité Tampon d’énergie.~
 @1012 = ~Je voudrais gagner la capacité Vision instinctive d'Achitoza.~
 @1013 = ~Je voudrais gagner la capacité Prouesse guerrière.~
 @1014 = ~Je voudrais gagner la capacité Griffes du malheur.~
@@ -308,7 +308,7 @@
 @1075 = ~Je voudrais gagner la capacité Innommable beauté.~
 @1076 = ~Je voudrais gagner la capacité Chaussons magiques de Gilipur.~
 @1077 = ~Je voudrais gagner la capacité Métamorphose de familier.~
-@1078 = ~Je voudrais gagner la capacité Éclats de glace.~
+@1078 = ~Je voudrais gagner la capacité Sortie magique de Déorie.~
 @1079 = ~Je voudrais gagner la capacité Lamétoile.~
 @1080 = ~Je voudrais gagner la capacité Rappel anarchique de Déorie.~
 @1081 = ~Je voudrais gagner la capacité Affliction.~
@@ -360,8 +360,10 @@
 @1127 = ~Je voudrais gagner la capacité Bombardement.~
 @1128 = ~Je voudrais gagner la capacité Fusionneur dwéomérique d'Alabastine.~
 @1129 = ~Je voudrais gagner la capacité Dweomer universel de Pragadon.~
-@1130 = ~Je voudrais gagner la capacité Tueurs de l'ombre.~
-@1131 = ~Je voudrais gagner la capacité Garde du corps aérien.~
+@1130 = ~Je voudrais gagner la capacité Ennemi Subconscient.~
+@1131 = ~Je voudrais gagner la capacité Garde du corps vampirique.~
+@1132 = ~Je voudrais gagner la capacité Sortie rapide de Déorie.~
+@1133 = ~Je voudrais gagner la capacité Affaiblissement.~
 
 @2001 = ~Je voudrais gagner la capacité Courbespace.~
 @2011 = ~Je voudrais gagner la capacité Poing de pierre.~
