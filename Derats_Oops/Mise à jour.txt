@@ -12,3 +12,4 @@ V4 : Ajout de la traduction Chinoise (Merci MephistoSatanDevil)
 
 	 Ajout du readme en anglais. 
 v4.1, 2, 3 : corrections diverses.
+v4.4 : OOps ne s'installait pas avec l'Interplan 9.1.0
