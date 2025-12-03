@@ -1,6 +1,6 @@
 BACKUP ~Derats_Oops/Backup~
 AUTHOR ~Deratiseur, at the_deratiseur@hotmail.com~
-VERSION ~4.3~
+VERSION ~4.4~
 
 AUTO_TRA ~Derats_Oops/Languages/%s~ /////%s~
 
@@ -25,7 +25,7 @@ LANGUAGE ~Francais~	~French~
 LANGUAGE ~English~	~English~
 	~Derats_Oops/Languages/English/Pxoops.tra~
 
-LANGUAGE ~Simplified Chinese~ ~SChinese~ 
+LANGUAGE ~Simplified Chinese (by MephistoSatanDevil)~ ~SChinese~ 
 	~Derats_Oops/Languages/SChinese/install.tra~
 
 BEGIN @0
@@ -443,7 +443,7 @@ LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_STAFF_OF_POWER~	RET sp
 COPY_EXISTING	~%spell_res%.spl~	~override/pxoIbatp.spl~	LPF SPELL_TO_INNATE END
 LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_HEXABLADES~	RET spell_res	END
 COPY_EXISTING	~%spell_res%.spl~	~override/pxoIhexa.spl~	LPF SPELL_TO_INNATE END
-LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FALSE_LIFE~	RET spell_res	END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ENERGY_BUFFER~	RET spell_res	END
 COPY_EXISTING	~%spell_res%.spl~	~override/pxoItamp.spl~	LPF SPELL_TO_INNATE END
 LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_HACHITOZAS_INSTINCTIVE_VISION~	RET spell_res	END
 COPY_EXISTING	~%spell_res%.spl~	~override/pxoIvisi.spl~	LPF SPELL_TO_INNATE END
@@ -563,7 +563,7 @@ LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_GILIPURS_MAGIC_SLIPPER
 COPY_EXISTING	~%spell_res%.spl~	~override/pxoIgili.spl~	LPF SPELL_TO_INNATE END
 LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_POLYMORPH_FAMILIAR~	RET spell_res	END
 COPY_EXISTING	~%spell_res%.spl~	~override/pxoIfaml.spl~	LPF SPELL_TO_INNATE END
-LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_SHARDS_OF_ICE~	RET spell_res	END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_DEORIES_MAGICAL_EXIT~	RET spell_res	END
 COPY_EXISTING	~%spell_res%.spl~	~override/pxoIpgla.spl~	LPF SPELL_TO_INNATE END
 LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_STARBLADE~	RET spell_res	END
 COPY_EXISTING	~%spell_res%.spl~	~override/pxoIleto.spl~	LPF SPELL_TO_INNATE END
@@ -639,6 +639,8 @@ LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_MAJOR_MAGIC_CONVERSION
 COPY_EXISTING	~%spell_res%.spl~	~override/pxoIal2b.spl~	LPF SPELL_TO_INNATE END
 LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_TOUCH_OF_THE_ABYSS~	RET spell_res	END
 COPY_EXISTING	~%spell_res%.spl~	~override/pxoIabys.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_DEORIES_QUICK_EXIT~	RET spell_res	END
+COPY_EXISTING	~%spell_res%.spl~	~override/pxoIexit.spl~	LPF SPELL_TO_INNATE END
 ACTION_IF FILE_EXISTS_IN_GAME ~pxl2assa.spl~ THEN BEGIN
 COPY_EXISTING	~pxl2assa.spl~			~override/pxoIassa.spl~
 				~pxl2al2b.spl~			~override/pxoIal2b.spl~
@@ -664,7 +666,8 @@ COPY_EXISTING	~pxl2obli.spl~			~override/pxoIobli.spl~
 				~pxl2bson.spl~			~override/pxoIbson.spl~
 				~pxl2bson.spl~			~override/pxoIchdw.spl~
 				~pxl2rupt.spl~			~override/pxoIrupt.spl~
-				~pxl2port.spl~			~override/pxoIport.spl~	LPF SPELL_TO_INNATE END
+				~pxl2port.spl~			~override/pxoIport.spl~
+				~pxl2enne.spl~			~override/pxoIenne.spl~	LPF SPELL_TO_INNATE END
 COPY_EXISTING	~pxog2101.spl~			~override/pxogex2l.spl~	WRITE_ASCII 0xae ~pxoIex2l.spl~ #8
 COPY_EXISTING	~pxog2101.spl~			~override/pxogresi.spl~	WRITE_ASCII 0xae ~pxoIresi.spl~ #8
 COPY_EXISTING	~pxog2101.spl~			~override/pxogpart.spl~	WRITE_ASCII 0xae ~pxoIpart.spl~ #8
@@ -693,6 +696,7 @@ COPY_EXISTING	~pxog2301.spl~			~override/pxogpaci.spl~	WRITE_ASCII 0xae ~pxoIpac
 COPY_EXISTING	~pxog2301.spl~			~override/pxogbbom.spl~	WRITE_ASCII 0xae ~pxoIbbom.spl~ #8
 COPY_EXISTING	~pxog2301.spl~			~override/pxogdobb.spl~	WRITE_ASCII 0xae ~pxoIdobb.spl~ #8
 COPY_EXISTING	~pxog2301.spl~			~override/pxogdech.spl~	WRITE_ASCII 0xae ~pxoIdech.spl~ #8
+COPY_EXISTING	~pxog2301.spl~			~override/pxogexit.spl~	WRITE_ASCII 0xae ~pxoIexit.spl~ #8
 COPY_EXISTING	~pxog2401.spl~			~override/pxogfara.spl~	WRITE_ASCII 0xae ~pxoIfara.spl~ #8
 COPY_EXISTING	~pxog2401.spl~			~override/pxogarci.spl~	WRITE_ASCII 0xae ~pxoIarci.spl~ #8
 COPY_EXISTING	~pxog2401.spl~			~override/pxognatu.spl~	WRITE_ASCII 0xae ~pxoInatu.spl~ #8
@@ -788,6 +792,7 @@ COPY_EXISTING	~pxog2902.spl~			~override/pxogpqd.spl~	WRITE_ASCII 0xae ~pxoIpqd.
 COPY_EXISTING	~pxog2902.spl~			~override/pxogdweo.spl~	WRITE_ASCII 0xae ~pxoIdweo.spl~ #8
 COPY_EXISTING	~pxog2902.spl~			~override/pxogenne.spl~	WRITE_ASCII 0xae ~pxoIenne.spl~ #8
 COPY_EXISTING	~pxog2902.spl~			~override/pxoggdco.spl~	WRITE_ASCII 0xae ~pxoIgdco.spl~ #8
+COPY_EXISTING	~pxog2902.spl~			~override/pxogenne.spl~	WRITE_ASCII 0xae ~pxoIgenne.spl~ #8
 COPY_EXISTING	~pxog2301.spl~			~override/pxogson.spl~	WRITE_ASCII 0xae ~pxoIson.spl~ #8
 COPY_EXISTING	~pxog2501.spl~			~override/pxoghurl.spl~	WRITE_ASCII 0xae ~pxoIhurl.spl~ #8
 COPY_EXISTING	~pxog2501.spl~			~override/pxogbson.spl~	WRITE_ASCII 0xae ~pxoIbson.spl~ #8
