@@ -1,6 +1,6 @@
 BACKUP ~Derats_Oops/Backup~
 AUTHOR ~Deratiseur, at the_deratiseur@hotmail.com~
-VERSION ~4.4~
+VERSION ~4.4.1~
 
 AUTO_TRA ~Derats_Oops/Languages/%s~ /////%s~
 
@@ -447,8 +447,10 @@ LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_ENERGY_BUFFER~	RET spe
 COPY_EXISTING	~%spell_res%.spl~	~override/pxoItamp.spl~	LPF SPELL_TO_INNATE END
 LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_HACHITOZAS_INSTINCTIVE_VISION~	RET spell_res	END
 COPY_EXISTING	~%spell_res%.spl~	~override/pxoIvisi.spl~	LPF SPELL_TO_INNATE END
-LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FIGHTING_FEAT~	RET spell_res	END
-COPY_EXISTING	~%spell_res%.spl~	~override/pxoIprou.spl~	LPF SPELL_TO_INNATE END
+ACTION_IF !DIRECTORY_EXISTS ~passive_warrior_hlas~ BEGIN
+	LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_FIGHTING_FEAT~	RET spell_res	END
+	COPY_EXISTING	~%spell_res%.spl~	~override/pxoIprou.spl~	LPF SPELL_TO_INNATE END
+END
 LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_DOOM_CLAWS~	RET spell_res	END
 COPY_EXISTING	~%spell_res%.spl~	~override/pxoIgrif.spl~	LPF SPELL_TO_INNATE END
 LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_PX_TENSERS_DEADLY_STRIKES~	RET spell_res	END
