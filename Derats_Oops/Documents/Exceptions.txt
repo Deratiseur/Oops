@@ -1,0 +1,3 @@
+Pas identification (ne marche pas en tant que capacité spéciale)
+Pas Forme fantomatique (pas de parchemin de base. Pas encore de gestion des mods)
+Pas Porte dimensionnelle (pas de parchemin de base. Pas encore de gestion des mods)

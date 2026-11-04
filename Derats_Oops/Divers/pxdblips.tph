@@ -1,0 +1,852 @@
+// Resolve scroll and original spell; no SPL files are created or modified.
+DEFINE_ACTION_FUNCTION PXB_SCROLL
+  STR_VAR id = "" scroll = "" symbol = ""
+  RET pxb_check pxb_outspell pxb_outscroll pxb_outcost
+BEGIN
+  OUTER_SPRINT pxb_check ~False()~
+  OUTER_SPRINT pxb_outspell ~spwi101~
+  OUTER_SPRINT pxb_outscroll ~scrl66~
+  OUTER_SET pxb_outcost = 0
+  ACTION_IF NOT (~%symbol%~ STRING_EQUAL ~~) THEN BEGIN
+    OUTER_SPRINT scroll ~~
+    ACTION_IF (IDS_OF_SYMBOL (~spell~ ~%symbol%~) >= 0) THEN BEGIN
+      LAF RES_NUM_OF_SPELL_NAME STR_VAR spell_name = EVAL ~%symbol%~ RET spell_num END
+      OUTER_SET spell_num -= 2000
+      OUTER_SPRINT scroll ~cdia%spell_num%~
+    END
+  END
+  ACTION_IF NOT (~%scroll%~ STRING_EQUAL ~~) THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~%scroll%.itm~ THEN BEGIN
+      OUTER_SPRINT pxb_spell ~~
+      COPY_EXISTING ~%scroll%.itm~ ~override~
+        READ_LONG 0x6a pxb_effects
+        FOR (pxb_e = pxb_effects; pxb_e + 0x30 <= SOURCE_SIZE; pxb_e += 0x30) BEGIN
+          READ_SHORT pxb_e pxb_opcode
+          PATCH_IF (pxb_opcode = 147) BEGIN
+            READ_ASCII (pxb_e + 0x14) pxb_spell (8) NULL
+          END
+        END
+      BUT_ONLY
+      ACTION_IF NOT (~%pxb_spell%~ STRING_EQUAL ~~) THEN BEGIN
+        ACTION_IF FILE_EXISTS_IN_GAME ~%pxb_spell%.spl~ THEN BEGIN
+          COPY_EXISTING ~%pxb_spell%.spl~ ~override~
+            READ_LONG 0x34 pxb_level
+          BUT_ONLY
+          ACTION_IF (pxb_level >= 1 AND pxb_level <= 9) THEN BEGIN
+            OUTER_SET pxb_cost = 2000 * pxb_level
+            OUTER_SET pxb_min = pxb_cost - 1
+            OUTER_SPRINT pxb_outspell ~%pxb_spell%~
+            OUTER_SPRINT pxb_outscroll ~%scroll%~
+            OUTER_SET pxb_outcost = pxb_cost
+            OUTER_SPRINT pxb_check ~Class(LastTalkedToBy,SORCERER) PartyGoldGT(%pxb_min%) XPGT(LastTalkedToBy,%pxb_min%) NumItemsPartyGT("%scroll%",2) NextTriggerObject(LastTalkedToBy) !HaveKnownSpellRES("%pxb_spell%")~
+          END
+        END
+      END
+    END
+  END
+END
+
+LAF PXB_SCROLL STR_VAR id = ~0~ scroll = ~SCRL66~ symbol = ~~ RET pxb0_check = pxb_check pxb0_spell = pxb_outspell pxb0_scroll = pxb_outscroll pxb0_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~1~ scroll = ~SCRL67~ symbol = ~~ RET pxb1_check = pxb_check pxb1_spell = pxb_outspell pxb1_scroll = pxb_outscroll pxb1_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~2~ scroll = ~SCRL68~ symbol = ~~ RET pxb2_check = pxb_check pxb2_spell = pxb_outspell pxb2_scroll = pxb_outscroll pxb2_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~3~ scroll = ~SCRL69~ symbol = ~~ RET pxb3_check = pxb_check pxb3_spell = pxb_outspell pxb3_scroll = pxb_outscroll pxb3_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~4~ scroll = ~SCRL70~ symbol = ~~ RET pxb4_check = pxb_check pxb4_spell = pxb_outspell pxb4_scroll = pxb_outscroll pxb4_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~5~ scroll = ~SCRL71~ symbol = ~~ RET pxb5_check = pxb_check pxb5_spell = pxb_outspell pxb5_scroll = pxb_outscroll pxb5_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~6~ scroll = ~SCRL72~ symbol = ~~ RET pxb6_check = pxb_check pxb6_spell = pxb_outspell pxb6_scroll = pxb_outscroll pxb6_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~7~ scroll = ~SCRL73~ symbol = ~~ RET pxb7_check = pxb_check pxb7_spell = pxb_outspell pxb7_scroll = pxb_outscroll pxb7_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~8~ scroll = ~SCRL76~ symbol = ~~ RET pxb8_check = pxb_check pxb8_spell = pxb_outspell pxb8_scroll = pxb_outscroll pxb8_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~9~ scroll = ~SCRL77~ symbol = ~~ RET pxb9_check = pxb_check pxb9_spell = pxb_outspell pxb9_scroll = pxb_outscroll pxb9_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~10~ scroll = ~SCRL78~ symbol = ~~ RET pxb10_check = pxb_check pxb10_spell = pxb_outspell pxb10_scroll = pxb_outscroll pxb10_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~11~ scroll = ~SCRL79~ symbol = ~~ RET pxb11_check = pxb_check pxb11_spell = pxb_outspell pxb11_scroll = pxb_outscroll pxb11_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~12~ scroll = ~SCRL80~ symbol = ~~ RET pxb12_check = pxb_check pxb12_spell = pxb_outspell pxb12_scroll = pxb_outscroll pxb12_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~13~ scroll = ~SCRL81~ symbol = ~~ RET pxb13_check = pxb_check pxb13_spell = pxb_outspell pxb13_scroll = pxb_outscroll pxb13_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~14~ scroll = ~SCRL82~ symbol = ~~ RET pxb14_check = pxb_check pxb14_spell = pxb_outspell pxb14_scroll = pxb_outscroll pxb14_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~15~ scroll = ~SCRL83~ symbol = ~~ RET pxb15_check = pxb_check pxb15_spell = pxb_outspell pxb15_scroll = pxb_outscroll pxb15_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~16~ scroll = ~SCRL84~ symbol = ~~ RET pxb16_check = pxb_check pxb16_spell = pxb_outspell pxb16_scroll = pxb_outscroll pxb16_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~17~ scroll = ~SCRL5U~ symbol = ~~ RET pxb17_check = pxb_check pxb17_spell = pxb_outspell pxb17_scroll = pxb_outscroll pxb17_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~18~ scroll = ~SCRL6D~ symbol = ~~ RET pxb18_check = pxb_check pxb18_spell = pxb_outspell pxb18_scroll = pxb_outscroll pxb18_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~19~ scroll = ~SCRLA6~ symbol = ~~ RET pxb19_check = pxb_check pxb19_spell = pxb_outspell pxb19_scroll = pxb_outscroll pxb19_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~20~ scroll = ~SCRL85~ symbol = ~~ RET pxb20_check = pxb_check pxb20_spell = pxb_outspell pxb20_scroll = pxb_outscroll pxb20_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~21~ scroll = ~SCRL86~ symbol = ~~ RET pxb21_check = pxb_check pxb21_spell = pxb_outspell pxb21_scroll = pxb_outscroll pxb21_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~22~ scroll = ~SCRL87~ symbol = ~~ RET pxb22_check = pxb_check pxb22_spell = pxb_outspell pxb22_scroll = pxb_outscroll pxb22_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~23~ scroll = ~SCRL89~ symbol = ~~ RET pxb23_check = pxb_check pxb23_spell = pxb_outspell pxb23_scroll = pxb_outscroll pxb23_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~24~ scroll = ~SCRL90~ symbol = ~~ RET pxb24_check = pxb_check pxb24_spell = pxb_outspell pxb24_scroll = pxb_outscroll pxb24_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~25~ scroll = ~SCRL91~ symbol = ~~ RET pxb25_check = pxb_check pxb25_spell = pxb_outspell pxb25_scroll = pxb_outscroll pxb25_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~26~ scroll = ~SCRL92~ symbol = ~~ RET pxb26_check = pxb_check pxb26_spell = pxb_outspell pxb26_scroll = pxb_outscroll pxb26_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~27~ scroll = ~SCRL93~ symbol = ~~ RET pxb27_check = pxb_check pxb27_spell = pxb_outspell pxb27_scroll = pxb_outscroll pxb27_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~28~ scroll = ~SCRL94~ symbol = ~~ RET pxb28_check = pxb_check pxb28_spell = pxb_outspell pxb28_scroll = pxb_outscroll pxb28_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~29~ scroll = ~SCRL95~ symbol = ~~ RET pxb29_check = pxb_check pxb29_spell = pxb_outspell pxb29_scroll = pxb_outscroll pxb29_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~30~ scroll = ~SCRL96~ symbol = ~~ RET pxb30_check = pxb_check pxb30_spell = pxb_outspell pxb30_scroll = pxb_outscroll pxb30_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~31~ scroll = ~SCRL97~ symbol = ~~ RET pxb31_check = pxb_check pxb31_spell = pxb_outspell pxb31_scroll = pxb_outscroll pxb31_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~32~ scroll = ~SCRL98~ symbol = ~~ RET pxb32_check = pxb_check pxb32_spell = pxb_outspell pxb32_scroll = pxb_outscroll pxb32_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~33~ scroll = ~SCRL99~ symbol = ~~ RET pxb33_check = pxb_check pxb33_spell = pxb_outspell pxb33_scroll = pxb_outscroll pxb33_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~34~ scroll = ~SCRL1B~ symbol = ~~ RET pxb34_check = pxb_check pxb34_spell = pxb_outspell pxb34_scroll = pxb_outscroll pxb34_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~35~ scroll = ~SCRL1C~ symbol = ~~ RET pxb35_check = pxb_check pxb35_spell = pxb_outspell pxb35_scroll = pxb_outscroll pxb35_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~36~ scroll = ~SCRL3G~ symbol = ~~ RET pxb36_check = pxb_check pxb36_spell = pxb_outspell pxb36_scroll = pxb_outscroll pxb36_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~37~ scroll = ~SCRL6E~ symbol = ~~ RET pxb37_check = pxb_check pxb37_spell = pxb_outspell pxb37_scroll = pxb_outscroll pxb37_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~38~ scroll = ~SCRL6F~ symbol = ~~ RET pxb38_check = pxb_check pxb38_spell = pxb_outspell pxb38_scroll = pxb_outscroll pxb38_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~39~ scroll = ~SCRLAI~ symbol = ~~ RET pxb39_check = pxb_check pxb39_spell = pxb_outspell pxb39_scroll = pxb_outscroll pxb39_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~40~ scroll = ~SCRLA2~ symbol = ~~ RET pxb40_check = pxb_check pxb40_spell = pxb_outspell pxb40_scroll = pxb_outscroll pxb40_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~41~ scroll = ~SCRLA3~ symbol = ~~ RET pxb41_check = pxb_check pxb41_spell = pxb_outspell pxb41_scroll = pxb_outscroll pxb41_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~42~ scroll = ~SCRL1D~ symbol = ~~ RET pxb42_check = pxb_check pxb42_spell = pxb_outspell pxb42_scroll = pxb_outscroll pxb42_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~43~ scroll = ~SCRLA7~ symbol = ~~ RET pxb43_check = pxb_check pxb43_spell = pxb_outspell pxb43_scroll = pxb_outscroll pxb43_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~44~ scroll = ~SCRL1F~ symbol = ~~ RET pxb44_check = pxb_check pxb44_spell = pxb_outspell pxb44_scroll = pxb_outscroll pxb44_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~45~ scroll = ~SCRL1G~ symbol = ~~ RET pxb45_check = pxb_check pxb45_spell = pxb_outspell pxb45_scroll = pxb_outscroll pxb45_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~46~ scroll = ~SCRL1H~ symbol = ~~ RET pxb46_check = pxb_check pxb46_spell = pxb_outspell pxb46_scroll = pxb_outscroll pxb46_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~47~ scroll = ~SCRL1I~ symbol = ~~ RET pxb47_check = pxb_check pxb47_spell = pxb_outspell pxb47_scroll = pxb_outscroll pxb47_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~48~ scroll = ~SCRL1J~ symbol = ~~ RET pxb48_check = pxb_check pxb48_spell = pxb_outspell pxb48_scroll = pxb_outscroll pxb48_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~49~ scroll = ~SCRL1K~ symbol = ~~ RET pxb49_check = pxb_check pxb49_spell = pxb_outspell pxb49_scroll = pxb_outscroll pxb49_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~50~ scroll = ~SCRL1L~ symbol = ~~ RET pxb50_check = pxb_check pxb50_spell = pxb_outspell pxb50_scroll = pxb_outscroll pxb50_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~51~ scroll = ~SCRL1M~ symbol = ~~ RET pxb51_check = pxb_check pxb51_spell = pxb_outspell pxb51_scroll = pxb_outscroll pxb51_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~52~ scroll = ~SCRL1N~ symbol = ~~ RET pxb52_check = pxb_check pxb52_spell = pxb_outspell pxb52_scroll = pxb_outscroll pxb52_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~53~ scroll = ~SCRL1O~ symbol = ~~ RET pxb53_check = pxb_check pxb53_spell = pxb_outspell pxb53_scroll = pxb_outscroll pxb53_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~54~ scroll = ~SCRL1P~ symbol = ~~ RET pxb54_check = pxb_check pxb54_spell = pxb_outspell pxb54_scroll = pxb_outscroll pxb54_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~55~ scroll = ~SCRL1Q~ symbol = ~~ RET pxb55_check = pxb_check pxb55_spell = pxb_outspell pxb55_scroll = pxb_outscroll pxb55_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~56~ scroll = ~SCRL1R~ symbol = ~~ RET pxb56_check = pxb_check pxb56_spell = pxb_outspell pxb56_scroll = pxb_outscroll pxb56_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~57~ scroll = ~SCRL1S~ symbol = ~~ RET pxb57_check = pxb_check pxb57_spell = pxb_outspell pxb57_scroll = pxb_outscroll pxb57_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~58~ scroll = ~SCRL1T~ symbol = ~~ RET pxb58_check = pxb_check pxb58_spell = pxb_outspell pxb58_scroll = pxb_outscroll pxb58_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~59~ scroll = ~SCRL6G~ symbol = ~~ RET pxb59_check = pxb_check pxb59_spell = pxb_outspell pxb59_scroll = pxb_outscroll pxb59_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~60~ scroll = ~SCRL6H~ symbol = ~~ RET pxb60_check = pxb_check pxb60_spell = pxb_outspell pxb60_scroll = pxb_outscroll pxb60_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~61~ scroll = ~SCRL6I~ symbol = ~~ RET pxb61_check = pxb_check pxb61_spell = pxb_outspell pxb61_scroll = pxb_outscroll pxb61_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~62~ scroll = ~SCRL6J~ symbol = ~~ RET pxb62_check = pxb_check pxb62_spell = pxb_outspell pxb62_scroll = pxb_outscroll pxb62_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~63~ scroll = ~SCRL6K~ symbol = ~~ RET pxb63_check = pxb_check pxb63_spell = pxb_outspell pxb63_scroll = pxb_outscroll pxb63_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~64~ scroll = ~SCRL6L~ symbol = ~~ RET pxb64_check = pxb_check pxb64_spell = pxb_outspell pxb64_scroll = pxb_outscroll pxb64_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~65~ scroll = ~SCRLA5~ symbol = ~~ RET pxb65_check = pxb_check pxb65_spell = pxb_outspell pxb65_scroll = pxb_outscroll pxb65_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~66~ scroll = ~SCRL1E~ symbol = ~~ RET pxb66_check = pxb_check pxb66_spell = pxb_outspell pxb66_scroll = pxb_outscroll pxb66_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~67~ scroll = ~SCRL1U~ symbol = ~~ RET pxb67_check = pxb_check pxb67_spell = pxb_outspell pxb67_scroll = pxb_outscroll pxb67_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~68~ scroll = ~SCRL1W~ symbol = ~~ RET pxb68_check = pxb_check pxb68_spell = pxb_outspell pxb68_scroll = pxb_outscroll pxb68_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~69~ scroll = ~SCRL1X~ symbol = ~~ RET pxb69_check = pxb_check pxb69_spell = pxb_outspell pxb69_scroll = pxb_outscroll pxb69_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~70~ scroll = ~SCRL1Y~ symbol = ~~ RET pxb70_check = pxb_check pxb70_spell = pxb_outspell pxb70_scroll = pxb_outscroll pxb70_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~71~ scroll = ~SCRL1Z~ symbol = ~~ RET pxb71_check = pxb_check pxb71_spell = pxb_outspell pxb71_scroll = pxb_outscroll pxb71_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~72~ scroll = ~SCRL2A~ symbol = ~~ RET pxb72_check = pxb_check pxb72_spell = pxb_outspell pxb72_scroll = pxb_outscroll pxb72_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~73~ scroll = ~SCRL2B~ symbol = ~~ RET pxb73_check = pxb_check pxb73_spell = pxb_outspell pxb73_scroll = pxb_outscroll pxb73_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~74~ scroll = ~SCRLA8~ symbol = ~~ RET pxb74_check = pxb_check pxb74_spell = pxb_outspell pxb74_scroll = pxb_outscroll pxb74_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~75~ scroll = ~SCRL5G~ symbol = ~~ RET pxb75_check = pxb_check pxb75_spell = pxb_outspell pxb75_scroll = pxb_outscroll pxb75_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~76~ scroll = ~SCRL5H~ symbol = ~~ RET pxb76_check = pxb_check pxb76_spell = pxb_outspell pxb76_scroll = pxb_outscroll pxb76_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~77~ scroll = ~SCRL5I~ symbol = ~~ RET pxb77_check = pxb_check pxb77_spell = pxb_outspell pxb77_scroll = pxb_outscroll pxb77_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~78~ scroll = ~SCRL5J~ symbol = ~~ RET pxb78_check = pxb_check pxb78_spell = pxb_outspell pxb78_scroll = pxb_outscroll pxb78_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~79~ scroll = ~SCRL5K~ symbol = ~~ RET pxb79_check = pxb_check pxb79_spell = pxb_outspell pxb79_scroll = pxb_outscroll pxb79_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~80~ scroll = ~SCRL5L~ symbol = ~~ RET pxb80_check = pxb_check pxb80_spell = pxb_outspell pxb80_scroll = pxb_outscroll pxb80_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~81~ scroll = ~SCRL5M~ symbol = ~~ RET pxb81_check = pxb_check pxb81_spell = pxb_outspell pxb81_scroll = pxb_outscroll pxb81_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~82~ scroll = ~SCRL6M~ symbol = ~~ RET pxb82_check = pxb_check pxb82_spell = pxb_outspell pxb82_scroll = pxb_outscroll pxb82_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~83~ scroll = ~SCRL6N~ symbol = ~~ RET pxb83_check = pxb_check pxb83_spell = pxb_outspell pxb83_scroll = pxb_outscroll pxb83_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~84~ scroll = ~SCRL6O~ symbol = ~~ RET pxb84_check = pxb_check pxb84_spell = pxb_outspell pxb84_scroll = pxb_outscroll pxb84_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~85~ scroll = ~SCRLP~ symbol = ~~ RET pxb85_check = pxb_check pxb85_spell = pxb_outspell pxb85_scroll = pxb_outscroll pxb85_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~86~ scroll = ~SCRL6Q~ symbol = ~~ RET pxb86_check = pxb_check pxb86_spell = pxb_outspell pxb86_scroll = pxb_outscroll pxb86_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~87~ scroll = ~SCRL6R~ symbol = ~~ RET pxb87_check = pxb_check pxb87_spell = pxb_outspell pxb87_scroll = pxb_outscroll pxb87_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~88~ scroll = ~SCRLAJ~ symbol = ~~ RET pxb88_check = pxb_check pxb88_spell = pxb_outspell pxb88_scroll = pxb_outscroll pxb88_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~89~ scroll = ~SCRLAQ~ symbol = ~~ RET pxb89_check = pxb_check pxb89_spell = pxb_outspell pxb89_scroll = pxb_outscroll pxb89_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~90~ scroll = ~SCRLA1~ symbol = ~~ RET pxb90_check = pxb_check pxb90_spell = pxb_outspell pxb90_scroll = pxb_outscroll pxb90_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~91~ scroll = ~SCRL2D~ symbol = ~~ RET pxb91_check = pxb_check pxb91_spell = pxb_outspell pxb91_scroll = pxb_outscroll pxb91_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~92~ scroll = ~SCRL2E~ symbol = ~~ RET pxb92_check = pxb_check pxb92_spell = pxb_outspell pxb92_scroll = pxb_outscroll pxb92_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~93~ scroll = ~SCRL2F~ symbol = ~~ RET pxb93_check = pxb_check pxb93_spell = pxb_outspell pxb93_scroll = pxb_outscroll pxb93_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~94~ scroll = ~SCRL2G~ symbol = ~~ RET pxb94_check = pxb_check pxb94_spell = pxb_outspell pxb94_scroll = pxb_outscroll pxb94_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~95~ scroll = ~SCRL2H~ symbol = ~~ RET pxb95_check = pxb_check pxb95_spell = pxb_outspell pxb95_scroll = pxb_outscroll pxb95_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~96~ scroll = ~SCRL5N~ symbol = ~~ RET pxb96_check = pxb_check pxb96_spell = pxb_outspell pxb96_scroll = pxb_outscroll pxb96_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~97~ scroll = ~SCRL5O~ symbol = ~~ RET pxb97_check = pxb_check pxb97_spell = pxb_outspell pxb97_scroll = pxb_outscroll pxb97_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~98~ scroll = ~SCRL5P~ symbol = ~~ RET pxb98_check = pxb_check pxb98_spell = pxb_outspell pxb98_scroll = pxb_outscroll pxb98_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~99~ scroll = ~SCRL5Q~ symbol = ~~ RET pxb99_check = pxb_check pxb99_spell = pxb_outspell pxb99_scroll = pxb_outscroll pxb99_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~100~ scroll = ~SCRL6S~ symbol = ~~ RET pxb100_check = pxb_check pxb100_spell = pxb_outspell pxb100_scroll = pxb_outscroll pxb100_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~101~ scroll = ~SCRL6T~ symbol = ~~ RET pxb101_check = pxb_check pxb101_spell = pxb_outspell pxb101_scroll = pxb_outscroll pxb101_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~102~ scroll = ~SCRL5T~ symbol = ~~ RET pxb102_check = pxb_check pxb102_spell = pxb_outspell pxb102_scroll = pxb_outscroll pxb102_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~103~ scroll = ~SCRL6U~ symbol = ~~ RET pxb103_check = pxb_check pxb103_spell = pxb_outspell pxb103_scroll = pxb_outscroll pxb103_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~104~ scroll = ~SCRL6V~ symbol = ~~ RET pxb104_check = pxb_check pxb104_spell = pxb_outspell pxb104_scroll = pxb_outscroll pxb104_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~105~ scroll = ~SCRL6W~ symbol = ~~ RET pxb105_check = pxb_check pxb105_spell = pxb_outspell pxb105_scroll = pxb_outscroll pxb105_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~106~ scroll = ~SCRL6X~ symbol = ~~ RET pxb106_check = pxb_check pxb106_spell = pxb_outspell pxb106_scroll = pxb_outscroll pxb106_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~107~ scroll = ~SCRL6Y~ symbol = ~~ RET pxb107_check = pxb_check pxb107_spell = pxb_outspell pxb107_scroll = pxb_outscroll pxb107_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~108~ scroll = ~SCRL6Z~ symbol = ~~ RET pxb108_check = pxb_check pxb108_spell = pxb_outspell pxb108_scroll = pxb_outscroll pxb108_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~109~ scroll = ~SCRL8X~ symbol = ~~ RET pxb109_check = pxb_check pxb109_spell = pxb_outspell pxb109_scroll = pxb_outscroll pxb109_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~110~ scroll = ~SCRL7B~ symbol = ~~ RET pxb110_check = pxb_check pxb110_spell = pxb_outspell pxb110_scroll = pxb_outscroll pxb110_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~111~ scroll = ~SCRL7C~ symbol = ~~ RET pxb111_check = pxb_check pxb111_spell = pxb_outspell pxb111_scroll = pxb_outscroll pxb111_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~112~ scroll = ~SCRL7D~ symbol = ~~ RET pxb112_check = pxb_check pxb112_spell = pxb_outspell pxb112_scroll = pxb_outscroll pxb112_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~113~ scroll = ~SCRLAL~ symbol = ~~ RET pxb113_check = pxb_check pxb113_spell = pxb_outspell pxb113_scroll = pxb_outscroll pxb113_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~114~ scroll = ~SCRLAR~ symbol = ~~ RET pxb114_check = pxb_check pxb114_spell = pxb_outspell pxb114_scroll = pxb_outscroll pxb114_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~115~ scroll = ~SCRL7E~ symbol = ~~ RET pxb115_check = pxb_check pxb115_spell = pxb_outspell pxb115_scroll = pxb_outscroll pxb115_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~116~ scroll = ~SCRL7F~ symbol = ~~ RET pxb116_check = pxb_check pxb116_spell = pxb_outspell pxb116_scroll = pxb_outscroll pxb116_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~117~ scroll = ~SCRL7G~ symbol = ~~ RET pxb117_check = pxb_check pxb117_spell = pxb_outspell pxb117_scroll = pxb_outscroll pxb117_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~118~ scroll = ~SCRL7H~ symbol = ~~ RET pxb118_check = pxb_check pxb118_spell = pxb_outspell pxb118_scroll = pxb_outscroll pxb118_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~119~ scroll = ~SCRL7I~ symbol = ~~ RET pxb119_check = pxb_check pxb119_spell = pxb_outspell pxb119_scroll = pxb_outscroll pxb119_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~120~ scroll = ~SCRL7J~ symbol = ~~ RET pxb120_check = pxb_check pxb120_spell = pxb_outspell pxb120_scroll = pxb_outscroll pxb120_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~121~ scroll = ~SCRL7K~ symbol = ~~ RET pxb121_check = pxb_check pxb121_spell = pxb_outspell pxb121_scroll = pxb_outscroll pxb121_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~122~ scroll = ~SCRL7L~ symbol = ~~ RET pxb122_check = pxb_check pxb122_spell = pxb_outspell pxb122_scroll = pxb_outscroll pxb122_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~123~ scroll = ~SCRL7M~ symbol = ~~ RET pxb123_check = pxb_check pxb123_spell = pxb_outspell pxb123_scroll = pxb_outscroll pxb123_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~124~ scroll = ~SCRL7O~ symbol = ~~ RET pxb124_check = pxb_check pxb124_spell = pxb_outspell pxb124_scroll = pxb_outscroll pxb124_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~125~ scroll = ~SCRL7P~ symbol = ~~ RET pxb125_check = pxb_check pxb125_spell = pxb_outspell pxb125_scroll = pxb_outscroll pxb125_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~126~ scroll = ~SCRL7Q~ symbol = ~~ RET pxb126_check = pxb_check pxb126_spell = pxb_outspell pxb126_scroll = pxb_outscroll pxb126_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~127~ scroll = ~SCRL7R~ symbol = ~~ RET pxb127_check = pxb_check pxb127_spell = pxb_outspell pxb127_scroll = pxb_outscroll pxb127_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~128~ scroll = ~SCRL7S~ symbol = ~~ RET pxb128_check = pxb_check pxb128_spell = pxb_outspell pxb128_scroll = pxb_outscroll pxb128_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~129~ scroll = ~SCRL7T~ symbol = ~~ RET pxb129_check = pxb_check pxb129_spell = pxb_outspell pxb129_scroll = pxb_outscroll pxb129_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~130~ scroll = ~SCRL7U~ symbol = ~~ RET pxb130_check = pxb_check pxb130_spell = pxb_outspell pxb130_scroll = pxb_outscroll pxb130_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~131~ scroll = ~SCRL7V~ symbol = ~~ RET pxb131_check = pxb_check pxb131_spell = pxb_outspell pxb131_scroll = pxb_outscroll pxb131_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~132~ scroll = ~SCRL7W~ symbol = ~~ RET pxb132_check = pxb_check pxb132_spell = pxb_outspell pxb132_scroll = pxb_outscroll pxb132_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~133~ scroll = ~SCRL7X~ symbol = ~~ RET pxb133_check = pxb_check pxb133_spell = pxb_outspell pxb133_scroll = pxb_outscroll pxb133_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~134~ scroll = ~SCRL7Y~ symbol = ~~ RET pxb134_check = pxb_check pxb134_spell = pxb_outspell pxb134_scroll = pxb_outscroll pxb134_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~135~ scroll = ~SCRL7Z~ symbol = ~~ RET pxb135_check = pxb_check pxb135_spell = pxb_outspell pxb135_scroll = pxb_outscroll pxb135_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~136~ scroll = ~SCRL8A~ symbol = ~~ RET pxb136_check = pxb_check pxb136_spell = pxb_outspell pxb136_scroll = pxb_outscroll pxb136_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~137~ scroll = ~SCRL8B~ symbol = ~~ RET pxb137_check = pxb_check pxb137_spell = pxb_outspell pxb137_scroll = pxb_outscroll pxb137_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~138~ scroll = ~SCRL8C~ symbol = ~~ RET pxb138_check = pxb_check pxb138_spell = pxb_outspell pxb138_scroll = pxb_outscroll pxb138_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~139~ scroll = ~SCRL8D~ symbol = ~~ RET pxb139_check = pxb_check pxb139_spell = pxb_outspell pxb139_scroll = pxb_outscroll pxb139_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~140~ scroll = ~SCRL8E~ symbol = ~~ RET pxb140_check = pxb_check pxb140_spell = pxb_outspell pxb140_scroll = pxb_outscroll pxb140_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~141~ scroll = ~SCRL8F~ symbol = ~~ RET pxb141_check = pxb_check pxb141_spell = pxb_outspell pxb141_scroll = pxb_outscroll pxb141_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~142~ scroll = ~SCRL8G~ symbol = ~~ RET pxb142_check = pxb_check pxb142_spell = pxb_outspell pxb142_scroll = pxb_outscroll pxb142_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~143~ scroll = ~SCRL8H~ symbol = ~~ RET pxb143_check = pxb_check pxb143_spell = pxb_outspell pxb143_scroll = pxb_outscroll pxb143_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~144~ scroll = ~SCRL8I~ symbol = ~~ RET pxb144_check = pxb_check pxb144_spell = pxb_outspell pxb144_scroll = pxb_outscroll pxb144_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~145~ scroll = ~SCRL8J~ symbol = ~~ RET pxb145_check = pxb_check pxb145_spell = pxb_outspell pxb145_scroll = pxb_outscroll pxb145_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~146~ scroll = ~SCRL8L~ symbol = ~~ RET pxb146_check = pxb_check pxb146_spell = pxb_outspell pxb146_scroll = pxb_outscroll pxb146_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~147~ scroll = ~SCRL8M~ symbol = ~~ RET pxb147_check = pxb_check pxb147_spell = pxb_outspell pxb147_scroll = pxb_outscroll pxb147_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~148~ scroll = ~SCRL8N~ symbol = ~~ RET pxb148_check = pxb_check pxb148_spell = pxb_outspell pxb148_scroll = pxb_outscroll pxb148_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~149~ scroll = ~SCRL8O~ symbol = ~~ RET pxb149_check = pxb_check pxb149_spell = pxb_outspell pxb149_scroll = pxb_outscroll pxb149_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~150~ scroll = ~SCRL8P~ symbol = ~~ RET pxb150_check = pxb_check pxb150_spell = pxb_outspell pxb150_scroll = pxb_outscroll pxb150_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~151~ scroll = ~SCRL8Q~ symbol = ~~ RET pxb151_check = pxb_check pxb151_spell = pxb_outspell pxb151_scroll = pxb_outscroll pxb151_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~152~ scroll = ~SCRL8R~ symbol = ~~ RET pxb152_check = pxb_check pxb152_spell = pxb_outspell pxb152_scroll = pxb_outscroll pxb152_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~153~ scroll = ~SCRL8S~ symbol = ~~ RET pxb153_check = pxb_check pxb153_spell = pxb_outspell pxb153_scroll = pxb_outscroll pxb153_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~154~ scroll = ~SCRL8T~ symbol = ~~ RET pxb154_check = pxb_check pxb154_spell = pxb_outspell pxb154_scroll = pxb_outscroll pxb154_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~155~ scroll = ~SCRL8U~ symbol = ~~ RET pxb155_check = pxb_check pxb155_spell = pxb_outspell pxb155_scroll = pxb_outscroll pxb155_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~156~ scroll = ~SCRL8V~ symbol = ~~ RET pxb156_check = pxb_check pxb156_spell = pxb_outspell pxb156_scroll = pxb_outscroll pxb156_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~157~ scroll = ~SCRL8W~ symbol = ~~ RET pxb157_check = pxb_check pxb157_spell = pxb_outspell pxb157_scroll = pxb_outscroll pxb157_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~158~ scroll = ~SCRLA4~ symbol = ~~ RET pxb158_check = pxb_check pxb158_spell = pxb_outspell pxb158_scroll = pxb_outscroll pxb158_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~159~ scroll = ~SCRL8Y~ symbol = ~~ RET pxb159_check = pxb_check pxb159_spell = pxb_outspell pxb159_scroll = pxb_outscroll pxb159_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~160~ scroll = ~SCRL8Z~ symbol = ~~ RET pxb160_check = pxb_check pxb160_spell = pxb_outspell pxb160_scroll = pxb_outscroll pxb160_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~161~ scroll = ~SCRL9A~ symbol = ~~ RET pxb161_check = pxb_check pxb161_spell = pxb_outspell pxb161_scroll = pxb_outscroll pxb161_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~162~ scroll = ~SCRL9B~ symbol = ~~ RET pxb162_check = pxb_check pxb162_spell = pxb_outspell pxb162_scroll = pxb_outscroll pxb162_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~163~ scroll = ~SCRL9C~ symbol = ~~ RET pxb163_check = pxb_check pxb163_spell = pxb_outspell pxb163_scroll = pxb_outscroll pxb163_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~164~ scroll = ~SCRL9D~ symbol = ~~ RET pxb164_check = pxb_check pxb164_spell = pxb_outspell pxb164_scroll = pxb_outscroll pxb164_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~165~ scroll = ~SCRL9E~ symbol = ~~ RET pxb165_check = pxb_check pxb165_spell = pxb_outspell pxb165_scroll = pxb_outscroll pxb165_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~166~ scroll = ~SCRL9F~ symbol = ~~ RET pxb166_check = pxb_check pxb166_spell = pxb_outspell pxb166_scroll = pxb_outscroll pxb166_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~167~ scroll = ~SCRL9G~ symbol = ~~ RET pxb167_check = pxb_check pxb167_spell = pxb_outspell pxb167_scroll = pxb_outscroll pxb167_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~168~ scroll = ~SCRL9H~ symbol = ~~ RET pxb168_check = pxb_check pxb168_spell = pxb_outspell pxb168_scroll = pxb_outscroll pxb168_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~169~ scroll = ~SCRL9J~ symbol = ~~ RET pxb169_check = pxb_check pxb169_spell = pxb_outspell pxb169_scroll = pxb_outscroll pxb169_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~170~ scroll = ~SCRLAN~ symbol = ~~ RET pxb170_check = pxb_check pxb170_spell = pxb_outspell pxb170_scroll = pxb_outscroll pxb170_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~171~ scroll = ~SCRLAP~ symbol = ~~ RET pxb171_check = pxb_check pxb171_spell = pxb_outspell pxb171_scroll = pxb_outscroll pxb171_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~172~ scroll = ~SCRLAM~ symbol = ~~ RET pxb172_check = pxb_check pxb172_spell = pxb_outspell pxb172_scroll = pxb_outscroll pxb172_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~173~ scroll = ~SCRLAO~ symbol = ~~ RET pxb173_check = pxb_check pxb173_spell = pxb_outspell pxb173_scroll = pxb_outscroll pxb173_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~174~ scroll = ~SCRLB1~ symbol = ~~ RET pxb174_check = pxb_check pxb174_spell = pxb_outspell pxb174_scroll = pxb_outscroll pxb174_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~175~ scroll = ~SCRL9L~ symbol = ~~ RET pxb175_check = pxb_check pxb175_spell = pxb_outspell pxb175_scroll = pxb_outscroll pxb175_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~176~ scroll = ~SCRL9M~ symbol = ~~ RET pxb176_check = pxb_check pxb176_spell = pxb_outspell pxb176_scroll = pxb_outscroll pxb176_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~177~ scroll = ~SCRL9N~ symbol = ~~ RET pxb177_check = pxb_check pxb177_spell = pxb_outspell pxb177_scroll = pxb_outscroll pxb177_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~178~ scroll = ~SCRL9P~ symbol = ~~ RET pxb178_check = pxb_check pxb178_spell = pxb_outspell pxb178_scroll = pxb_outscroll pxb178_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~179~ scroll = ~SCRL9Q~ symbol = ~~ RET pxb179_check = pxb_check pxb179_spell = pxb_outspell pxb179_scroll = pxb_outscroll pxb179_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~180~ scroll = ~SCRL9R~ symbol = ~~ RET pxb180_check = pxb_check pxb180_spell = pxb_outspell pxb180_scroll = pxb_outscroll pxb180_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~181~ scroll = ~SCRL9S~ symbol = ~~ RET pxb181_check = pxb_check pxb181_spell = pxb_outspell pxb181_scroll = pxb_outscroll pxb181_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~182~ scroll = ~SCRL9T~ symbol = ~~ RET pxb182_check = pxb_check pxb182_spell = pxb_outspell pxb182_scroll = pxb_outscroll pxb182_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~183~ scroll = ~SCRL9U~ symbol = ~~ RET pxb183_check = pxb_check pxb183_spell = pxb_outspell pxb183_scroll = pxb_outscroll pxb183_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~184~ scroll = ~SCRL9V~ symbol = ~~ RET pxb184_check = pxb_check pxb184_spell = pxb_outspell pxb184_scroll = pxb_outscroll pxb184_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~185~ scroll = ~SCRL9W~ symbol = ~~ RET pxb185_check = pxb_check pxb185_spell = pxb_outspell pxb185_scroll = pxb_outscroll pxb185_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~186~ scroll = ~SCRL9X~ symbol = ~~ RET pxb186_check = pxb_check pxb186_spell = pxb_outspell pxb186_scroll = pxb_outscroll pxb186_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~187~ scroll = ~SCRL9Y~ symbol = ~~ RET pxb187_check = pxb_check pxb187_spell = pxb_outspell pxb187_scroll = pxb_outscroll pxb187_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~188~ scroll = ~SCRL9Z~ symbol = ~~ RET pxb188_check = pxb_check pxb188_spell = pxb_outspell pxb188_scroll = pxb_outscroll pxb188_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~189~ scroll = ~SCRLB2~ symbol = ~~ RET pxb189_check = pxb_check pxb189_spell = pxb_outspell pxb189_scroll = pxb_outscroll pxb189_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~190~ scroll = ~SCRLB4~ symbol = ~~ RET pxb190_check = pxb_check pxb190_spell = pxb_outspell pxb190_scroll = pxb_outscroll pxb190_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~191~ scroll = ~pxl2ex2a~ symbol = ~~ RET pxb191_check = pxb_check pxb191_spell = pxb_outspell pxb191_scroll = pxb_outscroll pxb191_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~192~ scroll = ~pxl2resa~ symbol = ~~ RET pxb192_check = pxb_check pxb192_spell = pxb_outspell pxb192_scroll = pxb_outscroll pxb192_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~193~ scroll = ~pxl2para~ symbol = ~~ RET pxb193_check = pxb_check pxb193_spell = pxb_outspell pxb193_scroll = pxb_outscroll pxb193_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~194~ scroll = ~pxl2ecla~ symbol = ~~ RET pxb194_check = pxb_check pxb194_spell = pxb_outspell pxb194_scroll = pxb_outscroll pxb194_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~195~ scroll = ~pxl2rpua~ symbol = ~~ RET pxb195_check = pxb_check pxb195_spell = pxb_outspell pxb195_scroll = pxb_outscroll pxb195_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~196~ scroll = ~pxl2dspa~ symbol = ~~ RET pxb196_check = pxb_check pxb196_spell = pxb_outspell pxb196_scroll = pxb_outscroll pxb196_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~197~ scroll = ~pxl2stpa~ symbol = ~~ RET pxb197_check = pxb_check pxb197_spell = pxb_outspell pxb197_scroll = pxb_outscroll pxb197_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~198~ scroll = ~pxl2rm1a~ symbol = ~~ RET pxb198_check = pxb_check pxb198_spell = pxb_outspell pxb198_scroll = pxb_outscroll pxb198_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~199~ scroll = ~pxl2prea~ symbol = ~~ RET pxb199_check = pxb_check pxb199_spell = pxb_outspell pxb199_scroll = pxb_outscroll pxb199_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~200~ scroll = ~pxl2tama~ symbol = ~~ RET pxb200_check = pxb_check pxb200_spell = pxb_outspell pxb200_scroll = pxb_outscroll pxb200_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~201~ scroll = ~pxl2pula~ symbol = ~~ RET pxb201_check = pxb_check pxb201_spell = pxb_outspell pxb201_scroll = pxb_outscroll pxb201_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~202~ scroll = ~pxl2csoa~ symbol = ~~ RET pxb202_check = pxb_check pxb202_spell = pxb_outspell pxb202_scroll = pxb_outscroll pxb202_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~203~ scroll = ~pxl2bata~ symbol = ~~ RET pxb203_check = pxb_check pxb203_spell = pxb_outspell pxb203_scroll = pxb_outscroll pxb203_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~204~ scroll = ~pxl2hexa~ symbol = ~~ RET pxb204_check = pxb_check pxb204_spell = pxb_outspell pxb204_scroll = pxb_outscroll pxb204_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~205~ scroll = ~pxl2prja~ symbol = ~~ RET pxb205_check = pxb_check pxb205_spell = pxb_outspell pxb205_scroll = pxb_outscroll pxb205_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~206~ scroll = ~pxl2nixa~ symbol = ~~ RET pxb206_check = pxb_check pxb206_spell = pxb_outspell pxb206_scroll = pxb_outscroll pxb206_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~207~ scroll = ~pxl2inca~ symbol = ~~ RET pxb207_check = pxb_check pxb207_spell = pxb_outspell pxb207_scroll = pxb_outscroll pxb207_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~208~ scroll = ~pxl2vaca~ symbol = ~~ RET pxb208_check = pxb_check pxb208_spell = pxb_outspell pxb208_scroll = pxb_outscroll pxb208_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~209~ scroll = ~pxl2tcha~ symbol = ~~ RET pxb209_check = pxb_check pxb209_spell = pxb_outspell pxb209_scroll = pxb_outscroll pxb209_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~210~ scroll = ~pxl2rsaa~ symbol = ~~ RET pxb210_check = pxb_check pxb210_spell = pxb_outspell pxb210_scroll = pxb_outscroll pxb210_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~211~ scroll = ~pxl2visa~ symbol = ~~ RET pxb211_check = pxb_check pxb211_spell = pxb_outspell pxb211_scroll = pxb_outscroll pxb211_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~212~ scroll = ~pxl2proa~ symbol = ~~ RET pxb212_check = pxb_check pxb212_spell = pxb_outspell pxb212_scroll = pxb_outscroll pxb212_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~213~ scroll = ~pxl2gria~ symbol = ~~ RET pxb213_check = pxb_check pxb213_spell = pxb_outspell pxb213_scroll = pxb_outscroll pxb213_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~214~ scroll = ~pxl2tena~ symbol = ~~ RET pxb214_check = pxb_check pxb214_spell = pxb_outspell pxb214_scroll = pxb_outscroll pxb214_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~215~ scroll = ~pxl2fora~ symbol = ~~ RET pxb215_check = pxb_check pxb215_spell = pxb_outspell pxb215_scroll = pxb_outscroll pxb215_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~216~ scroll = ~pxl2arma~ symbol = ~~ RET pxb216_check = pxb_check pxb216_spell = pxb_outspell pxb216_scroll = pxb_outscroll pxb216_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~217~ scroll = ~pxl2pola~ symbol = ~~ RET pxb217_check = pxb_check pxb217_spell = pxb_outspell pxb217_scroll = pxb_outscroll pxb217_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~218~ scroll = ~pxl2sonp~ symbol = ~~ RET pxb218_check = pxb_check pxb218_spell = pxb_outspell pxb218_scroll = pxb_outscroll pxb218_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~219~ scroll = ~pxl2craa~ symbol = ~~ RET pxb219_check = pxb_check pxb219_spell = pxb_outspell pxb219_scroll = pxb_outscroll pxb219_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~220~ scroll = ~pxl2aura~ symbol = ~~ RET pxb220_check = pxb_check pxb220_spell = pxb_outspell pxb220_scroll = pxb_outscroll pxb220_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~221~ scroll = ~pxl2fl2a~ symbol = ~~ RET pxb221_check = pxb_check pxb221_spell = pxb_outspell pxb221_scroll = pxb_outscroll pxb221_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~222~ scroll = ~pxl2vlsa~ symbol = ~~ RET pxb222_check = pxb_check pxb222_spell = pxb_outspell pxb222_scroll = pxb_outscroll pxb222_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~223~ scroll = ~pxl2poba~ symbol = ~~ RET pxb223_check = pxb_check pxb223_spell = pxb_outspell pxb223_scroll = pxb_outscroll pxb223_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~224~ scroll = ~pxl2paca~ symbol = ~~ RET pxb224_check = pxb_check pxb224_spell = pxb_outspell pxb224_scroll = pxb_outscroll pxb224_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~225~ scroll = ~pxl2bboa~ symbol = ~~ RET pxb225_check = pxb_check pxb225_spell = pxb_outspell pxb225_scroll = pxb_outscroll pxb225_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~226~ scroll = ~pxl2doba~ symbol = ~~ RET pxb226_check = pxb_check pxb226_spell = pxb_outspell pxb226_scroll = pxb_outscroll pxb226_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~227~ scroll = ~pxl2vlca~ symbol = ~~ RET pxb227_check = pxb_check pxb227_spell = pxb_outspell pxb227_scroll = pxb_outscroll pxb227_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~228~ scroll = ~pxl2srea~ symbol = ~~ RET pxb228_check = pxb_check pxb228_spell = pxb_outspell pxb228_scroll = pxb_outscroll pxb228_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~229~ scroll = ~pxl2itga~ symbol = ~~ RET pxb229_check = pxb_check pxb229_spell = pxb_outspell pxb229_scroll = pxb_outscroll pxb229_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~230~ scroll = ~pxl2rg2a~ symbol = ~~ RET pxb230_check = pxb_check pxb230_spell = pxb_outspell pxb230_scroll = pxb_outscroll pxb230_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~231~ scroll = ~pxl2rm2a~ symbol = ~~ RET pxb231_check = pxb_check pxb231_spell = pxb_outspell pxb231_scroll = pxb_outscroll pxb231_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~232~ scroll = ~pxl2coua~ symbol = ~~ RET pxb232_check = pxb_check pxb232_spell = pxb_outspell pxb232_scroll = pxb_outscroll pxb232_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~233~ scroll = ~pxl2afaa~ symbol = ~~ RET pxb233_check = pxb_check pxb233_spell = pxb_outspell pxb233_scroll = pxb_outscroll pxb233_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~234~ scroll = ~pxl2nata~ symbol = ~~ RET pxb234_check = pxb_check pxb234_spell = pxb_outspell pxb234_scroll = pxb_outscroll pxb234_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~235~ scroll = ~pxl2braa~ symbol = ~~ RET pxb235_check = pxb_check pxb235_spell = pxb_outspell pxb235_scroll = pxb_outscroll pxb235_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~236~ scroll = ~pxl2nova~ symbol = ~~ RET pxb236_check = pxb_check pxb236_spell = pxb_outspell pxb236_scroll = pxb_outscroll pxb236_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~237~ scroll = ~pxl2imaa~ symbol = ~~ RET pxb237_check = pxb_check pxb237_spell = pxb_outspell pxb237_scroll = pxb_outscroll pxb237_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~238~ scroll = ~pxl2rupt~ symbol = ~~ RET pxb238_check = pxb_check pxb238_spell = pxb_outspell pxb238_scroll = pxb_outscroll pxb238_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~239~ scroll = ~pxl2as2a~ symbol = ~~ RET pxb239_check = pxb_check pxb239_spell = pxb_outspell pxb239_scroll = pxb_outscroll pxb239_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~240~ scroll = ~pxl2poia~ symbol = ~~ RET pxb240_check = pxb_check pxb240_spell = pxb_outspell pxb240_scroll = pxb_outscroll pxb240_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~241~ scroll = ~pxl2feea~ symbol = ~~ RET pxb241_check = pxb_check pxb241_spell = pxb_outspell pxb241_scroll = pxb_outscroll pxb241_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~242~ scroll = ~pxl2boua~ symbol = ~~ RET pxb242_check = pxb_check pxb242_spell = pxb_outspell pxb242_scroll = pxb_outscroll pxb242_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~243~ scroll = ~pxl2saba~ symbol = ~~ RET pxb243_check = pxb_check pxb243_spell = pxb_outspell pxb243_scroll = pxb_outscroll pxb243_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~244~ scroll = ~pxl2vena~ symbol = ~~ RET pxb244_check = pxb_check pxb244_spell = pxb_outspell pxb244_scroll = pxb_outscroll pxb244_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~245~ scroll = ~pxl2roua~ symbol = ~~ RET pxb245_check = pxb_check pxb245_spell = pxb_outspell pxb245_scroll = pxb_outscroll pxb245_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~246~ scroll = ~pxl2nula~ symbol = ~~ RET pxb246_check = pxb_check pxb246_spell = pxb_outspell pxb246_scroll = pxb_outscroll pxb246_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~247~ scroll = ~pxl2squa~ symbol = ~~ RET pxb247_check = pxb_check pxb247_spell = pxb_outspell pxb247_scroll = pxb_outscroll pxb247_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~248~ scroll = ~pxl2crea~ symbol = ~~ RET pxb248_check = pxb_check pxb248_spell = pxb_outspell pxb248_scroll = pxb_outscroll pxb248_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~249~ scroll = ~pxl2deca~ symbol = ~~ RET pxb249_check = pxb_check pxb249_spell = pxb_outspell pxb249_scroll = pxb_outscroll pxb249_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~250~ scroll = ~pxl2mexa~ symbol = ~~ RET pxb250_check = pxb_check pxb250_spell = pxb_outspell pxb250_scroll = pxb_outscroll pxb250_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~251~ scroll = ~pxl2cora~ symbol = ~~ RET pxb251_check = pxb_check pxb251_spell = pxb_outspell pxb251_scroll = pxb_outscroll pxb251_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~252~ scroll = ~pxl2lama~ symbol = ~~ RET pxb252_check = pxb_check pxb252_spell = pxb_outspell pxb252_scroll = pxb_outscroll pxb252_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~253~ scroll = ~pxl2cana~ symbol = ~~ RET pxb253_check = pxb_check pxb253_spell = pxb_outspell pxb253_scroll = pxb_outscroll pxb253_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~254~ scroll = ~pxl2bson~ symbol = ~~ RET pxb254_check = pxb_check pxb254_spell = pxb_outspell pxb254_scroll = pxb_outscroll pxb254_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~255~ scroll = ~pxl2bfia~ symbol = ~~ RET pxb255_check = pxb_check pxb255_spell = pxb_outspell pxb255_scroll = pxb_outscroll pxb255_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~256~ scroll = ~pxl2avea~ symbol = ~~ RET pxb256_check = pxb_check pxb256_spell = pxb_outspell pxb256_scroll = pxb_outscroll pxb256_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~257~ scroll = ~pxl2mlda~ symbol = ~~ RET pxb257_check = pxb_check pxb257_spell = pxb_outspell pxb257_scroll = pxb_outscroll pxb257_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~258~ scroll = ~pxl2hurl~ symbol = ~~ RET pxb258_check = pxb_check pxb258_spell = pxb_outspell pxb258_scroll = pxb_outscroll pxb258_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~259~ scroll = ~pxl2maga~ symbol = ~~ RET pxb259_check = pxb_check pxb259_spell = pxb_outspell pxb259_scroll = pxb_outscroll pxb259_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~260~ scroll = ~pxl2sofa~ symbol = ~~ RET pxb260_check = pxb_check pxb260_spell = pxb_outspell pxb260_scroll = pxb_outscroll pxb260_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~261~ scroll = ~pxl2acca~ symbol = ~~ RET pxb261_check = pxb_check pxb261_spell = pxb_outspell pxb261_scroll = pxb_outscroll pxb261_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~262~ scroll = ~pxl2vmpa~ symbol = ~~ RET pxb262_check = pxb_check pxb262_spell = pxb_outspell pxb262_scroll = pxb_outscroll pxb262_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~263~ scroll = ~pxl2chdw~ symbol = ~~ RET pxb263_check = pxb_check pxb263_spell = pxb_outspell pxb263_scroll = pxb_outscroll pxb263_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~264~ scroll = ~pxl2tria~ symbol = ~~ RET pxb264_check = pxb_check pxb264_spell = pxb_outspell pxb264_scroll = pxb_outscroll pxb264_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~265~ scroll = ~pxl2baaa~ symbol = ~~ RET pxb265_check = pxb_check pxb265_spell = pxb_outspell pxb265_scroll = pxb_outscroll pxb265_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~266~ scroll = ~pxl2lcpa~ symbol = ~~ RET pxb266_check = pxb_check pxb266_spell = pxb_outspell pxb266_scroll = pxb_outscroll pxb266_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~267~ scroll = ~pxl2srta~ symbol = ~~ RET pxb267_check = pxb_check pxb267_spell = pxb_outspell pxb267_scroll = pxb_outscroll pxb267_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~268~ scroll = ~pxl2anma~ symbol = ~~ RET pxb268_check = pxb_check pxb268_spell = pxb_outspell pxb268_scroll = pxb_outscroll pxb268_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~269~ scroll = ~pxl2vula~ symbol = ~~ RET pxb269_check = pxb_check pxb269_spell = pxb_outspell pxb269_scroll = pxb_outscroll pxb269_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~270~ scroll = ~pxl2piba~ symbol = ~~ RET pxb270_check = pxb_check pxb270_spell = pxb_outspell pxb270_scroll = pxb_outscroll pxb270_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~271~ scroll = ~pxl2dw2a~ symbol = ~~ RET pxb271_check = pxb_check pxb271_spell = pxb_outspell pxb271_scroll = pxb_outscroll pxb271_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~272~ scroll = ~pxl2ptla~ symbol = ~~ RET pxb272_check = pxb_check pxb272_spell = pxb_outspell pxb272_scroll = pxb_outscroll pxb272_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~273~ scroll = ~pxl2alaa~ symbol = ~~ RET pxb273_check = pxb_check pxb273_spell = pxb_outspell pxb273_scroll = pxb_outscroll pxb273_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~274~ scroll = ~pxl2fura~ symbol = ~~ RET pxb274_check = pxb_check pxb274_spell = pxb_outspell pxb274_scroll = pxb_outscroll pxb274_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~275~ scroll = ~pxl2pora~ symbol = ~~ RET pxb275_check = pxb_check pxb275_spell = pxb_outspell pxb275_scroll = pxb_outscroll pxb275_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~276~ scroll = ~pxl2flaa~ symbol = ~~ RET pxb276_check = pxb_check pxb276_spell = pxb_outspell pxb276_scroll = pxb_outscroll pxb276_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~277~ scroll = ~pxl2sana~ symbol = ~~ RET pxb277_check = pxb_check pxb277_spell = pxb_outspell pxb277_scroll = pxb_outscroll pxb277_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~278~ scroll = ~pxl2mema~ symbol = ~~ RET pxb278_check = pxb_check pxb278_spell = pxb_outspell pxb278_scroll = pxb_outscroll pxb278_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~279~ scroll = ~pxl2chaa~ symbol = ~~ RET pxb279_check = pxb_check pxb279_spell = pxb_outspell pxb279_scroll = pxb_outscroll pxb279_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~280~ scroll = ~pxl2chra~ symbol = ~~ RET pxb280_check = pxb_check pxb280_spell = pxb_outspell pxb280_scroll = pxb_outscroll pxb280_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~281~ scroll = ~pxl2soua~ symbol = ~~ RET pxb281_check = pxb_check pxb281_spell = pxb_outspell pxb281_scroll = pxb_outscroll pxb281_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~282~ scroll = ~pxl2gela~ symbol = ~~ RET pxb282_check = pxb_check pxb282_spell = pxb_outspell pxb282_scroll = pxb_outscroll pxb282_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~283~ scroll = ~pxl2choa~ symbol = ~~ RET pxb283_check = pxb_check pxb283_spell = pxb_outspell pxb283_scroll = pxb_outscroll pxb283_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~284~ scroll = ~pxl2inna~ symbol = ~~ RET pxb284_check = pxb_check pxb284_spell = pxb_outspell pxb284_scroll = pxb_outscroll pxb284_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~285~ scroll = ~pxl2gila~ symbol = ~~ RET pxb285_check = pxb_check pxb285_spell = pxb_outspell pxb285_scroll = pxb_outscroll pxb285_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~286~ scroll = ~pxl2fmla~ symbol = ~~ RET pxb286_check = pxb_check pxb286_spell = pxb_outspell pxb286_scroll = pxb_outscroll pxb286_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~287~ scroll = ~pxl2agea~ symbol = ~~ RET pxb287_check = pxb_check pxb287_spell = pxb_outspell pxb287_scroll = pxb_outscroll pxb287_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~288~ scroll = ~pxl2evsa~ symbol = ~~ RET pxb288_check = pxb_check pxb288_spell = pxb_outspell pxb288_scroll = pxb_outscroll pxb288_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~289~ scroll = ~pxl2prma~ symbol = ~~ RET pxb289_check = pxb_check pxb289_spell = pxb_outspell pxb289_scroll = pxb_outscroll pxb289_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~290~ scroll = ~pxl2leta~ symbol = ~~ RET pxb290_check = pxb_check pxb290_spell = pxb_outspell pxb290_scroll = pxb_outscroll pxb290_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~291~ scroll = ~pxl2rapa~ symbol = ~~ RET pxb291_check = pxb_check pxb291_spell = pxb_outspell pxb291_scroll = pxb_outscroll pxb291_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~292~ scroll = ~pxl2affa~ symbol = ~~ RET pxb292_check = pxb_check pxb292_spell = pxb_outspell pxb292_scroll = pxb_outscroll pxb292_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~293~ scroll = ~pxl2flea~ symbol = ~~ RET pxb293_check = pxb_check pxb293_spell = pxb_outspell pxb293_scroll = pxb_outscroll pxb293_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~294~ scroll = ~pxl2aena~ symbol = ~~ RET pxb294_check = pxb_check pxb294_spell = pxb_outspell pxb294_scroll = pxb_outscroll pxb294_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~295~ scroll = ~pxl2mara~ symbol = ~~ RET pxb295_check = pxb_check pxb295_spell = pxb_outspell pxb295_scroll = pxb_outscroll pxb295_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~296~ scroll = ~pxl2loba~ symbol = ~~ RET pxb296_check = pxb_check pxb296_spell = pxb_outspell pxb296_scroll = pxb_outscroll pxb296_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~297~ scroll = ~pxl2toia~ symbol = ~~ RET pxb297_check = pxb_check pxb297_spell = pxb_outspell pxb297_scroll = pxb_outscroll pxb297_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~298~ scroll = ~pxl2misa~ symbol = ~~ RET pxb298_check = pxb_check pxb298_spell = pxb_outspell pxb298_scroll = pxb_outscroll pxb298_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~299~ scroll = ~pxl2orba~ symbol = ~~ RET pxb299_check = pxb_check pxb299_spell = pxb_outspell pxb299_scroll = pxb_outscroll pxb299_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~300~ scroll = ~pxl2coga~ symbol = ~~ RET pxb300_check = pxb_check pxb300_spell = pxb_outspell pxb300_scroll = pxb_outscroll pxb300_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~301~ scroll = ~pxl2xspa~ symbol = ~~ RET pxb301_check = pxb_check pxb301_spell = pxb_outspell pxb301_scroll = pxb_outscroll pxb301_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~302~ scroll = ~pxl2nt2a~ symbol = ~~ RET pxb302_check = pxb_check pxb302_spell = pxb_outspell pxb302_scroll = pxb_outscroll pxb302_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~303~ scroll = ~pxl2acha~ symbol = ~~ RET pxb303_check = pxb_check pxb303_spell = pxb_outspell pxb303_scroll = pxb_outscroll pxb303_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~304~ scroll = ~pxl2mm2a~ symbol = ~~ RET pxb304_check = pxb_check pxb304_spell = pxb_outspell pxb304_scroll = pxb_outscroll pxb304_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~305~ scroll = ~pxl2ttoa~ symbol = ~~ RET pxb305_check = pxb_check pxb305_spell = pxb_outspell pxb305_scroll = pxb_outscroll pxb305_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~306~ scroll = ~pxl2so2a~ symbol = ~~ RET pxb306_check = pxb_check pxb306_spell = pxb_outspell pxb306_scroll = pxb_outscroll pxb306_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~307~ scroll = ~pxl2oeia~ symbol = ~~ RET pxb307_check = pxb_check pxb307_spell = pxb_outspell pxb307_scroll = pxb_outscroll pxb307_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~308~ scroll = ~pxl2nuaa~ symbol = ~~ RET pxb308_check = pxb_check pxb308_spell = pxb_outspell pxb308_scroll = pxb_outscroll pxb308_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~309~ scroll = ~pxl2sqma~ symbol = ~~ RET pxb309_check = pxb_check pxb309_spell = pxb_outspell pxb309_scroll = pxb_outscroll pxb309_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~310~ scroll = ~pxl2fraa~ symbol = ~~ RET pxb310_check = pxb_check pxb310_spell = pxb_outspell pxb310_scroll = pxb_outscroll pxb310_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~311~ scroll = ~pxl2brla~ symbol = ~~ RET pxb311_check = pxb_check pxb311_spell = pxb_outspell pxb311_scroll = pxb_outscroll pxb311_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~312~ scroll = ~pxl2tela~ symbol = ~~ RET pxb312_check = pxb_check pxb312_spell = pxb_outspell pxb312_scroll = pxb_outscroll pxb312_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~313~ scroll = ~pxl2kora~ symbol = ~~ RET pxb313_check = pxb_check pxb313_spell = pxb_outspell pxb313_scroll = pxb_outscroll pxb313_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~314~ scroll = ~pxl2raga~ symbol = ~~ RET pxb314_check = pxb_check pxb314_spell = pxb_outspell pxb314_scroll = pxb_outscroll pxb314_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~315~ scroll = ~pxl2coma~ symbol = ~~ RET pxb315_check = pxb_check pxb315_spell = pxb_outspell pxb315_scroll = pxb_outscroll pxb315_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~316~ scroll = ~pxl2apfa~ symbol = ~~ RET pxb316_check = pxb_check pxb316_spell = pxb_outspell pxb316_scroll = pxb_outscroll pxb316_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~317~ scroll = ~pxl2vega~ symbol = ~~ RET pxb317_check = pxb_check pxb317_spell = pxb_outspell pxb317_scroll = pxb_outscroll pxb317_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~318~ scroll = ~pxl2elca~ symbol = ~~ RET pxb318_check = pxb_check pxb318_spell = pxb_outspell pxb318_scroll = pxb_outscroll pxb318_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~319~ scroll = ~pxl2teta~ symbol = ~~ RET pxb319_check = pxb_check pxb319_spell = pxb_outspell pxb319_scroll = pxb_outscroll pxb319_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~320~ scroll = ~pxl2pura~ symbol = ~~ RET pxb320_check = pxb_check pxb320_spell = pxb_outspell pxb320_scroll = pxb_outscroll pxb320_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~321~ scroll = ~pxl2brma~ symbol = ~~ RET pxb321_check = pxb_check pxb321_spell = pxb_outspell pxb321_scroll = pxb_outscroll pxb321_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~322~ scroll = ~pxl2sexa~ symbol = ~~ RET pxb322_check = pxb_check pxb322_spell = pxb_outspell pxb322_scroll = pxb_outscroll pxb322_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~323~ scroll = ~pxl2bsta~ symbol = ~~ RET pxb323_check = pxb_check pxb323_spell = pxb_outspell pxb323_scroll = pxb_outscroll pxb323_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~324~ scroll = ~pxl2frma~ symbol = ~~ RET pxb324_check = pxb_check pxb324_spell = pxb_outspell pxb324_scroll = pxb_outscroll pxb324_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~325~ scroll = ~pxl2prba~ symbol = ~~ RET pxb325_check = pxb_check pxb325_spell = pxb_outspell pxb325_scroll = pxb_outscroll pxb325_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~326~ scroll = ~pxl2tsua~ symbol = ~~ RET pxb326_check = pxb_check pxb326_spell = pxb_outspell pxb326_scroll = pxb_outscroll pxb326_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~327~ scroll = ~pxl2abya~ symbol = ~~ RET pxb327_check = pxb_check pxb327_spell = pxb_outspell pxb327_scroll = pxb_outscroll pxb327_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~328~ scroll = ~pxl2assa~ symbol = ~~ RET pxb328_check = pxb_check pxb328_spell = pxb_outspell pxb328_scroll = pxb_outscroll pxb328_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~329~ scroll = ~pxl2obla~ symbol = ~~ RET pxb329_check = pxb_check pxb329_spell = pxb_outspell pxb329_scroll = pxb_outscroll pxb329_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~330~ scroll = ~pxl2suna~ symbol = ~~ RET pxb330_check = pxb_check pxb330_spell = pxb_outspell pxb330_scroll = pxb_outscroll pxb330_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~331~ scroll = ~pxl2daaa~ symbol = ~~ RET pxb331_check = pxb_check pxb331_spell = pxb_outspell pxb331_scroll = pxb_outscroll pxb331_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~332~ scroll = ~pxl2ca4a~ symbol = ~~ RET pxb332_check = pxb_check pxb332_spell = pxb_outspell pxb332_scroll = pxb_outscroll pxb332_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~333~ scroll = ~pxl2rfga~ symbol = ~~ RET pxb333_check = pxb_check pxb333_spell = pxb_outspell pxb333_scroll = pxb_outscroll pxb333_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~334~ scroll = ~pxl2arna~ symbol = ~~ RET pxb334_check = pxb_check pxb334_spell = pxb_outspell pxb334_scroll = pxb_outscroll pxb334_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~335~ scroll = ~pxl2ctea~ symbol = ~~ RET pxb335_check = pxb_check pxb335_spell = pxb_outspell pxb335_scroll = pxb_outscroll pxb335_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~336~ scroll = ~pxl2al2a~ symbol = ~~ RET pxb336_check = pxb_check pxb336_spell = pxb_outspell pxb336_scroll = pxb_outscroll pxb336_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~337~ scroll = ~pxl2maia~ symbol = ~~ RET pxb337_check = pxb_check pxb337_spell = pxb_outspell pxb337_scroll = pxb_outscroll pxb337_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~338~ scroll = ~pxl2gloa~ symbol = ~~ RET pxb338_check = pxb_check pxb338_spell = pxb_outspell pxb338_scroll = pxb_outscroll pxb338_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~339~ scroll = ~pxl2elxa~ symbol = ~~ RET pxb339_check = pxb_check pxb339_spell = pxb_outspell pxb339_scroll = pxb_outscroll pxb339_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~340~ scroll = ~pxl2doea~ symbol = ~~ RET pxb340_check = pxb_check pxb340_spell = pxb_outspell pxb340_scroll = pxb_outscroll pxb340_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~341~ scroll = ~pxl2boma~ symbol = ~~ RET pxb341_check = pxb_check pxb341_spell = pxb_outspell pxb341_scroll = pxb_outscroll pxb341_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~342~ scroll = ~pxl2pqda~ symbol = ~~ RET pxb342_check = pxb_check pxb342_spell = pxb_outspell pxb342_scroll = pxb_outscroll pxb342_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~343~ scroll = ~pxl2dwea~ symbol = ~~ RET pxb343_check = pxb_check pxb343_spell = pxb_outspell pxb343_scroll = pxb_outscroll pxb343_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~344~ scroll = ~pxl2enna~ symbol = ~~ RET pxb344_check = pxb_check pxb344_spell = pxb_outspell pxb344_scroll = pxb_outscroll pxb344_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~345~ scroll = ~pxl2gdca~ symbol = ~~ RET pxb345_check = pxb_check pxb345_spell = pxb_outspell pxb345_scroll = pxb_outscroll pxb345_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~346~ scroll = ~pxl2otya~ symbol = ~~ RET pxb346_check = pxb_check pxb346_spell = pxb_outspell pxb346_scroll = pxb_outscroll pxb346_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~347~ scroll = ~pxl2cdca~ symbol = ~~ RET pxb347_check = pxb_check pxb347_spell = pxb_outspell pxb347_scroll = pxb_outscroll pxb347_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~348~ scroll = ~A7#SPW1~ symbol = ~~ RET pxb348_check = pxb_check pxb348_spell = pxb_outspell pxb348_scroll = pxb_outscroll pxb348_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~349~ scroll = ~~ symbol = ~WIZARD_STONEFIST~ RET pxb349_check = pxb_check pxb349_spell = pxb_outspell pxb349_scroll = pxb_outscroll pxb349_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~350~ scroll = ~~ symbol = ~WIZARD_ICE_KNIFE~ RET pxb350_check = pxb_check pxb350_spell = pxb_outspell pxb350_scroll = pxb_outscroll pxb350_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~351~ scroll = ~~ symbol = ~WIZARD_MINOR_LIGHTNING_BOLT~ RET pxb351_check = pxb_check pxb351_spell = pxb_outspell pxb351_scroll = pxb_outscroll pxb351_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~352~ scroll = ~~ symbol = ~WIZARD_COMBUST~ RET pxb352_check = pxb_check pxb352_spell = pxb_outspell pxb352_scroll = pxb_outscroll pxb352_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~353~ scroll = ~~ symbol = ~WIZARD_TURN_PEBBLE_TO_BOULDER~ RET pxb353_check = pxb_check pxb353_spell = pxb_outspell pxb353_scroll = pxb_outscroll pxb353_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~354~ scroll = ~~ symbol = ~WIZARD_TELEKINESIS~ RET pxb354_check = pxb_check pxb354_spell = pxb_outspell pxb354_scroll = pxb_outscroll pxb354_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~355~ scroll = ~~ symbol = ~WIZARD_TELEKINETIC_STORM~ RET pxb355_check = pxb_check pxb355_spell = pxb_outspell pxb355_scroll = pxb_outscroll pxb355_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~356~ scroll = ~~ symbol = ~WIZARD_STORMBOLTS~ RET pxb356_check = pxb_check pxb356_spell = pxb_outspell pxb356_scroll = pxb_outscroll pxb356_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~357~ scroll = ~~ symbol = ~WIZARD_VERIDONS_ICY_RAY~ RET pxb357_check = pxb_check pxb357_spell = pxb_outspell pxb357_scroll = pxb_outscroll pxb357_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~358~ scroll = ~~ symbol = ~WIZARD_CREATE_BONEGUARD~ RET pxb358_check = pxb_check pxb358_spell = pxb_outspell pxb358_scroll = pxb_outscroll pxb358_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~359~ scroll = ~~ symbol = ~WIZARD_EXPEDITIOUS_RETREAT~ RET pxb359_check = pxb_check pxb359_spell = pxb_outspell pxb359_scroll = pxb_outscroll pxb359_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~360~ scroll = ~~ symbol = ~WIZARD_SNILLOCS_SNOWBALL_SWARM~ RET pxb360_check = pxb_check pxb360_spell = pxb_outspell pxb360_scroll = pxb_outscroll pxb360_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~361~ scroll = ~~ symbol = ~WIZARD_DECASTAVE~ RET pxb361_check = pxb_check pxb361_spell = pxb_outspell pxb361_scroll = pxb_outscroll pxb361_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~362~ scroll = ~~ symbol = ~WIZARD_CATS_GRACE~ RET pxb362_check = pxb_check pxb362_spell = pxb_outspell pxb362_scroll = pxb_outscroll pxb362_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~363~ scroll = ~~ symbol = ~WIZARD_ICELANCE~ RET pxb363_check = pxb_check pxb363_spell = pxb_outspell pxb363_scroll = pxb_outscroll pxb363_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~364~ scroll = ~~ symbol = ~WIZARD_LANCE_OF_DISRUPTION~ RET pxb364_check = pxb_check pxb364_spell = pxb_outspell pxb364_scroll = pxb_outscroll pxb364_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~365~ scroll = ~~ symbol = ~WIZARD_BELTYNS_BURNING_BLOOD~ RET pxb365_check = pxb_check pxb365_spell = pxb_outspell pxb365_scroll = pxb_outscroll pxb365_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~366~ scroll = ~~ symbol = ~WIZARD_EMOTION_COURAGE~ RET pxb366_check = pxb_check pxb366_spell = pxb_outspell pxb366_scroll = pxb_outscroll pxb366_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~367~ scroll = ~~ symbol = ~WIZARD_EMOTION_HOPE~ RET pxb367_check = pxb_check pxb367_spell = pxb_outspell pxb367_scroll = pxb_outscroll pxb367_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~368~ scroll = ~~ symbol = ~WIZARD_EMOTION_FEAR~ RET pxb368_check = pxb_check pxb368_spell = pxb_outspell pxb368_scroll = pxb_outscroll pxb368_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~369~ scroll = ~~ symbol = ~WIZARD_MORDENKAINENS_FORCE_MISSILES~ RET pxb369_check = pxb_check pxb369_spell = pxb_outspell pxb369_scroll = pxb_outscroll pxb369_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~370~ scroll = ~~ symbol = ~WIZARD_SHOUT~ RET pxb370_check = pxb_check pxb370_spell = pxb_outspell pxb370_scroll = pxb_outscroll pxb370_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~371~ scroll = ~~ symbol = ~WIZARD_VITRIOLIC_SPHERE~ RET pxb371_check = pxb_check pxb371_spell = pxb_outspell pxb371_scroll = pxb_outscroll pxb371_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~372~ scroll = ~~ symbol = ~WIZARD_SHADOW_MONSTERS~ RET pxb372_check = pxb_check pxb372_spell = pxb_outspell pxb372_scroll = pxb_outscroll pxb372_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~373~ scroll = ~~ symbol = ~WIZARD_SHROUD_OF_FLAME~ RET pxb373_check = pxb_check pxb373_spell = pxb_outspell pxb373_scroll = pxb_outscroll pxb373_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~374~ scroll = ~~ symbol = ~WIZARD_SUMMON_SHADOW~ RET pxb374_check = pxb_check pxb374_spell = pxb_outspell pxb374_scroll = pxb_outscroll pxb374_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~375~ scroll = ~~ symbol = ~WIZARD_CONJURE_LESSER_WATER_ELEMENTAL~ RET pxb375_check = pxb_check pxb375_spell = pxb_outspell pxb375_scroll = pxb_outscroll pxb375_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~376~ scroll = ~~ symbol = ~WIZARD_DEMI_SHADOW_MONSTERS~ RET pxb376_check = pxb_check pxb376_spell = pxb_outspell pxb376_scroll = pxb_outscroll pxb376_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~377~ scroll = ~~ symbol = ~WIZARD_OTILUKES_FREEZING_SPHERE~ RET pxb377_check = pxb_check pxb377_spell = pxb_outspell pxb377_scroll = pxb_outscroll pxb377_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~378~ scroll = ~~ symbol = ~WIZARD_DARTS_OF_BONE~ RET pxb378_check = pxb_check pxb378_spell = pxb_outspell pxb378_scroll = pxb_outscroll pxb378_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~379~ scroll = ~~ symbol = ~WIZARD_SOUL_EATER~ RET pxb379_check = pxb_check pxb379_spell = pxb_outspell pxb379_scroll = pxb_outscroll pxb379_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~380~ scroll = ~~ symbol = ~WIZARD_TROLLISH_FORTITUDE~ RET pxb380_check = pxb_check pxb380_spell = pxb_outspell pxb380_scroll = pxb_outscroll pxb380_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~381~ scroll = ~~ symbol = ~WIZARD_ANTIMAGIC_SHELL~ RET pxb381_check = pxb_check pxb381_spell = pxb_outspell pxb381_scroll = pxb_outscroll pxb381_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~382~ scroll = ~~ symbol = ~WIZARD_LICH_TOUCH~ RET pxb382_check = pxb_check pxb382_spell = pxb_outspell pxb382_scroll = pxb_outscroll pxb382_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~383~ scroll = ~~ symbol = ~WIZARD_SHADES~ RET pxb383_check = pxb_check pxb383_spell = pxb_outspell pxb383_scroll = pxb_outscroll pxb383_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~384~ scroll = ~~ symbol = ~WIZARD_CONJURE_WATER_ELEMENTAL~ RET pxb384_check = pxb_check pxb384_spell = pxb_outspell pxb384_scroll = pxb_outscroll pxb384_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~385~ scroll = ~~ symbol = ~WIZARD_ACID_STORM~ RET pxb385_check = pxb_check pxb385_spell = pxb_outspell pxb385_scroll = pxb_outscroll pxb385_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~386~ scroll = ~~ symbol = ~WIZARD_SUFFOCATE~ RET pxb386_check = pxb_check pxb386_spell = pxb_outspell pxb386_scroll = pxb_outscroll pxb386_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~387~ scroll = ~~ symbol = ~WIZARD_MONSTER_SUMMONING_5~ RET pxb387_check = pxb_check pxb387_spell = pxb_outspell pxb387_scroll = pxb_outscroll pxb387_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~388~ scroll = ~~ symbol = ~WIZARD_MORDENKAINENS_SWORD_IWD~ RET pxb388_check = pxb_check pxb388_spell = pxb_outspell pxb388_scroll = pxb_outscroll pxb388_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~389~ scroll = ~~ symbol = ~WIZARD_MALAVONS_RAGE~ RET pxb389_check = pxb_check pxb389_spell = pxb_outspell pxb389_scroll = pxb_outscroll pxb389_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~390~ scroll = ~~ symbol = ~WIZARD_SEVEN_EYES~ RET pxb390_check = pxb_check pxb390_spell = pxb_outspell pxb390_scroll = pxb_outscroll pxb390_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~391~ scroll = ~~ symbol = ~WIZARD_MIND_BLANK~ RET pxb391_check = pxb_check pxb391_spell = pxb_outspell pxb391_scroll = pxb_outscroll pxb391_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~392~ scroll = ~~ symbol = ~WIZARD_GREAT_SHOUT~ RET pxb392_check = pxb_check pxb392_spell = pxb_outspell pxb392_scroll = pxb_outscroll pxb392_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~393~ scroll = ~~ symbol = ~WIZARD_IRON_BODY~ RET pxb393_check = pxb_check pxb393_spell = pxb_outspell pxb393_scroll = pxb_outscroll pxb393_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~394~ scroll = ~~ symbol = ~WIZARD_MONSTER_SUMMONING_6~ RET pxb394_check = pxb_check pxb394_spell = pxb_outspell pxb394_scroll = pxb_outscroll pxb394_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~395~ scroll = ~~ symbol = ~WIZARD_MONSTER_SUMMONING_7~ RET pxb395_check = pxb_check pxb395_spell = pxb_outspell pxb395_scroll = pxb_outscroll pxb395_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~396~ scroll = ~~ symbol = ~WIZARD_BARRIER~ RET pxb396_check = pxb_check pxb396_spell = pxb_outspell pxb396_scroll = pxb_outscroll pxb396_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~397~ scroll = ~~ symbol = ~WIZARD_FROST_FINGERS~ RET pxb397_check = pxb_check pxb397_spell = pxb_outspell pxb397_scroll = pxb_outscroll pxb397_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~398~ scroll = ~~ symbol = ~WIZARD_SPARK_SHOWER~ RET pxb398_check = pxb_check pxb398_spell = pxb_outspell pxb398_scroll = pxb_outscroll pxb398_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~399~ scroll = ~~ symbol = ~WIZARD_SEEKING~ RET pxb399_check = pxb_check pxb399_spell = pxb_outspell pxb399_scroll = pxb_outscroll pxb399_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~400~ scroll = ~~ symbol = ~WIZARD_SUMMON_CATS~ RET pxb400_check = pxb_check pxb400_spell = pxb_outspell pxb400_scroll = pxb_outscroll pxb400_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~401~ scroll = ~~ symbol = ~WIZARD_THREESTONES~ RET pxb401_check = pxb_check pxb401_spell = pxb_outspell pxb401_scroll = pxb_outscroll pxb401_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~402~ scroll = ~~ symbol = ~WIZARD_IMPROVED_MAGIC_MISSILE~ RET pxb402_check = pxb_check pxb402_spell = pxb_outspell pxb402_scroll = pxb_outscroll pxb402_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~403~ scroll = ~~ symbol = ~WIZARD_HEROISM~ RET pxb403_check = pxb_check pxb403_spell = pxb_outspell pxb403_scroll = pxb_outscroll pxb403_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~404~ scroll = ~~ symbol = ~WIZARD_BLINK~ RET pxb404_check = pxb_check pxb404_spell = pxb_outspell pxb404_scroll = pxb_outscroll pxb404_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~405~ scroll = ~~ symbol = ~WIZARD_SCINTILLATING_SPHERE~ RET pxb405_check = pxb_check pxb405_spell = pxb_outspell pxb405_scroll = pxb_outscroll pxb405_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~406~ scroll = ~~ symbol = ~WIZARD_MINOR_MALISON~ RET pxb406_check = pxb_check pxb406_spell = pxb_outspell pxb406_scroll = pxb_outscroll pxb406_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~407~ scroll = ~~ symbol = ~WIZARD_GUST_OF_WIND~ RET pxb407_check = pxb_check pxb407_spell = pxb_outspell pxb407_scroll = pxb_outscroll pxb407_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~408~ scroll = ~~ symbol = ~WIZARD_ALACRITY~ RET pxb408_check = pxb_check pxb408_spell = pxb_outspell pxb408_scroll = pxb_outscroll pxb408_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~409~ scroll = ~~ symbol = ~WIZARD_BALL_LIGHTNING~ RET pxb409_check = pxb_check pxb409_spell = pxb_outspell pxb409_scroll = pxb_outscroll pxb409_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~410~ scroll = ~~ symbol = ~WIZARD_IRON_MAIDEN~ RET pxb410_check = pxb_check pxb410_spell = pxb_outspell pxb410_scroll = pxb_outscroll pxb410_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~411~ scroll = ~~ symbol = ~WIZARD_SLUMBER~ RET pxb411_check = pxb_check pxb411_spell = pxb_outspell pxb411_scroll = pxb_outscroll pxb411_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~412~ scroll = ~~ symbol = ~WIZARD_RARYS_MNEMONIC_ENHANCER~ RET pxb412_check = pxb_check pxb412_spell = pxb_outspell pxb412_scroll = pxb_outscroll pxb412_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~413~ scroll = ~~ symbol = ~WIZARD_EVARDS_BLACK_TENTACLES~ RET pxb413_check = pxb_check pxb413_spell = pxb_outspell pxb413_scroll = pxb_outscroll pxb413_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~414~ scroll = ~~ symbol = ~WIZARD_SUPERHEROISM~ RET pxb414_check = pxb_check pxb414_spell = pxb_outspell pxb414_scroll = pxb_outscroll pxb414_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~415~ scroll = ~~ symbol = ~WIZARD_SPELL_MATRIX~ RET pxb415_check = pxb_check pxb415_spell = pxb_outspell pxb415_scroll = pxb_outscroll pxb415_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~416~ scroll = ~~ symbol = ~WIZARD_RAMAZITHS_SLIME_SUMMONS~ RET pxb416_check = pxb_check pxb416_spell = pxb_outspell pxb416_scroll = pxb_outscroll pxb416_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~417~ scroll = ~~ symbol = ~WIZARD_SNILLOCS_MAJOR_MISSILE~ RET pxb417_check = pxb_check pxb417_spell = pxb_outspell pxb417_scroll = pxb_outscroll pxb417_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~418~ scroll = ~~ symbol = ~WIZARD_PRESPERS_MOONBOW~ RET pxb418_check = pxb_check pxb418_spell = pxb_outspell pxb418_scroll = pxb_outscroll pxb418_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~419~ scroll = ~~ symbol = ~WIZARD_MORDENKAINENS_LUCUBRATION~ RET pxb419_check = pxb_check pxb419_spell = pxb_outspell pxb419_scroll = pxb_outscroll pxb419_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~420~ scroll = ~~ symbol = ~WIZARD_MIRAGE_ARCANA~ RET pxb420_check = pxb_check pxb420_spell = pxb_outspell pxb420_scroll = pxb_outscroll pxb420_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~421~ scroll = ~~ symbol = ~WIZARD_SUMMON_DAO~ RET pxb421_check = pxb_check pxb421_spell = pxb_outspell pxb421_scroll = pxb_outscroll pxb421_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~422~ scroll = ~~ symbol = ~WIZARD_SUMMON_MARID~ RET pxb422_check = pxb_check pxb422_spell = pxb_outspell pxb422_scroll = pxb_outscroll pxb422_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~423~ scroll = ~~ symbol = ~WIZARD_FAERIE_SWORD~ RET pxb423_check = pxb_check pxb423_spell = pxb_outspell pxb423_scroll = pxb_outscroll pxb423_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~424~ scroll = ~~ symbol = ~WIZARD_DOOM_LEGION~ RET pxb424_check = pxb_check pxb424_spell = pxb_outspell pxb424_scroll = pxb_outscroll pxb424_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~425~ scroll = ~~ symbol = ~WIZARD_MAGNIFICENT_MANSION~ RET pxb425_check = pxb_check pxb425_spell = pxb_outspell pxb425_scroll = pxb_outscroll pxb425_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~426~ scroll = ~~ symbol = ~WIZARD_STYGIAN_ICE_STORM~ RET pxb426_check = pxb_check pxb426_spell = pxb_outspell pxb426_scroll = pxb_outscroll pxb426_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~427~ scroll = ~~ symbol = ~WIZARD_MAJOR_GLOBE_OF_INVULNERABILITY~ RET pxb427_check = pxb_check pxb427_spell = pxb_outspell pxb427_scroll = pxb_outscroll pxb427_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~428~ scroll = ~~ symbol = ~WIZARD_POLAR_RAY~ RET pxb428_check = pxb_check pxb428_spell = pxb_outspell pxb428_scroll = pxb_outscroll pxb428_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~429~ scroll = ~~ symbol = ~WIZARD_MASS_CHARM~ RET pxb429_check = pxb_check pxb429_spell = pxb_outspell pxb429_scroll = pxb_outscroll pxb429_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~430~ scroll = ~~ symbol = ~WIZARD_SHOOTING_STARS~ RET pxb430_check = pxb_check pxb430_spell = pxb_outspell pxb430_scroll = pxb_outscroll pxb430_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~431~ scroll = ~~ symbol = ~WIZARD_DEVASTATE~ RET pxb431_check = pxb_check pxb431_spell = pxb_outspell pxb431_scroll = pxb_outscroll pxb431_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~432~ scroll = ~~ symbol = ~WIZARD_LIGHTNING_RING~ RET pxb432_check = pxb_check pxb432_spell = pxb_outspell pxb432_scroll = pxb_outscroll pxb432_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~433~ scroll = ~~ symbol = ~WIZARD_AVISSARS_FLAMING_WEAPON~ RET pxb433_check = pxb_check pxb433_spell = pxb_outspell pxb433_scroll = pxb_outscroll pxb433_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~434~ scroll = ~~ symbol = ~WIZARD_WEIRD~ RET pxb434_check = pxb_check pxb434_spell = pxb_outspell pxb434_scroll = pxb_outscroll pxb434_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~435~ scroll = ~~ symbol = ~WIZARD_FORESIGHT~ RET pxb435_check = pxb_check pxb435_spell = pxb_outspell pxb435_scroll = pxb_outscroll pxb435_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~436~ scroll = ~~ symbol = ~WIZARD_KHELBENS_DWEOMERDOOM~ RET pxb436_check = pxb_check pxb436_spell = pxb_outspell pxb436_scroll = pxb_outscroll pxb436_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~437~ scroll = ~MEWI151X~ symbol = ~~ RET pxb437_check = pxb_check pxb437_spell = pxb_outspell pxb437_scroll = pxb_outscroll pxb437_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~438~ scroll = ~MEWI152X~ symbol = ~~ RET pxb438_check = pxb_check pxb438_spell = pxb_outspell pxb438_scroll = pxb_outscroll pxb438_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~439~ scroll = ~MEWI154X~ symbol = ~~ RET pxb439_check = pxb_check pxb439_spell = pxb_outspell pxb439_scroll = pxb_outscroll pxb439_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~440~ scroll = ~MEWI155X~ symbol = ~~ RET pxb440_check = pxb_check pxb440_spell = pxb_outspell pxb440_scroll = pxb_outscroll pxb440_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~441~ scroll = ~MEWI156X~ symbol = ~~ RET pxb441_check = pxb_check pxb441_spell = pxb_outspell pxb441_scroll = pxb_outscroll pxb441_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~442~ scroll = ~MEWI157X~ symbol = ~~ RET pxb442_check = pxb_check pxb442_spell = pxb_outspell pxb442_scroll = pxb_outscroll pxb442_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~443~ scroll = ~MEWI158X~ symbol = ~~ RET pxb443_check = pxb_check pxb443_spell = pxb_outspell pxb443_scroll = pxb_outscroll pxb443_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~444~ scroll = ~MEWI159X~ symbol = ~~ RET pxb444_check = pxb_check pxb444_spell = pxb_outspell pxb444_scroll = pxb_outscroll pxb444_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~445~ scroll = ~MEWI160X~ symbol = ~~ RET pxb445_check = pxb_check pxb445_spell = pxb_outspell pxb445_scroll = pxb_outscroll pxb445_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~446~ scroll = ~MEWI162X~ symbol = ~~ RET pxb446_check = pxb_check pxb446_spell = pxb_outspell pxb446_scroll = pxb_outscroll pxb446_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~447~ scroll = ~MEWI163X~ symbol = ~~ RET pxb447_check = pxb_check pxb447_spell = pxb_outspell pxb447_scroll = pxb_outscroll pxb447_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~448~ scroll = ~MEWI251X~ symbol = ~~ RET pxb448_check = pxb_check pxb448_spell = pxb_outspell pxb448_scroll = pxb_outscroll pxb448_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~449~ scroll = ~MEWI252X~ symbol = ~~ RET pxb449_check = pxb_check pxb449_spell = pxb_outspell pxb449_scroll = pxb_outscroll pxb449_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~450~ scroll = ~MEWI253X~ symbol = ~~ RET pxb450_check = pxb_check pxb450_spell = pxb_outspell pxb450_scroll = pxb_outscroll pxb450_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~451~ scroll = ~MEWI254X~ symbol = ~~ RET pxb451_check = pxb_check pxb451_spell = pxb_outspell pxb451_scroll = pxb_outscroll pxb451_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~452~ scroll = ~MEWI255X~ symbol = ~~ RET pxb452_check = pxb_check pxb452_spell = pxb_outspell pxb452_scroll = pxb_outscroll pxb452_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~453~ scroll = ~MEWI256X~ symbol = ~~ RET pxb453_check = pxb_check pxb453_spell = pxb_outspell pxb453_scroll = pxb_outscroll pxb453_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~454~ scroll = ~MEWI257X~ symbol = ~~ RET pxb454_check = pxb_check pxb454_spell = pxb_outspell pxb454_scroll = pxb_outscroll pxb454_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~455~ scroll = ~MEWI258X~ symbol = ~~ RET pxb455_check = pxb_check pxb455_spell = pxb_outspell pxb455_scroll = pxb_outscroll pxb455_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~456~ scroll = ~MEWI260X~ symbol = ~~ RET pxb456_check = pxb_check pxb456_spell = pxb_outspell pxb456_scroll = pxb_outscroll pxb456_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~457~ scroll = ~MEWI351X~ symbol = ~~ RET pxb457_check = pxb_check pxb457_spell = pxb_outspell pxb457_scroll = pxb_outscroll pxb457_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~458~ scroll = ~MEWI352X~ symbol = ~~ RET pxb458_check = pxb_check pxb458_spell = pxb_outspell pxb458_scroll = pxb_outscroll pxb458_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~459~ scroll = ~MEWI353X~ symbol = ~~ RET pxb459_check = pxb_check pxb459_spell = pxb_outspell pxb459_scroll = pxb_outscroll pxb459_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~460~ scroll = ~MEWI354X~ symbol = ~~ RET pxb460_check = pxb_check pxb460_spell = pxb_outspell pxb460_scroll = pxb_outscroll pxb460_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~461~ scroll = ~MEWI355X~ symbol = ~~ RET pxb461_check = pxb_check pxb461_spell = pxb_outspell pxb461_scroll = pxb_outscroll pxb461_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~462~ scroll = ~MEWI356X~ symbol = ~~ RET pxb462_check = pxb_check pxb462_spell = pxb_outspell pxb462_scroll = pxb_outscroll pxb462_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~463~ scroll = ~MEWI357X~ symbol = ~~ RET pxb463_check = pxb_check pxb463_spell = pxb_outspell pxb463_scroll = pxb_outscroll pxb463_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~464~ scroll = ~MEWI358X~ symbol = ~~ RET pxb464_check = pxb_check pxb464_spell = pxb_outspell pxb464_scroll = pxb_outscroll pxb464_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~465~ scroll = ~MEWI359X~ symbol = ~~ RET pxb465_check = pxb_check pxb465_spell = pxb_outspell pxb465_scroll = pxb_outscroll pxb465_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~466~ scroll = ~MEWI360X~ symbol = ~~ RET pxb466_check = pxb_check pxb466_spell = pxb_outspell pxb466_scroll = pxb_outscroll pxb466_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~467~ scroll = ~MEWI361X~ symbol = ~~ RET pxb467_check = pxb_check pxb467_spell = pxb_outspell pxb467_scroll = pxb_outscroll pxb467_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~468~ scroll = ~MEWI451X~ symbol = ~~ RET pxb468_check = pxb_check pxb468_spell = pxb_outspell pxb468_scroll = pxb_outscroll pxb468_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~469~ scroll = ~MEWI452X~ symbol = ~~ RET pxb469_check = pxb_check pxb469_spell = pxb_outspell pxb469_scroll = pxb_outscroll pxb469_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~470~ scroll = ~MEWI453X~ symbol = ~~ RET pxb470_check = pxb_check pxb470_spell = pxb_outspell pxb470_scroll = pxb_outscroll pxb470_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~471~ scroll = ~MEWI454X~ symbol = ~~ RET pxb471_check = pxb_check pxb471_spell = pxb_outspell pxb471_scroll = pxb_outscroll pxb471_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~472~ scroll = ~MEWI455X~ symbol = ~~ RET pxb472_check = pxb_check pxb472_spell = pxb_outspell pxb472_scroll = pxb_outscroll pxb472_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~473~ scroll = ~MEWI456X~ symbol = ~~ RET pxb473_check = pxb_check pxb473_spell = pxb_outspell pxb473_scroll = pxb_outscroll pxb473_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~474~ scroll = ~MEWI457X~ symbol = ~~ RET pxb474_check = pxb_check pxb474_spell = pxb_outspell pxb474_scroll = pxb_outscroll pxb474_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~475~ scroll = ~MEWI458X~ symbol = ~~ RET pxb475_check = pxb_check pxb475_spell = pxb_outspell pxb475_scroll = pxb_outscroll pxb475_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~476~ scroll = ~MEWI459X~ symbol = ~~ RET pxb476_check = pxb_check pxb476_spell = pxb_outspell pxb476_scroll = pxb_outscroll pxb476_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~477~ scroll = ~MEWI460X~ symbol = ~~ RET pxb477_check = pxb_check pxb477_spell = pxb_outspell pxb477_scroll = pxb_outscroll pxb477_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~478~ scroll = ~MEWI551X~ symbol = ~~ RET pxb478_check = pxb_check pxb478_spell = pxb_outspell pxb478_scroll = pxb_outscroll pxb478_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~479~ scroll = ~MEWI552X~ symbol = ~~ RET pxb479_check = pxb_check pxb479_spell = pxb_outspell pxb479_scroll = pxb_outscroll pxb479_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~480~ scroll = ~MEWI554X~ symbol = ~~ RET pxb480_check = pxb_check pxb480_spell = pxb_outspell pxb480_scroll = pxb_outscroll pxb480_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~481~ scroll = ~MEWI555X~ symbol = ~~ RET pxb481_check = pxb_check pxb481_spell = pxb_outspell pxb481_scroll = pxb_outscroll pxb481_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~482~ scroll = ~MEWI556X~ symbol = ~~ RET pxb482_check = pxb_check pxb482_spell = pxb_outspell pxb482_scroll = pxb_outscroll pxb482_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~483~ scroll = ~MEWI557X~ symbol = ~~ RET pxb483_check = pxb_check pxb483_spell = pxb_outspell pxb483_scroll = pxb_outscroll pxb483_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~484~ scroll = ~MEWI558X~ symbol = ~~ RET pxb484_check = pxb_check pxb484_spell = pxb_outspell pxb484_scroll = pxb_outscroll pxb484_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~485~ scroll = ~MEWI559X~ symbol = ~~ RET pxb485_check = pxb_check pxb485_spell = pxb_outspell pxb485_scroll = pxb_outscroll pxb485_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~486~ scroll = ~MEWI560X~ symbol = ~~ RET pxb486_check = pxb_check pxb486_spell = pxb_outspell pxb486_scroll = pxb_outscroll pxb486_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~487~ scroll = ~MEWI562X~ symbol = ~~ RET pxb487_check = pxb_check pxb487_spell = pxb_outspell pxb487_scroll = pxb_outscroll pxb487_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~488~ scroll = ~MEWI563X~ symbol = ~~ RET pxb488_check = pxb_check pxb488_spell = pxb_outspell pxb488_scroll = pxb_outscroll pxb488_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~489~ scroll = ~MEWI564X~ symbol = ~~ RET pxb489_check = pxb_check pxb489_spell = pxb_outspell pxb489_scroll = pxb_outscroll pxb489_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~490~ scroll = ~MEWI565X~ symbol = ~~ RET pxb490_check = pxb_check pxb490_spell = pxb_outspell pxb490_scroll = pxb_outscroll pxb490_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~491~ scroll = ~MEWI566X~ symbol = ~~ RET pxb491_check = pxb_check pxb491_spell = pxb_outspell pxb491_scroll = pxb_outscroll pxb491_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~492~ scroll = ~MEWI567X~ symbol = ~~ RET pxb492_check = pxb_check pxb492_spell = pxb_outspell pxb492_scroll = pxb_outscroll pxb492_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~493~ scroll = ~MEWI568X~ symbol = ~~ RET pxb493_check = pxb_check pxb493_spell = pxb_outspell pxb493_scroll = pxb_outscroll pxb493_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~494~ scroll = ~MEWI651X~ symbol = ~~ RET pxb494_check = pxb_check pxb494_spell = pxb_outspell pxb494_scroll = pxb_outscroll pxb494_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~495~ scroll = ~MEWI652X~ symbol = ~~ RET pxb495_check = pxb_check pxb495_spell = pxb_outspell pxb495_scroll = pxb_outscroll pxb495_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~496~ scroll = ~MEWI653X~ symbol = ~~ RET pxb496_check = pxb_check pxb496_spell = pxb_outspell pxb496_scroll = pxb_outscroll pxb496_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~497~ scroll = ~MEWI654X~ symbol = ~~ RET pxb497_check = pxb_check pxb497_spell = pxb_outspell pxb497_scroll = pxb_outscroll pxb497_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~498~ scroll = ~MEWI655X~ symbol = ~~ RET pxb498_check = pxb_check pxb498_spell = pxb_outspell pxb498_scroll = pxb_outscroll pxb498_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~499~ scroll = ~MEWI656X~ symbol = ~~ RET pxb499_check = pxb_check pxb499_spell = pxb_outspell pxb499_scroll = pxb_outscroll pxb499_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~500~ scroll = ~MEWI657X~ symbol = ~~ RET pxb500_check = pxb_check pxb500_spell = pxb_outspell pxb500_scroll = pxb_outscroll pxb500_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~501~ scroll = ~MEWI658X~ symbol = ~~ RET pxb501_check = pxb_check pxb501_spell = pxb_outspell pxb501_scroll = pxb_outscroll pxb501_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~502~ scroll = ~MEWI659X~ symbol = ~~ RET pxb502_check = pxb_check pxb502_spell = pxb_outspell pxb502_scroll = pxb_outscroll pxb502_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~503~ scroll = ~MEWI660X~ symbol = ~~ RET pxb503_check = pxb_check pxb503_spell = pxb_outspell pxb503_scroll = pxb_outscroll pxb503_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~504~ scroll = ~MEWI751X~ symbol = ~~ RET pxb504_check = pxb_check pxb504_spell = pxb_outspell pxb504_scroll = pxb_outscroll pxb504_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~505~ scroll = ~MEWI753X~ symbol = ~~ RET pxb505_check = pxb_check pxb505_spell = pxb_outspell pxb505_scroll = pxb_outscroll pxb505_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~506~ scroll = ~MEWI754X~ symbol = ~~ RET pxb506_check = pxb_check pxb506_spell = pxb_outspell pxb506_scroll = pxb_outscroll pxb506_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~507~ scroll = ~MEWI755X~ symbol = ~~ RET pxb507_check = pxb_check pxb507_spell = pxb_outspell pxb507_scroll = pxb_outscroll pxb507_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~508~ scroll = ~MEWI756X~ symbol = ~~ RET pxb508_check = pxb_check pxb508_spell = pxb_outspell pxb508_scroll = pxb_outscroll pxb508_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~509~ scroll = ~MEWI757X~ symbol = ~~ RET pxb509_check = pxb_check pxb509_spell = pxb_outspell pxb509_scroll = pxb_outscroll pxb509_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~510~ scroll = ~MEWI758X~ symbol = ~~ RET pxb510_check = pxb_check pxb510_spell = pxb_outspell pxb510_scroll = pxb_outscroll pxb510_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~511~ scroll = ~MEWI759X~ symbol = ~~ RET pxb511_check = pxb_check pxb511_spell = pxb_outspell pxb511_scroll = pxb_outscroll pxb511_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~512~ scroll = ~MEWI760X~ symbol = ~~ RET pxb512_check = pxb_check pxb512_spell = pxb_outspell pxb512_scroll = pxb_outscroll pxb512_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~513~ scroll = ~MEWI762X~ symbol = ~~ RET pxb513_check = pxb_check pxb513_spell = pxb_outspell pxb513_scroll = pxb_outscroll pxb513_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~514~ scroll = ~MEWI851X~ symbol = ~~ RET pxb514_check = pxb_check pxb514_spell = pxb_outspell pxb514_scroll = pxb_outscroll pxb514_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~515~ scroll = ~MEWI852X~ symbol = ~~ RET pxb515_check = pxb_check pxb515_spell = pxb_outspell pxb515_scroll = pxb_outscroll pxb515_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~516~ scroll = ~MEWI853X~ symbol = ~~ RET pxb516_check = pxb_check pxb516_spell = pxb_outspell pxb516_scroll = pxb_outscroll pxb516_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~517~ scroll = ~MEWI854X~ symbol = ~~ RET pxb517_check = pxb_check pxb517_spell = pxb_outspell pxb517_scroll = pxb_outscroll pxb517_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~518~ scroll = ~MEWI855X~ symbol = ~~ RET pxb518_check = pxb_check pxb518_spell = pxb_outspell pxb518_scroll = pxb_outscroll pxb518_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~519~ scroll = ~MEWI856X~ symbol = ~~ RET pxb519_check = pxb_check pxb519_spell = pxb_outspell pxb519_scroll = pxb_outscroll pxb519_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~520~ scroll = ~MEWI857X~ symbol = ~~ RET pxb520_check = pxb_check pxb520_spell = pxb_outspell pxb520_scroll = pxb_outscroll pxb520_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~521~ scroll = ~MEWI858X~ symbol = ~~ RET pxb521_check = pxb_check pxb521_spell = pxb_outspell pxb521_scroll = pxb_outscroll pxb521_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~522~ scroll = ~MEWI859X~ symbol = ~~ RET pxb522_check = pxb_check pxb522_spell = pxb_outspell pxb522_scroll = pxb_outscroll pxb522_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~523~ scroll = ~MEWI860X~ symbol = ~~ RET pxb523_check = pxb_check pxb523_spell = pxb_outspell pxb523_scroll = pxb_outscroll pxb523_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~524~ scroll = ~MEWI861X~ symbol = ~~ RET pxb524_check = pxb_check pxb524_spell = pxb_outspell pxb524_scroll = pxb_outscroll pxb524_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~525~ scroll = ~MEWI862X~ symbol = ~~ RET pxb525_check = pxb_check pxb525_spell = pxb_outspell pxb525_scroll = pxb_outscroll pxb525_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~526~ scroll = ~MEWI863X~ symbol = ~~ RET pxb526_check = pxb_check pxb526_spell = pxb_outspell pxb526_scroll = pxb_outscroll pxb526_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~527~ scroll = ~MEWI951X~ symbol = ~~ RET pxb527_check = pxb_check pxb527_spell = pxb_outspell pxb527_scroll = pxb_outscroll pxb527_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~528~ scroll = ~MEWI952X~ symbol = ~~ RET pxb528_check = pxb_check pxb528_spell = pxb_outspell pxb528_scroll = pxb_outscroll pxb528_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~529~ scroll = ~MEWI953X~ symbol = ~~ RET pxb529_check = pxb_check pxb529_spell = pxb_outspell pxb529_scroll = pxb_outscroll pxb529_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~530~ scroll = ~MEWI954X~ symbol = ~~ RET pxb530_check = pxb_check pxb530_spell = pxb_outspell pxb530_scroll = pxb_outscroll pxb530_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~531~ scroll = ~MEWI955X~ symbol = ~~ RET pxb531_check = pxb_check pxb531_spell = pxb_outspell pxb531_scroll = pxb_outscroll pxb531_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~532~ scroll = ~MEWI956X~ symbol = ~~ RET pxb532_check = pxb_check pxb532_spell = pxb_outspell pxb532_scroll = pxb_outscroll pxb532_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~533~ scroll = ~MEWI957X~ symbol = ~~ RET pxb533_check = pxb_check pxb533_spell = pxb_outspell pxb533_scroll = pxb_outscroll pxb533_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~534~ scroll = ~MEWI958X~ symbol = ~~ RET pxb534_check = pxb_check pxb534_spell = pxb_outspell pxb534_scroll = pxb_outscroll pxb534_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~535~ scroll = ~MEWI959X~ symbol = ~~ RET pxb535_check = pxb_check pxb535_spell = pxb_outspell pxb535_scroll = pxb_outscroll pxb535_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~536~ scroll = ~MEWI960X~ symbol = ~~ RET pxb536_check = pxb_check pxb536_spell = pxb_outspell pxb536_scroll = pxb_outscroll pxb536_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~537~ scroll = ~MEWI961X~ symbol = ~~ RET pxb537_check = pxb_check pxb537_spell = pxb_outspell pxb537_scroll = pxb_outscroll pxb537_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~538~ scroll = ~MEWI962X~ symbol = ~~ RET pxb538_check = pxb_check pxb538_spell = pxb_outspell pxb538_scroll = pxb_outscroll pxb538_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~539~ scroll = ~MEWI963X~ symbol = ~~ RET pxb539_check = pxb_check pxb539_spell = pxb_outspell pxb539_scroll = pxb_outscroll pxb539_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~540~ scroll = ~MEWI964X~ symbol = ~~ RET pxb540_check = pxb_check pxb540_spell = pxb_outspell pxb540_scroll = pxb_outscroll pxb540_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~541~ scroll = ~MEWI965X~ symbol = ~~ RET pxb541_check = pxb_check pxb541_spell = pxb_outspell pxb541_scroll = pxb_outscroll pxb541_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~542~ scroll = ~MEWI966X~ symbol = ~~ RET pxb542_check = pxb_check pxb542_spell = pxb_outspell pxb542_scroll = pxb_outscroll pxb542_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~543~ scroll = ~MEWI967X~ symbol = ~~ RET pxb543_check = pxb_check pxb543_spell = pxb_outspell pxb543_scroll = pxb_outscroll pxb543_cost = pxb_outcost END
+LAF PXB_SCROLL STR_VAR id = ~544~ scroll = ~MEWI968X~ symbol = ~~ RET pxb544_check = pxb_check pxb544_spell = pxb_outspell pxb544_scroll = pxb_outscroll pxb544_cost = pxb_outcost END
+
+// Vanilla scroll alternatives: enumerate SCRL resources from the game's BIFF index.
+// No GLOB: newly introduced mod resources in override are not enumerated.
+ACTION_DEFINE_ASSOCIATIVE_ARRAY pxb_vanilla BEGIN END
+COPY_EXISTING_REGEXP ~^scrl.*\.itm$~ ~override~
+  READ_SHORT 0x1c pxb_item_type
+  PATCH_IF pxb_item_type = 11 BEGIN
+    READ_LONG 0x6a pxb_fx
+    SPRINT pxb_vspell ~~
+    FOR (pxb_e = pxb_fx; pxb_e + 0x30 <= SOURCE_SIZE; pxb_e += 0x30) BEGIN
+      READ_SHORT pxb_e pxb_op
+      PATCH_IF pxb_op = 147 BEGIN
+        READ_ASCII (pxb_e + 0x14) pxb_vspell (8) NULL
+      END
+    END
+    PATCH_IF NOT (~%pxb_vspell%~ STRING_EQUAL ~~) BEGIN
+      SPRINT $pxb_vanilla(~%SOURCE_RES%~) ~%pxb_vspell%~
+    END
+  END
+BUT_ONLY
+
+OUTER_SPRINT pxb_vanilla_choices ~~
+DEFINE_ACTION_FUNCTION PXB_VANILLA_CHOICES
+  INT_VAR pxb_price = 0
+  STR_VAR pxb_wanted = "" reply = ""
+  RET pxb_vanilla_choices
+BEGIN
+  ACTION_IF pxb_price > 0 THEN BEGIN
+    ACTION_CLEAR_ARRAY pxb_matches
+    OUTER_SET pxb_index = 0
+    ACTION_PHP_EACH pxb_vanilla AS pxb_scroll => pxb_spell BEGIN
+      ACTION_IF (~%pxb_spell%~ STRING_EQUAL_CASE ~%pxb_wanted%~) THEN BEGIN
+        OUTER_SET $pxb_matches(~%pxb_scroll%~) = pxb_index
+        OUTER_SET pxb_index += 1
+      END
+    END
+    OUTER_SET pxb_min = pxb_price - 1
+    ACTION_PHP_EACH pxb_matches AS pxb_s1 => pxb_i1 BEGIN
+      ACTION_PHP_EACH pxb_matches AS pxb_s2 => pxb_i2 BEGIN
+        ACTION_IF pxb_i1 <= pxb_i2 THEN BEGIN
+          ACTION_PHP_EACH pxb_matches AS pxb_s3 => pxb_i3 BEGIN
+            ACTION_IF pxb_i2 <= pxb_i3 THEN BEGIN
+              OUTER_SPRINT pxb_count ~~
+              ACTION_IF pxb_i1 = pxb_i3 THEN BEGIN
+                OUTER_SPRINT pxb_count ~NumItemsPartyGT("%pxb_s1%",2)~
+              END ELSE ACTION_IF pxb_i1 = pxb_i2 THEN BEGIN
+                OUTER_SPRINT pxb_count ~NumItemsPartyGT("%pxb_s1%",1) NumItemsPartyGT("%pxb_s3%",0)~
+              END ELSE ACTION_IF pxb_i2 = pxb_i3 THEN BEGIN
+                OUTER_SPRINT pxb_count ~NumItemsPartyGT("%pxb_s1%",0) NumItemsPartyGT("%pxb_s2%",1)~
+              END ELSE BEGIN
+                OUTER_SPRINT pxb_count ~NumItemsPartyGT("%pxb_s1%",0) NumItemsPartyGT("%pxb_s2%",0) NumItemsPartyGT("%pxb_s3%",0)~
+              END
+              OUTER_SPRINT pxb_vanilla_choices ~~~~~%pxb_vanilla_choices%
+  IF ~Class(LastTalkedToBy,SORCERER) PartyGoldGT(%pxb_min%) XPGT(LastTalkedToBy,%pxb_min%) %pxb_count% NextTriggerObject(LastTalkedToBy) !HaveKnownSpellRES("%pxb_wanted%")~ THEN REPLY @%reply%
+    DO ~TakePartyGold(%pxb_price%) DestroyGold(%pxb_price%)
+        TakePartyItemNum("%pxb_s1%",1) DestroyItem("%pxb_s1%")
+        TakePartyItemNum("%pxb_s2%",1) DestroyItem("%pxb_s2%")
+        TakePartyItemNum("%pxb_s3%",1) DestroyItem("%pxb_s3%")
+        AddXPObject(LastTalkedToBy,-%pxb_price%)
+        ActionOverride(LastTalkedToBy,AddSpecialAbility("%pxb_wanted%"))
+        CreateVisualEffectObject("SPCONTIN",LastTalkedToBy)~ GOTO Autrechose
+~~~~~
+            END
+          END
+        END
+      END
+    END
+  END
+END
+
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb0_cost STR_VAR pxb_wanted = EVAL ~%pxb0_spell%~ reply = ~9101~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb1_cost STR_VAR pxb_wanted = EVAL ~%pxb1_spell%~ reply = ~9102~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb2_cost STR_VAR pxb_wanted = EVAL ~%pxb2_spell%~ reply = ~9103~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb3_cost STR_VAR pxb_wanted = EVAL ~%pxb3_spell%~ reply = ~9104~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb4_cost STR_VAR pxb_wanted = EVAL ~%pxb4_spell%~ reply = ~9105~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb5_cost STR_VAR pxb_wanted = EVAL ~%pxb5_spell%~ reply = ~9106~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb6_cost STR_VAR pxb_wanted = EVAL ~%pxb6_spell%~ reply = ~9107~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb7_cost STR_VAR pxb_wanted = EVAL ~%pxb7_spell%~ reply = ~9108~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb8_cost STR_VAR pxb_wanted = EVAL ~%pxb8_spell%~ reply = ~9111~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb9_cost STR_VAR pxb_wanted = EVAL ~%pxb9_spell%~ reply = ~9112~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb10_cost STR_VAR pxb_wanted = EVAL ~%pxb10_spell%~ reply = ~9113~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb11_cost STR_VAR pxb_wanted = EVAL ~%pxb11_spell%~ reply = ~9114~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb12_cost STR_VAR pxb_wanted = EVAL ~%pxb12_spell%~ reply = ~9115~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb13_cost STR_VAR pxb_wanted = EVAL ~%pxb13_spell%~ reply = ~9116~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb14_cost STR_VAR pxb_wanted = EVAL ~%pxb14_spell%~ reply = ~9117~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb15_cost STR_VAR pxb_wanted = EVAL ~%pxb15_spell%~ reply = ~9118~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb16_cost STR_VAR pxb_wanted = EVAL ~%pxb16_spell%~ reply = ~9119~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb17_cost STR_VAR pxb_wanted = EVAL ~%pxb17_spell%~ reply = ~9120~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb18_cost STR_VAR pxb_wanted = EVAL ~%pxb18_spell%~ reply = ~9123~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb19_cost STR_VAR pxb_wanted = EVAL ~%pxb19_spell%~ reply = ~9125~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb20_cost STR_VAR pxb_wanted = EVAL ~%pxb20_spell%~ reply = ~9201~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb21_cost STR_VAR pxb_wanted = EVAL ~%pxb21_spell%~ reply = ~9202~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb22_cost STR_VAR pxb_wanted = EVAL ~%pxb22_spell%~ reply = ~9203~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb23_cost STR_VAR pxb_wanted = EVAL ~%pxb23_spell%~ reply = ~9205~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb24_cost STR_VAR pxb_wanted = EVAL ~%pxb24_spell%~ reply = ~9206~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb25_cost STR_VAR pxb_wanted = EVAL ~%pxb25_spell%~ reply = ~9207~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb26_cost STR_VAR pxb_wanted = EVAL ~%pxb26_spell%~ reply = ~9208~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb27_cost STR_VAR pxb_wanted = EVAL ~%pxb27_spell%~ reply = ~9209~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb28_cost STR_VAR pxb_wanted = EVAL ~%pxb28_spell%~ reply = ~9210~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb29_cost STR_VAR pxb_wanted = EVAL ~%pxb29_spell%~ reply = ~9211~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb30_cost STR_VAR pxb_wanted = EVAL ~%pxb30_spell%~ reply = ~9212~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb31_cost STR_VAR pxb_wanted = EVAL ~%pxb31_spell%~ reply = ~9213~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb32_cost STR_VAR pxb_wanted = EVAL ~%pxb32_spell%~ reply = ~9214~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb33_cost STR_VAR pxb_wanted = EVAL ~%pxb33_spell%~ reply = ~9215~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb34_cost STR_VAR pxb_wanted = EVAL ~%pxb34_spell%~ reply = ~9217~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb35_cost STR_VAR pxb_wanted = EVAL ~%pxb35_spell%~ reply = ~9218~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb36_cost STR_VAR pxb_wanted = EVAL ~%pxb36_spell%~ reply = ~9219~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb37_cost STR_VAR pxb_wanted = EVAL ~%pxb37_spell%~ reply = ~9220~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb38_cost STR_VAR pxb_wanted = EVAL ~%pxb38_spell%~ reply = ~9221~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb40_cost STR_VAR pxb_wanted = EVAL ~%pxb40_spell%~ reply = ~9223~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb41_cost STR_VAR pxb_wanted = EVAL ~%pxb41_spell%~ reply = ~9224~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb42_cost STR_VAR pxb_wanted = EVAL ~%pxb42_spell%~ reply = ~9301~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb43_cost STR_VAR pxb_wanted = EVAL ~%pxb43_spell%~ reply = ~9302~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb44_cost STR_VAR pxb_wanted = EVAL ~%pxb44_spell%~ reply = ~9303~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb45_cost STR_VAR pxb_wanted = EVAL ~%pxb45_spell%~ reply = ~9304~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb46_cost STR_VAR pxb_wanted = EVAL ~%pxb46_spell%~ reply = ~9305~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb47_cost STR_VAR pxb_wanted = EVAL ~%pxb47_spell%~ reply = ~9306~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb48_cost STR_VAR pxb_wanted = EVAL ~%pxb48_spell%~ reply = ~9307~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb49_cost STR_VAR pxb_wanted = EVAL ~%pxb49_spell%~ reply = ~9308~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb50_cost STR_VAR pxb_wanted = EVAL ~%pxb50_spell%~ reply = ~9309~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb51_cost STR_VAR pxb_wanted = EVAL ~%pxb51_spell%~ reply = ~9310~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb52_cost STR_VAR pxb_wanted = EVAL ~%pxb52_spell%~ reply = ~9311~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb53_cost STR_VAR pxb_wanted = EVAL ~%pxb53_spell%~ reply = ~9312~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb54_cost STR_VAR pxb_wanted = EVAL ~%pxb54_spell%~ reply = ~9313~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb55_cost STR_VAR pxb_wanted = EVAL ~%pxb55_spell%~ reply = ~9314~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb56_cost STR_VAR pxb_wanted = EVAL ~%pxb56_spell%~ reply = ~9315~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb57_cost STR_VAR pxb_wanted = EVAL ~%pxb57_spell%~ reply = ~9316~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb58_cost STR_VAR pxb_wanted = EVAL ~%pxb58_spell%~ reply = ~9317~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb59_cost STR_VAR pxb_wanted = EVAL ~%pxb59_spell%~ reply = ~9318~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb60_cost STR_VAR pxb_wanted = EVAL ~%pxb60_spell%~ reply = ~9319~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb61_cost STR_VAR pxb_wanted = EVAL ~%pxb61_spell%~ reply = ~9320~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb62_cost STR_VAR pxb_wanted = EVAL ~%pxb62_spell%~ reply = ~9321~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb63_cost STR_VAR pxb_wanted = EVAL ~%pxb63_spell%~ reply = ~9322~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb64_cost STR_VAR pxb_wanted = EVAL ~%pxb64_spell%~ reply = ~9324~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb65_cost STR_VAR pxb_wanted = EVAL ~%pxb65_spell%~ reply = ~9325~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb66_cost STR_VAR pxb_wanted = EVAL ~%pxb66_spell%~ reply = ~9326~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb67_cost STR_VAR pxb_wanted = EVAL ~%pxb67_spell%~ reply = ~9401~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb68_cost STR_VAR pxb_wanted = EVAL ~%pxb68_spell%~ reply = ~9403~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb69_cost STR_VAR pxb_wanted = EVAL ~%pxb69_spell%~ reply = ~9404~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb70_cost STR_VAR pxb_wanted = EVAL ~%pxb70_spell%~ reply = ~9405~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb71_cost STR_VAR pxb_wanted = EVAL ~%pxb71_spell%~ reply = ~9406~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb72_cost STR_VAR pxb_wanted = EVAL ~%pxb72_spell%~ reply = ~9407~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb73_cost STR_VAR pxb_wanted = EVAL ~%pxb73_spell%~ reply = ~9408~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb74_cost STR_VAR pxb_wanted = EVAL ~%pxb74_spell%~ reply = ~9409~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb75_cost STR_VAR pxb_wanted = EVAL ~%pxb75_spell%~ reply = ~9410~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb76_cost STR_VAR pxb_wanted = EVAL ~%pxb76_spell%~ reply = ~9411~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb77_cost STR_VAR pxb_wanted = EVAL ~%pxb77_spell%~ reply = ~9412~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb78_cost STR_VAR pxb_wanted = EVAL ~%pxb78_spell%~ reply = ~9413~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb79_cost STR_VAR pxb_wanted = EVAL ~%pxb79_spell%~ reply = ~9414~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb80_cost STR_VAR pxb_wanted = EVAL ~%pxb80_spell%~ reply = ~9415~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb81_cost STR_VAR pxb_wanted = EVAL ~%pxb81_spell%~ reply = ~9416~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb82_cost STR_VAR pxb_wanted = EVAL ~%pxb82_spell%~ reply = ~9417~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb83_cost STR_VAR pxb_wanted = EVAL ~%pxb83_spell%~ reply = ~9418~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb84_cost STR_VAR pxb_wanted = EVAL ~%pxb84_spell%~ reply = ~9419~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb85_cost STR_VAR pxb_wanted = EVAL ~%pxb85_spell%~ reply = ~9420~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb86_cost STR_VAR pxb_wanted = EVAL ~%pxb86_spell%~ reply = ~9421~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb87_cost STR_VAR pxb_wanted = EVAL ~%pxb87_spell%~ reply = ~9423~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb88_cost STR_VAR pxb_wanted = EVAL ~%pxb88_spell%~ reply = ~9424~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb90_cost STR_VAR pxb_wanted = EVAL ~%pxb90_spell%~ reply = ~9425~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb91_cost STR_VAR pxb_wanted = EVAL ~%pxb91_spell%~ reply = ~9501~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb92_cost STR_VAR pxb_wanted = EVAL ~%pxb92_spell%~ reply = ~9502~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb93_cost STR_VAR pxb_wanted = EVAL ~%pxb93_spell%~ reply = ~9503~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb94_cost STR_VAR pxb_wanted = EVAL ~%pxb94_spell%~ reply = ~9504~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb95_cost STR_VAR pxb_wanted = EVAL ~%pxb95_spell%~ reply = ~9505~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb96_cost STR_VAR pxb_wanted = EVAL ~%pxb96_spell%~ reply = ~9506~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb97_cost STR_VAR pxb_wanted = EVAL ~%pxb97_spell%~ reply = ~9507~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb98_cost STR_VAR pxb_wanted = EVAL ~%pxb98_spell%~ reply = ~9508~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb99_cost STR_VAR pxb_wanted = EVAL ~%pxb99_spell%~ reply = ~9509~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb100_cost STR_VAR pxb_wanted = EVAL ~%pxb100_spell%~ reply = ~9510~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb101_cost STR_VAR pxb_wanted = EVAL ~%pxb101_spell%~ reply = ~9511~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb102_cost STR_VAR pxb_wanted = EVAL ~%pxb102_spell%~ reply = ~9512~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb103_cost STR_VAR pxb_wanted = EVAL ~%pxb103_spell%~ reply = ~9513~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb104_cost STR_VAR pxb_wanted = EVAL ~%pxb104_spell%~ reply = ~9514~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb105_cost STR_VAR pxb_wanted = EVAL ~%pxb105_spell%~ reply = ~9515~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb106_cost STR_VAR pxb_wanted = EVAL ~%pxb106_spell%~ reply = ~9516~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb107_cost STR_VAR pxb_wanted = EVAL ~%pxb107_spell%~ reply = ~9517~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb108_cost STR_VAR pxb_wanted = EVAL ~%pxb108_spell%~ reply = ~9518~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb109_cost STR_VAR pxb_wanted = EVAL ~%pxb109_spell%~ reply = ~9519~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb110_cost STR_VAR pxb_wanted = EVAL ~%pxb110_spell%~ reply = ~9520~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb111_cost STR_VAR pxb_wanted = EVAL ~%pxb111_spell%~ reply = ~9521~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb112_cost STR_VAR pxb_wanted = EVAL ~%pxb112_spell%~ reply = ~9522~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb113_cost STR_VAR pxb_wanted = EVAL ~%pxb113_spell%~ reply = ~9523~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb115_cost STR_VAR pxb_wanted = EVAL ~%pxb115_spell%~ reply = ~9601~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb116_cost STR_VAR pxb_wanted = EVAL ~%pxb116_spell%~ reply = ~9602~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb117_cost STR_VAR pxb_wanted = EVAL ~%pxb117_spell%~ reply = ~9603~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb118_cost STR_VAR pxb_wanted = EVAL ~%pxb118_spell%~ reply = ~9604~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb119_cost STR_VAR pxb_wanted = EVAL ~%pxb119_spell%~ reply = ~9605~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb120_cost STR_VAR pxb_wanted = EVAL ~%pxb120_spell%~ reply = ~9606~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb121_cost STR_VAR pxb_wanted = EVAL ~%pxb121_spell%~ reply = ~9607~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb122_cost STR_VAR pxb_wanted = EVAL ~%pxb122_spell%~ reply = ~9608~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb123_cost STR_VAR pxb_wanted = EVAL ~%pxb123_spell%~ reply = ~9609~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb124_cost STR_VAR pxb_wanted = EVAL ~%pxb124_spell%~ reply = ~9611~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb125_cost STR_VAR pxb_wanted = EVAL ~%pxb125_spell%~ reply = ~9612~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb126_cost STR_VAR pxb_wanted = EVAL ~%pxb126_spell%~ reply = ~9613~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb127_cost STR_VAR pxb_wanted = EVAL ~%pxb127_spell%~ reply = ~9614~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb128_cost STR_VAR pxb_wanted = EVAL ~%pxb128_spell%~ reply = ~9615~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb129_cost STR_VAR pxb_wanted = EVAL ~%pxb129_spell%~ reply = ~9616~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb130_cost STR_VAR pxb_wanted = EVAL ~%pxb130_spell%~ reply = ~9617~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb131_cost STR_VAR pxb_wanted = EVAL ~%pxb131_spell%~ reply = ~9618~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb132_cost STR_VAR pxb_wanted = EVAL ~%pxb132_spell%~ reply = ~9619~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb133_cost STR_VAR pxb_wanted = EVAL ~%pxb133_spell%~ reply = ~9620~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb134_cost STR_VAR pxb_wanted = EVAL ~%pxb134_spell%~ reply = ~9621~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb135_cost STR_VAR pxb_wanted = EVAL ~%pxb135_spell%~ reply = ~9622~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb136_cost STR_VAR pxb_wanted = EVAL ~%pxb136_spell%~ reply = ~9623~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb137_cost STR_VAR pxb_wanted = EVAL ~%pxb137_spell%~ reply = ~9624~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb138_cost STR_VAR pxb_wanted = EVAL ~%pxb138_spell%~ reply = ~9625~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb139_cost STR_VAR pxb_wanted = EVAL ~%pxb139_spell%~ reply = ~9701~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb140_cost STR_VAR pxb_wanted = EVAL ~%pxb140_spell%~ reply = ~9702~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb141_cost STR_VAR pxb_wanted = EVAL ~%pxb141_spell%~ reply = ~9703~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb142_cost STR_VAR pxb_wanted = EVAL ~%pxb142_spell%~ reply = ~9704~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb143_cost STR_VAR pxb_wanted = EVAL ~%pxb143_spell%~ reply = ~9705~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb144_cost STR_VAR pxb_wanted = EVAL ~%pxb144_spell%~ reply = ~9707~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb145_cost STR_VAR pxb_wanted = EVAL ~%pxb145_spell%~ reply = ~9708~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb146_cost STR_VAR pxb_wanted = EVAL ~%pxb146_spell%~ reply = ~9710~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb147_cost STR_VAR pxb_wanted = EVAL ~%pxb147_spell%~ reply = ~9711~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb148_cost STR_VAR pxb_wanted = EVAL ~%pxb148_spell%~ reply = ~9712~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb149_cost STR_VAR pxb_wanted = EVAL ~%pxb149_spell%~ reply = ~9713~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb150_cost STR_VAR pxb_wanted = EVAL ~%pxb150_spell%~ reply = ~9714~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb151_cost STR_VAR pxb_wanted = EVAL ~%pxb151_spell%~ reply = ~9715~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb152_cost STR_VAR pxb_wanted = EVAL ~%pxb152_spell%~ reply = ~9716~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb153_cost STR_VAR pxb_wanted = EVAL ~%pxb153_spell%~ reply = ~9717~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb154_cost STR_VAR pxb_wanted = EVAL ~%pxb154_spell%~ reply = ~9718~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb155_cost STR_VAR pxb_wanted = EVAL ~%pxb155_spell%~ reply = ~9719~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb156_cost STR_VAR pxb_wanted = EVAL ~%pxb156_spell%~ reply = ~9720~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb157_cost STR_VAR pxb_wanted = EVAL ~%pxb157_spell%~ reply = ~9721~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb158_cost STR_VAR pxb_wanted = EVAL ~%pxb158_spell%~ reply = ~9722~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb159_cost STR_VAR pxb_wanted = EVAL ~%pxb159_spell%~ reply = ~9803~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb160_cost STR_VAR pxb_wanted = EVAL ~%pxb160_spell%~ reply = ~9804~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb161_cost STR_VAR pxb_wanted = EVAL ~%pxb161_spell%~ reply = ~9805~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb162_cost STR_VAR pxb_wanted = EVAL ~%pxb162_spell%~ reply = ~9807~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb163_cost STR_VAR pxb_wanted = EVAL ~%pxb163_spell%~ reply = ~9808~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb164_cost STR_VAR pxb_wanted = EVAL ~%pxb164_spell%~ reply = ~9809~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb165_cost STR_VAR pxb_wanted = EVAL ~%pxb165_spell%~ reply = ~9810~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb166_cost STR_VAR pxb_wanted = EVAL ~%pxb166_spell%~ reply = ~9811~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb167_cost STR_VAR pxb_wanted = EVAL ~%pxb167_spell%~ reply = ~9812~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb168_cost STR_VAR pxb_wanted = EVAL ~%pxb168_spell%~ reply = ~9813~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb169_cost STR_VAR pxb_wanted = EVAL ~%pxb169_spell%~ reply = ~9815~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb170_cost STR_VAR pxb_wanted = EVAL ~%pxb170_spell%~ reply = ~9816~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb172_cost STR_VAR pxb_wanted = EVAL ~%pxb172_spell%~ reply = ~9817~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb174_cost STR_VAR pxb_wanted = EVAL ~%pxb174_spell%~ reply = ~9818~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb175_cost STR_VAR pxb_wanted = EVAL ~%pxb175_spell%~ reply = ~9902~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb176_cost STR_VAR pxb_wanted = EVAL ~%pxb176_spell%~ reply = ~9903~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb177_cost STR_VAR pxb_wanted = EVAL ~%pxb177_spell%~ reply = ~9905~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb178_cost STR_VAR pxb_wanted = EVAL ~%pxb178_spell%~ reply = ~9907~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb179_cost STR_VAR pxb_wanted = EVAL ~%pxb179_spell%~ reply = ~9908~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb180_cost STR_VAR pxb_wanted = EVAL ~%pxb180_spell%~ reply = ~9909~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb181_cost STR_VAR pxb_wanted = EVAL ~%pxb181_spell%~ reply = ~9910~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb182_cost STR_VAR pxb_wanted = EVAL ~%pxb182_spell%~ reply = ~9911~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb183_cost STR_VAR pxb_wanted = EVAL ~%pxb183_spell%~ reply = ~9912~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb184_cost STR_VAR pxb_wanted = EVAL ~%pxb184_spell%~ reply = ~9913~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb185_cost STR_VAR pxb_wanted = EVAL ~%pxb185_spell%~ reply = ~9914~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb186_cost STR_VAR pxb_wanted = EVAL ~%pxb186_spell%~ reply = ~9915~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb187_cost STR_VAR pxb_wanted = EVAL ~%pxb187_spell%~ reply = ~9916~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb188_cost STR_VAR pxb_wanted = EVAL ~%pxb188_spell%~ reply = ~9917~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb189_cost STR_VAR pxb_wanted = EVAL ~%pxb189_spell%~ reply = ~9918~ RET pxb_vanilla_choices END
+LAF PXB_VANILLA_CHOICES INT_VAR pxb_price = pxb190_cost STR_VAR pxb_wanted = EVAL ~%pxb190_spell%~ reply = ~9919~ RET pxb_vanilla_choices END
+
+// Dragon Summoning
+LAF PXB_SCROLL STR_VAR id = ~dragon~ scroll = ~SUMDRAG~ symbol = ~~ RET pxbdragon_check = pxb_check pxbdragon_spell = pxb_outspell pxbdragon_scroll = pxb_outscroll pxbdragon_cost = pxb_outcost END

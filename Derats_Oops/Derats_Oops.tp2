@@ -1,0 +1,3561 @@
+BACKUP ~Derats_Oops/Backup~
+AUTHOR ~Deratiseur, at the_deratiseur@hotmail.com~
+VERSION ~5~
+
+README ~Derats_Oops/Documents/Readme-%LANGUAGE%.html~
+
+AUTO_TRA ~Derats_Oops/Languages/%s~ /////%s~
+
+ALWAYS
+	ACTION_IF GAME_IS ~BG2EE	EET~ THEN BEGIN
+		ACTION_DEFINE_ARRAY px_noconvert BEGIN install END
+		ACTION_DEFINE_ARRAY px_reload BEGIN	pxoops END
+		LAF HANDLE_CHARSETS
+			INT_VAR
+			infer_charset = 1
+			STR_VAR
+			tra_path = EVAL ~%MOD_FOLDER%/Languages~
+			noconvert_array = px_noconvert
+			reload_array = px_reload
+		END
+	END
+END
+
+LANGUAGE ~Francais~	~French~
+	~Derats_Oops/Languages/French/Pxoops.tra~
+
+LANGUAGE ~English~	~English~
+	~Derats_Oops/Languages/English/Pxoops.tra~
+
+LANGUAGE ~Simplified Chinese (by MephistoSatanDevil)~ ~SChinese~ 
+	~Derats_Oops/Languages/English/Pxoops.tra~
+	~Derats_Oops/Languages/Chinese/Pxoops.tra~
+
+BEGIN @0 DESIGNATED 1 LABEL PX_Oops
+REQUIRE_PREDICATE GAME_IS ~TOB BGT EET BG2EE~ @0009
+
+DEFINE_PATCH_FUNCTION SPELL_TO_INNATE BEGIN
+    WRITE_LONG 0x18 (THIS | 49152)
+    WRITE_BYTE 0x1c 4
+
+    GET_OFFSET_ARRAY headerOffsets SPL_V10_HEADERS
+    PHP_EACH headerOffsets AS _ => headerOffset BEGIN
+        WRITE_BYTE (headerOffset + 0x2) 4
+        WRITE_SHORT (headerOffset + 0x12) 1
+    END
+END
+
+EXTEND_BOTTOM ~AR3000.BCS~	~Derats_Oops/Divers/AR3000.baf~
+
+COPY	~Derats_Oops/Divers/pxoops.cre~	~override~	SAY NAME1 @0	SAY NAME2 @0
+COPY_EXISTING	~spwi101.spl~			~override/pxo2101.spl~
+				~spwi102.spl~			~override/pxo2102.spl~
+				~spwi103.spl~			~override/pxo2103.spl~
+				~spwi104.spl~			~override/pxo2104.spl~
+				~spwi105.spl~			~override/pxo2105.spl~
+				~spwi106.spl~			~override/pxo2106.spl~
+				~spwi107.spl~			~override/pxo2107.spl~
+				~spwi108.spl~			~override/pxo2108.spl~
+				~spwi111.spl~			~override/pxo2111.spl~
+				~spwi112.spl~			~override/pxo2112.spl~
+				~spwi113.spl~			~override/pxo2113.spl~
+				~spwi114.spl~			~override/pxo2114.spl~
+				~spwi115.spl~			~override/pxo2115.spl~
+				~spwi116.spl~			~override/pxo2116.spl~
+				~spwi117.spl~			~override/pxo2117.spl~
+				~spwi118.spl~			~override/pxo2118.spl~
+				~spwi120.spl~			~override/pxo2120.spl~
+				~spwi123.spl~			~override/pxo2123.spl~
+				~spwi125.spl~			~override/pxo2125.spl~
+				~spwi201.spl~			~override/pxo2201.spl~
+				~spwi202.spl~			~override/pxo2202.spl~
+				~spwi203.spl~			~override/pxo2203.spl~
+				~spwi205.spl~			~override/pxo2205.spl~
+				~spwi206.spl~			~override/pxo2206.spl~
+				~spwi207.spl~			~override/pxo2207.spl~
+				~spwi208.spl~			~override/pxo2208.spl~
+				~spwi209.spl~			~override/pxo2209.spl~
+				~spwi210.spl~			~override/pxo2210.spl~
+				~spwi211.spl~			~override/pxo2211.spl~
+				~spwi212.spl~			~override/pxo2212.spl~
+				~spwi213.spl~			~override/pxo2213.spl~
+				~spwi214.spl~			~override/pxo2214.spl~
+				~spwi215.spl~			~override/pxo2215.spl~
+				~spwi217.spl~			~override/pxo2217.spl~
+				~spwi218.spl~			~override/pxo2218.spl~
+				~spwi219.spl~			~override/pxo2219.spl~
+				~spwi220.spl~			~override/pxo2220.spl~
+				~spwi221.spl~			~override/pxo2221.spl~
+				~spwi223.spl~			~override/pxo2223.spl~
+				~spwi224.spl~			~override/pxo2224.spl~
+				~spwi301.spl~			~override/pxo2301.spl~
+				~spwi302.spl~			~override/pxo2302.spl~
+				~spwi303.spl~			~override/pxo2303.spl~
+				~spwi304.spl~			~override/pxo2304.spl~
+				~spwi305.spl~			~override/pxo2305.spl~
+				~spwi306.spl~			~override/pxo2306.spl~
+				~spwi307.spl~			~override/pxo2307.spl~
+				~spwi308.spl~			~override/pxo2308.spl~
+				~spwi309.spl~			~override/pxo2309.spl~
+				~spwi310.spl~			~override/pxo2310.spl~
+				~spwi311.spl~			~override/pxo2311.spl~
+				~spwi312.spl~			~override/pxo2312.spl~
+				~spwi313.spl~			~override/pxo2313.spl~
+				~spwi314.spl~			~override/pxo2314.spl~
+				~spwi316.spl~			~override/pxo2316.spl~
+				~spwi317.spl~			~override/pxo2317.spl~
+				~spwi318.spl~			~override/pxo2318.spl~
+				~spwi319.spl~			~override/pxo2319.spl~
+				~spwi320.spl~			~override/pxo2320.spl~
+				~spwi321.spl~			~override/pxo2321.spl~
+				~spwi322.spl~			~override/pxo2322.spl~
+				~spwi324.spl~			~override/pxo2324.spl~
+				~spwi325.spl~			~override/pxo2325.spl~
+				~spwi326.spl~			~override/pxo2326.spl~
+				~spwi401.spl~			~override/pxo2401.spl~
+				~spwi402.spl~			~override/pxo2402.spl~
+				~spwi403.spl~			~override/pxo2403.spl~
+				~spwi404.spl~			~override/pxo2404.spl~
+				~spwi405.spl~			~override/pxo2405.spl~
+				~spwi406.spl~			~override/pxo2406.spl~
+				~spwi407.spl~			~override/pxo2407.spl~
+				~spwi408.spl~			~override/pxo2408.spl~
+				~spwi409.spl~			~override/pxo2409.spl~
+				~spwi410.spl~			~override/pxo2410.spl~
+				~spwi411.spl~			~override/pxo2411.spl~
+				~spwi412.spl~			~override/pxo2412.spl~
+				~spwi413.spl~			~override/pxo2413.spl~
+				~spwi414.spl~			~override/pxo2414.spl~
+				~spwi415.spl~			~override/pxo2415.spl~
+				~spwi416.spl~			~override/pxo2416.spl~
+				~spwi417.spl~			~override/pxo2417.spl~
+				~spwi418.spl~			~override/pxo2418.spl~
+				~spwi419.spl~			~override/pxo2419.spl~
+				~spwi420.spl~			~override/pxo2420.spl~
+				~spwi421.spl~			~override/pxo2421.spl~
+				~spwi423.spl~			~override/pxo2423.spl~
+				~spwi424.spl~			~override/pxo2424.spl~
+				~spwi425.spl~			~override/pxo2425.spl~
+				~spwi501.spl~			~override/pxo2501.spl~
+				~spwi502.spl~			~override/pxo2502.spl~
+				~spwi503.spl~			~override/pxo2503.spl~
+				~spwi504.spl~			~override/pxo2504.spl~
+				~spwi505.spl~			~override/pxo2505.spl~
+				~spwi506.spl~			~override/pxo2506.spl~
+				~spwi507.spl~			~override/pxo2507.spl~
+				~spwi508.spl~			~override/pxo2508.spl~
+				~spwi509.spl~			~override/pxo2509.spl~
+				~spwi510.spl~			~override/pxo2510.spl~
+				~spwi511.spl~			~override/pxo2511.spl~
+				~spwi512.spl~			~override/pxo2512.spl~
+				~spwi513.spl~			~override/pxo2513.spl~
+				~spwi514.spl~			~override/pxo2514.spl~
+				~spwi515.spl~			~override/pxo2515.spl~
+				~spwi516.spl~			~override/pxo2516.spl~
+				~spwi517.spl~			~override/pxo2517.spl~
+				~spwi518.spl~			~override/pxo2518.spl~
+				~spwi519.spl~			~override/pxo2519.spl~
+				~spwi520.spl~			~override/pxo2520.spl~
+				~spwi521.spl~			~override/pxo2521.spl~
+				~spwi522.spl~			~override/pxo2522.spl~
+				~spwi523.spl~			~override/pxo2523.spl~
+				~spwi601.spl~			~override/pxo2601.spl~
+				~spwi602.spl~			~override/pxo2602.spl~
+				~spwi603.spl~			~override/pxo2603.spl~
+				~spwi604.spl~			~override/pxo2604.spl~
+				~spwi605.spl~			~override/pxo2605.spl~
+				~spwi606.spl~			~override/pxo2606.spl~
+				~spwi607.spl~			~override/pxo2607.spl~
+				~spwi608.spl~			~override/pxo2608.spl~
+				~spwi609.spl~			~override/pxo2609.spl~
+				~spwi611.spl~			~override/pxo2611.spl~
+				~spwi612.spl~			~override/pxo2612.spl~
+				~spwi613.spl~			~override/pxo2613.spl~
+				~spwi614.spl~			~override/pxo2614.spl~
+				~spwi615.spl~			~override/pxo2615.spl~
+				~spwi616.spl~			~override/pxo2616.spl~
+				~spwi617.spl~			~override/pxo2617.spl~
+				~spwi618.spl~			~override/pxo2618.spl~
+				~spwi619.spl~			~override/pxo2619.spl~
+				~spwi620.spl~			~override/pxo2620.spl~
+				~spwi621.spl~			~override/pxo2621.spl~
+				~spwi622.spl~			~override/pxo2622.spl~
+				~spwi623.spl~			~override/pxo2623.spl~
+				~spwi624.spl~			~override/pxo2624.spl~
+				~spwi625.spl~			~override/pxo2625.spl~
+				~spwi701.spl~			~override/pxo2701.spl~
+				~spwi702.spl~			~override/pxo2702.spl~
+				~spwi703.spl~			~override/pxo2703.spl~
+				~spwi704.spl~			~override/pxo2704.spl~
+				~spwi705.spl~			~override/pxo2705.spl~
+				~spwi707.spl~			~override/pxo2707.spl~
+				~spwi708.spl~			~override/pxo2708.spl~
+				~spwi710.spl~			~override/pxo2710.spl~
+				~spwi711.spl~			~override/pxo2711.spl~
+				~spwi712.spl~			~override/pxo2712.spl~
+				~spwi713.spl~			~override/pxo2713.spl~
+				~spwi714.spl~			~override/pxo2714.spl~
+				~spwi715.spl~			~override/pxo2715.spl~
+				~spwi716.spl~			~override/pxo2716.spl~
+				~spwi717.spl~			~override/pxo2717.spl~
+				~spwi718.spl~			~override/pxo2718.spl~
+				~spwi719.spl~			~override/pxo2719.spl~
+				~spwi720.spl~			~override/pxo2720.spl~
+				~spwi721.spl~			~override/pxo2721.spl~
+				~spwi722.spl~			~override/pxo2722.spl~
+				~spwi803.spl~			~override/pxo2803.spl~
+				~spwi804.spl~			~override/pxo2804.spl~
+				~spwi805.spl~			~override/pxo2805.spl~
+				~spwi807.spl~			~override/pxo2807.spl~
+				~spwi808.spl~			~override/pxo2808.spl~
+				~spwi809.spl~			~override/pxo2809.spl~
+				~spwi810.spl~			~override/pxo2810.spl~
+				~spwi811.spl~			~override/pxo2811.spl~
+				~spwi812.spl~			~override/pxo2812.spl~
+				~spwi813.spl~			~override/pxo2813.spl~
+				~spwi815.spl~			~override/pxo2815.spl~
+				~spwi816.spl~			~override/pxo2816.spl~
+				~spwi817.spl~			~override/pxo2817.spl~
+				~spwi818.spl~			~override/pxo2818.spl~
+				~spwi902.spl~			~override/pxo2902.spl~
+				~spwi903.spl~			~override/pxo2903.spl~
+				~spwi905.spl~			~override/pxo2905.spl~
+				~spwi907.spl~			~override/pxo2907.spl~
+				~spwi908.spl~			~override/pxo2908.spl~
+				~spwi909.spl~			~override/pxo2909.spl~
+				~spwi910.spl~			~override/pxo2910.spl~
+				~spwi911.spl~			~override/pxo2911.spl~
+				~spwi912.spl~			~override/pxo2912.spl~
+				~spwi913.spl~			~override/pxo2913.spl~
+				~spwi914.spl~			~override/pxo2914.spl~
+				~spwi915.spl~			~override/pxo2915.spl~
+				~spwi916.spl~			~override/pxo2916.spl~
+				~spwi917.spl~			~override/pxo2917.spl~
+				~spwi918.spl~			~override/pxo2918.spl~
+				~spwi920.spl~			~override/pxox920.spl~	LPF SPELL_TO_INNATE END
+
+ACTION_IF GAME_IS ~BG2EE EET~ THEN BEGIN
+COPY_EXISTING	~spwi315.spl~			~override/pxo2315.spl~	LPF SPELL_TO_INNATE END
+
+END
+
+/////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////   INTERPLAN   ///////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+
+ACTION_IF FILE_EXISTS_IN_GAME ~pxl2ex2a.itm~ THEN BEGIN
+
+// Resolve each installed spell independently. Do not reinstall Interplan spells.
+DEFINE_ACTION_FUNCTION PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = "" spell_name = ""
+  RET pxi_spell_res
+BEGIN
+  OUTER_SPRINT pxi_spell_res ~%direct_res%~
+  ACTION_IF NOT (~%spell_name%~ STRING_EQUAL ~~) THEN BEGIN
+    ACTION_IF (IDS_OF_SYMBOL (~spell~ ~%spell_name%~) >= 0) THEN BEGIN
+      LAF RES_NUM_OF_SPELL_NAME
+        STR_VAR spell_name = EVAL ~%spell_name%~
+        RET spell_res
+      END
+      OUTER_SPRINT pxi_spell_res ~%spell_res%~
+    END
+  END
+END
+
+// @1101 - Explosion de feu (niveau 1)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2ex2l~ spell_name = ~WIZARD_PX_FIRE_EXPLOSION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIex2l.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1102 - Bouclier contre les sorts (niveau 1)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2resi~ spell_name = ~WIZARD_PX_ANTI_SPELLS_SHIELD~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIresi.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1103 - Particules magiques de Déorie (niveau 1)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2part~ spell_name = ~WIZARD_PX_DEORIES_MAGICAL_PARTICLES~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIpart.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1104 - Bouffée ardente (niveau 1)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2ecla~ spell_name = ~WIZARD_PX_FIRE_BURST~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIecla.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1105 - Répulsion (niveau 1)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2rpul~ spell_name = ~WIZARD_PX_REPULSION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIrpul.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1106 - Absence (niveau 1)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2disp~ spell_name = ~WIZARD_PX_DISAPPEARANCE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIdisp.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1107 - Mot de pouvoir : Arrêt (niveau 1)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2stop~ spell_name = ~WIZARD_PX_POWERWORD_STOP~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIstop.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1108 - Remembrance blessante de Torolonor (niveau 2)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2rem1~ spell_name = ~WIZARD_PX_TOROLONORS_PAINFUL_REMEMBRANCE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIrem1.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1201 - Précision (niveau 2)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2prec~ spell_name = ~WIZARD_PX_ACCURACY~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIprec.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1202 - Tampon d’énergie (niveau 2)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2tamp~ spell_name = ~WIZARD_PX_ENERGY_BUFFER~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoItamp.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1203 - Pulsation de flammes (niveau 2)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2puls~ spell_name = ~WIZARD_PX_FLAME_PULSE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIpuls.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1204 - Frappe du serpent (niveau 2)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2csou~ spell_name = ~WIZARD_PX_SNAKE_STRIKE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIcsou.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1205 - Bâton de puissance (niveau 2)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2batp~ spell_name = ~WIZARD_PX_STAFF_OF_POWER~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIbatp.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1206 - Hexalames (niveau 2)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2hexa~ spell_name = ~WIZARD_PX_HEXABLADES~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIhexa.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1207 - Projectile ultramagique (niveau 2)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2proj~ spell_name = ~WIZARD_PX_ULTRAMAGIC_MISSILE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIproj.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1208 - Bête illusoire de Nix (niveau 2)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2nix~ spell_name = ~WIZARD_PX_NIXS_ILLUSORY_BEAST~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoInix.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1209 - Malédiction de l'essaim (niveau 2)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2insc~ spell_name = ~WIZARD_PX_SWARM_CURSE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIinsc.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1210 - Chute de vache (niveau 2)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2vach~ spell_name = ~WIZARD_PX_COW_FALL~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIvach.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1211 - Techniques de bricoleur (niveau 2)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2tech~ spell_name = ~WIZARD_PX_HANDYMAN_TECHNIQUES~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoItech.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1212 - Regard appuyé de Salyvia (niveau 2)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2rsal~ spell_name = ~WIZARD_PX_SALYVIAS_INTENSE_GAZE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIrsal.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1301 - Vision instinctive d'Hachitoza (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2visi~ spell_name = ~WIZARD_PX_HACHITOZAS_INSTINCTIVE_VISION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIvisi.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1302 - Prouesse guerrière (niveau 3)
+ACTION_IF !DIRECTORY_EXISTS ~passive_warrior_hlas~ THEN BEGIN
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2prou~ spell_name = ~WIZARD_PX_FIGHTING_FEAT~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIprou.spl~ LPF SPELL_TO_INNATE END
+
+END
+END
+
+// @1303 - Griffes du malheur (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2grif~ spell_name = ~WIZARD_PX_DOOM_CLAWS~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIgrif.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1304 - Coups mortels de Tenser (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2tens~ spell_name = ~WIZARD_PX_TENSERS_DEADLY_STRIKES~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoItens.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1305 - Force incommensurable de Bigdib (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2forc~ spell_name = ~WIZARD_PX_BIGDIBS_IMMEASURABLE_STRENGTH~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIforc.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1306 - Arme chargée (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2arma~ spell_name = ~WIZARD_PX_CHARGED_WEAPON~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIarma.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1307 - Appétissant poulets de Nix (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2poul~ spell_name = ~WIZARD_PX_NIXS_APPETIZING_LITTLE_CHICKENS~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIpoul.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1308 - Note résonnante (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2son~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIson.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1309 - Crane hurlant du Pandémonium (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2cran~ spell_name = ~WIZARD_PX_SCREAMING_SKULL_OF_PANDEMONIUM~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIcran.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1310 - Aura merveilleuse de Déorie (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2aura~ spell_name = ~WIZARD_PX_DEORIE_MARVELOUS_AURA~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIaura.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1311 - Fléau des fiélons (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2flea~ spell_name = ~WIZARD_PX_SCOURGE_OF_FIENDS~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIflea.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1312 - Vol de sortilège (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2vlso~ spell_name = ~WIZARD_PX_SPELL_STEAL~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIvlso.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1313 - Un pas dans l'ombre (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2pob~ spell_name = ~WIZARD_PX_SHADOW_WALK~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIpob.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1314 - Poigne acide (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2paci~ spell_name = ~WIZARD_PX_ACIDIC_GRIP~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIpaci.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1315 - Potions Boum-Boum de Gilispur (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2bbom~ spell_name = ~WIZARD_PX_BOOM_BOOM_POTIONS~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIbbom.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1316 - Ambidextrie (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2dobb~ spell_name = ~WIZARD_PX_AMBIDEXTRY~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIdobb.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1317 - Vol de chance (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2volc~ spell_name = ~WIZARD_PX_LUCK_STEAL~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIvolc.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1318 - Sortie rapide de Déorie (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2srep~ spell_name = ~WIZARD_PX_DEORIES_QUICK_EXIT~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIexit.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1319 - Intensification d’énergie (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2itg~ spell_name = ~WIZARD_PX_ENERGY_INTENSIFICATION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIitg.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1320 - Accés de rage (niveau 3)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2rag2~ spell_name = ~WIZARD_PX_FIT_OF_RAGE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIrag2.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1321 - Remembrance mortelle de Torolonor (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2rem2~ spell_name = ~WIZARD_PX_TOROLONORS_DEADLY_REMEMBRANCE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIrem2.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1401 - Coup de chance (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2coup~ spell_name = ~WIZARD_PX_STROKE_OF_LUCK~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIcoup.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1402 - Affaiblissement (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2afai~ spell_name = ~WIZARD_PX_ENERVATION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIafai.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1403 - Contact de la Nature (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2natu~ spell_name = ~WIZARD_PX_NATURES_CONTACT~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoInatu.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1404 - Brandons (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2brad~ spell_name = ~WIZARD_PX_FIREBRAND~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIbrad.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1405 - Nova de poison (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2nova~ spell_name = ~WIZARD_PX_POISON_NOVA~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoInova.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1406 - Image réfléchie majeure (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2imag~ spell_name = ~WIZARD_PX_MAJOR_REFLECTED_IMAGE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIimag.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1407 - Rupture fantastique de Bakanëo* (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2rupt~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIrupt.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1408 - Assassin imaginaire (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2as2s~ spell_name = ~WIZARD_PX_PHANTASMAL_KILLER~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIas2s.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1409 - Poing rageur de Keleg-Ze (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2poig~ spell_name = ~WIZARD_PX_KELEGZES_FURIOUS_FIST~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIpoig.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1410 - Bouclier des fées (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2fees~ spell_name = ~WIZARD_PX_FAERIES_SHIELD~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIfees.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1411 - Conflagration électrique (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2boul~ spell_name = ~WIZARD_PX_ELECTRICAL_CONFLAGRATION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIboul.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1412 - Chute de sable (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2sabl~ spell_name = ~WIZARD_PX_SANDFALL~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIsabl.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1413 - Vents protecteurs (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2vent~ spell_name = ~WIZARD_PX_PROTECTIVES_WINDS~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIvent.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1414 - Sol mouvant (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2roul~ spell_name = ~WIZARD_PX_MOVING_GROUND~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIroul.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1415 - Électronullification (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2null~ spell_name = ~WIZARD_PX_ELECTRONULLIFICATION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoInull.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1416 - Squelette frénétique (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2sque~ spell_name = ~WIZARD_PX_FRENZIED_SKELETON~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIsque.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1417 - Invocation d'arc fantomatique (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2crea~ spell_name = ~WIZARD_PX_FANTOM_BOW_CREATION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIarci.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1418 - Décharge statique (niveau 4)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2dech~ spell_name = ~WIZARD_PX_STATIC_DISCHARGE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIdech.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1501 - Missiles explosifs (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2mexp~ spell_name = ~WIZARD_PX_EXPLOSIVE_MISSILES~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoImexp.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1502 - Corruption mnémonique (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2corr~ spell_name = ~WIZARD_PX_MNEMONIC_CORRUPTION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIcorr.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1503 - Lames dansantes (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2lame~ spell_name = ~WIZARD_PX_DANCING_BLADES~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIlame.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1504 - Canon magique (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2cano~ spell_name = ~WIZARD_PX_MAGICAL_CANON~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIcano.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1505 - Mot de pouvoir : Résonance (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2bson~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIbson.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1506 - Fabuleuse Boule de feu de Mazaron (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2bfir~ spell_name = ~WIZARD_PX_MAZARONS_FABULOUS_FIREBALL~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIbfir.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1507 - Précognition (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2aven~ spell_name = ~WIZARD_PX_PRECOGNITION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIaven.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1508 - Malédiction de Balichen (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2mld~ spell_name = ~WIZARD_PX_BALICHENS_CURSE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoImld.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1509 - Hurlement de fantôme (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2hurl~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIhurl.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1510 - Magie assurée (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2magi~ spell_name = ~WIZARD_PX_ENSURED_MAGIC~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoImagi.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1511 - Souffle caustique (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2sofl~ spell_name = ~WIZARD_PX_ACIDIC_BREATH~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIsofl.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1512 - Accélérateur de Lubath (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2acce~ spell_name = ~WIZARD_PX_LUBATHS_ACCELERATOR~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIacce.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1513 - Ponction (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2vmp~ spell_name = ~WIZARD_PX_PUNCTURE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIvmp.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1514 - Chant dwéomérique (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2chdw~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIchdw.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1515 - Fantastique triade de Mazaron (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2tria~ spell_name = ~WIZARD_PX_MAZARONS_FANTASTIC_TRIAD~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoItria.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1516 - Boucliers anti-attaques (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2baar~ spell_name = ~WIZARD_PX_ANTI~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIbaar.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1517 - Protecteur chaotique de Lobini* (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2lcp~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIlcp.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1518 - Déplacements magiques de Déorie (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2srt2~ spell_name = ~WIZARD_PX_DEORIES_MAGICAL_EXIT~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIpgla.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1519 - Animation d'air (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2anma~ spell_name = ~WIZARD_PX_ANIMATE_AIR~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIanma.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1520 - Vulnérabilité aux armes (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2vuln~ spell_name = ~WIZARD_PX_VULNERABILITY_TO_WEAPONS~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIvuln.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1521 - Sphère antimagique de Piboloo (niveau 5)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2pibo~ spell_name = ~WIZARD_PX_BIBOLOOS_ANTIMAGIC_SPHERE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIpibo.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// Déchaînement entropique* (niveau 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~pxl2dwe2.spl~ THEN BEGIN
+COPY_EXISTING ~pxl2dwe2.spl~ ~override/pxoIdwe2.spl~ LPF SPELL_TO_INNATE END
+END
+
+
+// @1601 - Protection tellurique (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2ptlu~ spell_name = ~WIZARD_PX_EARTH_PROTECTION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIptlu.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1602 - Conversion magique d'Alabastine (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2alab~ spell_name = ~WIZARD_PX_ALABASTINES_MAGIC_CONVERSION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIalab.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1603 - Fureur combative (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2fure~ spell_name = ~WIZARD_PX_FIGHTING_FURY~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIfure.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1604 - Porte vers l'Interplan (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2port~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIport.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1605 - Scion de la Flamme (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2flam~ spell_name = ~WIZARD_PX_SCION_OF_THE_FLAME~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIflam.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1606 - Sang bouillonnant (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2sang~ spell_name = ~WIZARD_PX_BUBBLING_BLOOD~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIsang.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1607 - Mémorisation selon Déorie (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2memo~ spell_name = ~WIZARD_PX_DEORIES_MEMORISATION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoImemo.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1608 - Chaos tranchant de Keleg-Ze (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2chao~ spell_name = ~WIZARD_PX_KELEGZES_SLASHING_CHAOS~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIchao.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1609 - Volée de projectiles chromatiques (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2chro~ spell_name = ~WIZARD_PX_SWARM_OF_CHROMATIC_MISSILES~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIchro.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1610 - Corps souverain (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2souv~ spell_name = ~WIZARD_PX_SOVEREIGN_SELF~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIsouv.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1611 - Morsure du froid (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2gelu~ spell_name = ~WIZARD_PX_COLD_BITE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIgelu.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1612 - Armure anti-chocs (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2choc~ spell_name = ~WIZARD_PX_ANTI_IMPACT_ARMOR~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIchoc.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1613 - Innommable beauté (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2inno~ spell_name = ~WIZARD_PX_UNSPEAKABLE_BEAUTY~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIinno.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1614 - Chaussons magiques de Gilipur (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2gili~ spell_name = ~WIZARD_PX_GILIPURS_MAGIC_SLIPPERS~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIgili.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1615 - Métamorphose de familier (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2faml~ spell_name = ~WIZARD_PX_POLYMORPH_FAMILIAR~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIfaml.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1616 - De la pierre sort la gemme (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2ageg~ spell_name = ~WIZARD_PX_GEM_AGE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIpgem.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1617 - Éviscération (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2evs~ spell_name = ~WIZARD_PX_EVISCERATE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIevs.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1618 - Permanence de minion (niveau 6)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2perm~ spell_name = ~WIZARD_PX_MINION_PERMANENCE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIperm.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1701 - Lamétoile (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2leto~ spell_name = ~WIZARD_PX_STARBLADE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIleto.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1702 - Rappel anarchique de Déorie (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2rapp~ spell_name = ~WIZARD_PX_DEORIES_ANARCHIC_RECALL~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIrapp.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1703 - Affliction (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2affl~ spell_name = ~WIZARD_PX_AFFLICTION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIaffl.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1704 - Flèche magique de Salyvia (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2flec~ spell_name = ~WIZARD_PX_SALYVIAS_MAGIC_ARROW~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIflec.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1705 - Enchantement d'arme majeur (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2aenc~ spell_name = ~WIZARD_PX_MAJOR_ENCHANT_WEAPON~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIaenc.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1706 - Projectile arc-en-ciel (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2marc~ spell_name = ~WIZARD_PX_RAINBOW_MISSILE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoImarc.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// Invocation urgente de Lobini (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2lobi~ spell_name = ~WIZARD_PX_LOBINIS_URGENT_SUMMON~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIlobi.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1707 - Toile arachnéenne (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2toil~ spell_name = ~WIZARD_PX_ARACHNID_WEB~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoItoil.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1708 - Missile tueur de dragon de Ralorn (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2miss~ spell_name = ~WIZARD_PX_RALORNS_DRAGON_KILLING_MISSILE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoImiss.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1709 - Orbe de glace (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2orbe~ spell_name = ~WIZARD_PX_ICE_ORB~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIorbe.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1710 - Allié imagé (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2coge~ spell_name = ~WIZARD_PX_IMAGED_ALLY~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIcoge.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1711 - Création de mage spectral (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2xspe~ spell_name = ~WIZARD_PX_SPECTRAL_MAGE_CREATION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIxspe.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1712 - Connexion à la Nature (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2nt2~ spell_name = ~WIZARD_PX_CONNECTION_TO_NATURE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoInt2.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1713 - Amélioration de troupes selon Hachitoza (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2achi~ spell_name = ~WIZARD_PX_HACHITOZAS_TROOP_IMPROVEMENT~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIachi.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1714 - Mémorisation majeure selon Déorie (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2mem2~ spell_name = ~WIZARD_PX_DEORIES_MAJOR_MEMORISATION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoImem2.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1715 - Tatouage de pouvoir (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2tato~ spell_name = ~WIZARD_PX_TATOO_OF_POWER~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoItato.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1716 - Souffle de Porphatys (niveau 7)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2so2u~ spell_name = ~WIZARD_PX_BREATH_OF_PORPHATYS~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIso2u.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1801 - Oeil sorcier (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2oeil~ spell_name = ~WIZARD_PX_EYE_OF_POWER~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIoeil.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1802 - Nuage tueur de trolls (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2nuag~ spell_name = ~WIZARD_PX_TROLL_KILLING_CLOUD~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoInuag.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1803 - Morts en marche (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2sqma~ spell_name = ~WIZARD_PX_WALKING_DEADS~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIsqma.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1804 - Frappe de l'assassin (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2frap~ spell_name = ~WIZARD_PX_ASSASSIN_STRIKE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIfrap.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1805 - Bras de foudre (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2brel~ spell_name = ~WIZARD_PX_ELECTRIC_ARM~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIbrel.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1806 - Téléportations explosives (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2tele~ spell_name = ~WIZARD_PX_EXPLODING_TELEPORTATIONS~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoItele.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1807 - Discret Massacreur de Korrelo (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2korr~ spell_name = ~WIZARD_PX_KORRELOS_DISCREET_SLAUGHTERER~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIkorr.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1808 - Rage de masse (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2rage~ spell_name = ~WIZARD_PX_MASS_RAGE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIrage.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1809 - Combustion spontanée résonnante (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2comb~ spell_name = ~WIZARD_PX_RESONANT_SPONTANEOUS_COMBUSTION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIcomb.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1810 - Appel du feu (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2apfe~ spell_name = ~WIZARD_PX_FIRE_CALL~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIapfe.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1811 - Décharges vengeresses de Keleg-Ze (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2veng~ spell_name = ~WIZARD_PX_KELEGZES_VENGEFUL_DISCHARGES~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIveng.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1812 - Sphère foudroyante de Keleg-Ze (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2elec~ spell_name = ~WIZARD_PX_KELEGZES_LIGHTNING_SPHERE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIelec.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1813 - Formidable Tétrade de Mazaron (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2tetr~ spell_name = ~WIZARD_PX_MAZARONS_FORMIDABLE_TETRAD~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoItetr.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1814 - Purge de la magie (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2purg~ spell_name = ~WIZARD_PX_PURGE_OF_MAGIC~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIpurg.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1815 - Brume Trouble de Korrelo (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2brum~ spell_name = ~WIZARD_PX_KORRELOS_TROUBLED_MIST~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIbrum.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1816 - Création de minion explosif (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2sexp~ spell_name = ~WIZARD_PX_CREATE_EXPLOSIVE_MINION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIsexp.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1817 - Bestioles explosives de Nix (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2best~ spell_name = ~WIZARD_PX_NIXS_EXPLOSIVE_CRITTERS~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIbest.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1818 - Forme du feu (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2frmf~ spell_name = ~WIZARD_PX_FIRE_FORM~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIfrmf.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1819 - Convergence fantastique (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2prob~ spell_name = ~WIZARD_PX_FANTASTIC_CONVERGENCE~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIprob.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1820 - Temps suspendu (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2tsup~ spell_name = ~WIZARD_PX_SUSPENDED_TIME~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoItsup.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1821 - Toucher des Abysses (niveau 8)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2abys~ spell_name = ~WIZARD_PX_TOUCH_OF_THE_ABYSS~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIabys.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1901 - Assaut d’énergie (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2assa~ spell_name = ~WIZARD_PX_ENERGY_ASSAULT~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIassa.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1902 - Oblitération (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2obli~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIobli.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1903 - Soleil ardent (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2sun~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIsun.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1904 - Danse de l'acier (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2daac~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIdaac.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1905 - Canon magique majeur (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2ca4n~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIca4n.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1906 - Refuge d'essence vitale (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2rfg~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIrfg.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1907 - Harnachement de guerre d'Agenor Parcilofann (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2arna~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIarna.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1908 - Contrôle du temps (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2ctem~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIctem.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1909 - Conversion magique majeure (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2al2b~ spell_name = ~WIZARD_PX_MAJOR_MAGIC_CONVERSION~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIal2b.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1910 - Main du diable (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2maid~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoImaid.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1911 - Globe d'invulnérabilité féerique (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2glob~ spell_name = ~WIZARD_PX_FAERIC_GLOBE_OF_INVULNERABILITY~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIglob.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1912 - Élixir de vie (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2elxi~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIelxi.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1913 - Doubles explosifs de Nix (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2doex~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIdoex.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1914 - Bombardement (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2bomb~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIbomb.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1915 - Fusionneur dweomerique d'Alabastine (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2pqd~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIpqd.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1916 - Dweomer universel de Pragadon (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2dweo~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIdweo.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1917 - Ennemi subconscient (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2enne~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIenne.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1918 - Garde du corps vampirique (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2gdco~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIgdco.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1919 - Oeil-Tyrant (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2otyr~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIotyr.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @1920 - Contrôle de Construction (niveau 9)
+LAF PXO_INTERPLAN_SPELL
+  STR_VAR direct_res = ~pxl2cdc~ spell_name = ~~
+  RET pxi_spell_res
+END
+ACTION_IF FILE_EXISTS_IN_GAME ~%pxi_spell_res%.spl~ THEN BEGIN
+COPY_EXISTING ~%pxi_spell_res%.spl~ ~override/pxoIcdc.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+END
+
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////   MODS DIVERS   ///////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+
+ACTION_IF FILE_EXISTS_IN_GAME ~A7#SPW1.itm~ THEN BEGIN // Test your Mettle
+COPY_EXISTING	~A7#SPW1.spl~			~override/pxoIxcrb.spl~	LPF SPELL_TO_INNATE END
+
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~DWSTNFI1.itm~ THEN BEGIN //SCS V35+
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_STONEFIST~	RET pxoscs11_num = spell_num pxoscs11_res = spell_res	END
+OUTER_SET pxoscs11_num -= 2000
+COPY_EXISTING	~%pxoscs11_res%.spl~	~override/pxoScs11.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_ICE_KNIFE~	RET pxoscs12_num = spell_num pxoscs12_res = spell_res	END
+OUTER_SET pxoscs12_num -= 2000
+COPY_EXISTING	~%pxoscs12_res%.spl~	~override/pxoScs12.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_MINOR_LIGHTNING_BOLT~	RET pxoscs21_num = spell_num pxoscs21_res = spell_res	END
+OUTER_SET pxoscs21_num -= 2000
+COPY_EXISTING	~%pxoscs21_res%.spl~	~override/pxoScs21.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_COMBUST~	RET pxoscs22_num = spell_num pxoscs22_res = spell_res	END
+OUTER_SET pxoscs22_num -= 2000
+COPY_EXISTING	~%pxoscs22_res%.spl~	~override/pxoScs22.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_TURN_PEBBLE_TO_BOULDER~	RET pxoscs31_num = spell_num pxoscs31_res = spell_res	END
+OUTER_SET pxoscs31_num -= 2000
+COPY_EXISTING	~%pxoscs31_res%.spl~	~override/pxoScs31.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_TELEKINESIS~	RET pxoscs51_num = spell_num pxoscs51_res = spell_res	END
+OUTER_SET pxoscs51_num -= 2000
+COPY_EXISTING	~%pxoscs51_res%.spl~	~override/pxoScs51.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_TELEKINETIC_STORM~	RET pxoscs81_num = spell_num pxoscs81_res = spell_res	END
+OUTER_SET pxoscs81_num -= 2000
+COPY_EXISTING	~%pxoscs81_res%.spl~	~override/pxoScs81.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_STORMBOLTS~	RET pxoscs91_num = spell_num pxoscs91_res = spell_res	END
+OUTER_SET pxoscs91_num -= 2000
+COPY_EXISTING	~%pxoscs91_res%.spl~	~override/pxoScs91.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_VERIDONS_ICY_RAY~	RET pxoscs92_num = spell_num pxoscs92_res = spell_res	END
+OUTER_SET pxoscs92_num -= 2000
+COPY_EXISTING	~%pxoscs92_res%.spl~	~override/pxoScs92.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_CREATE_BONEGUARD~	RET pxoscs93_num = spell_num pxoscs93_res = spell_res	END
+OUTER_SET pxoscs93_num -= 2000
+COPY_EXISTING	~%pxoscs93_res%.spl~	~override/pxoScs93.spl~	LPF SPELL_TO_INNATE END
+
+
+
+
+
+
+
+
+
+
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~tacprsp.itm~ THEN BEGIN //Semi Multi Clerics
+OUTER_FOR ( i=1 ; i<28 ; i +=1) BEGIN	COPY_EXISTING	~tacpr%i%.spl~	~override/pxoml%i%.spl~	LPF SPELL_TO_INNATE END	END
+OUTER_FOR ( i=29 ; i<36 ; i +=1) BEGIN	COPY_EXISTING	~tacpr%i%.spl~	~override/pxoml%i%.spl~	LPF SPELL_TO_INNATE END	END
+
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~wm_sbook.itm~ THEN BEGIN //Wild Mage Addition
+COPY_EXISTING	~wm_sqrl.spl~			~override/pxoEsqrl.spl~
+				~wm_rnd.spl~			~override/pxoErnd.spl~
+				~wm_blade.spl~			~override/pxoEblad.spl~
+				~wm_attr.spl~			~override/pxoEattr.spl~
+				~wm_miss.spl~			~override/pxoEmiss.spl~
+				~wm_horde.spl~			~override/pxoEhord.spl~
+				~wm_light.spl~			~override/pxoEligh.spl~
+				~wm_word.spl~			~override/pxoEword.spl~
+				~wm_rnd2.spl~			~override/pxoErnd2.spl~
+				~wm_heal.spl~			~override/pxoEheal.spl~
+				~wm_glyph.spl~			~override/pxoEglyp.spl~
+				~wm_liq.spl~			~override/pxoEliq.spl~
+				~wm_vortx.spl~			~override/pxoEvort.spl~
+				~wm_luck.spl~			~override/pxoEluck.spl~
+				~wm_rnd3.spl~			~override/pxoErnd3.spl~
+				~wm_unlk.spl~			~override/pxoEunlk.spl~
+				~wm_strik.spl~			~override/pxoEstri.spl~
+				~wm_armor.spl~			~override/pxoEarmo.spl~
+				~wm_disp.spl~			~override/pxoEdisp.spl~
+				~wm_cow.spl~			~override/pxoEcow.spl~
+				~wm_rnd4.spl~			~override/pxoErnd4.spl~
+				~wm_recup.spl~			~override/pxoErecu.spl~
+				~wm_eye.spl~			~override/pxoEeye.spl~
+				~wm_chaob.spl~			~override/pxoEchao.spl~
+				~wm_shld.spl~			~override/pxoEshld.spl~
+				~wm_sphr.spl~			~override/pxoEsphr.spl~
+				~wm_wfire.spl~			~override/pxoEwfir.spl~
+				~wm_reinc.spl~			~override/pxoErein.spl~	LPF SPELL_TO_INNATE END
+
+END
+
+ACTION_IF FILE_EXISTS_IN_GAME ~pxl2abzn.itm~ THEN BEGIN //Interplan ou Mod_Tweaker
+COPY_EXISTING	~pxl2abza.spl~			~override/pxoIabza.spl~
+				~pxl2abzb.spl~			~override/pxoIabzb.spl~
+				~pxl2abzc.spl~			~override/pxoIabzc.spl~
+				~pxl2abzd.spl~			~override/pxoIabzd.spl~
+				~pxl2abze.spl~			~override/pxoIabze.spl~
+				~pxl2abzf.spl~			~override/pxoIabzf.spl~
+				~pxl2abzg.spl~			~override/pxoIabzg.spl~
+				~pxl2abzh.spl~			~override/pxoIabzh.spl~
+				~pxl2abzi.spl~			~override/pxoIabzi.spl~
+				~pxl2abzj.spl~			~override/pxoIabzj.spl~
+				~pxl2abzk.spl~			~override/pxoIabzk.spl~
+				~pxl2abzl.spl~			~override/pxoIabzl.spl~
+				~pxl2abzm.spl~			~override/pxoIabzm.spl~
+				~pxl2abzn.spl~			~override/pxoIabzn.spl~
+				~pxl2she1.spl~			~override/pxoIabzo.spl~
+				~pxl2abzp.spl~			~override/pxoIabzp.spl~
+				~pxl2abzq.spl~			~override/pxoIabzq.spl~
+				~pxl2abzr.spl~			~override/pxoIabzr.spl~
+				~pxl2abzs.spl~			~override/pxoIabzs.spl~
+				~pxl2abzt.spl~			~override/pxoIabzt.spl~	LPF SPELL_TO_INNATE END
+
+END
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////   IWDEE   /////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+
+ACTION_IF FILE_EXISTS_IN_GAME ~Decasta.itm~ THEN BEGIN
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_EXPEDITIOUS_RETREAT~	RET pxoiwd11_num = spell_num pxoiwd11_res = spell_res	END
+OUTER_SET pxoiwd11_num -= 2000
+COPY_EXISTING	~%pxoiwd11_res%.spl~	~override/pxoIwd11.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_SNILLOCS_SNOWBALL_SWARM~	RET pxoiwd21_num = spell_num pxoiwd21_res = spell_res	END
+OUTER_SET pxoiwd21_num -= 2000
+COPY_EXISTING	~%pxoiwd21_res%.spl~	~override/pxoIwd21.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_DECASTAVE~	RET pxoiwd22_num = spell_num pxoiwd22_res = spell_res	END
+OUTER_SET pxoiwd22_num -= 2000
+COPY_EXISTING	~%pxoiwd22_res%.spl~	~override/pxoIwd22.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_CATS_GRACE~	RET pxoiwd23_num = spell_num pxoiwd23_res = spell_res	END
+OUTER_SET pxoiwd23_num -= 2000
+COPY_EXISTING	~%pxoiwd23_res%.spl~	~override/pxoIwd23.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_ICELANCE~	RET pxoiwd31_num = spell_num pxoiwd31_res = spell_res	END
+OUTER_SET pxoiwd31_num -= 2000
+COPY_EXISTING	~%pxoiwd31_res%.spl~	~override/pxoIwd31.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_LANCE_OF_DISRUPTION~	RET pxoiwd32_num = spell_num pxoiwd32_res = spell_res	END
+OUTER_SET pxoiwd32_num -= 2000
+COPY_EXISTING	~%pxoiwd32_res%.spl~	~override/pxoIwd32.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_BELTYNS_BURNING_BLOOD~	RET pxoiwd41_num = spell_num pxoiwd41_res = spell_res	END
+OUTER_SET pxoiwd41_num -= 2000
+COPY_EXISTING	~%pxoiwd41_res%.spl~	~override/pxoIwd41.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_EMOTION_COURAGE~	RET pxoiwd42_num = spell_num pxoiwd42_res = spell_res	END
+OUTER_SET pxoiwd42_num -= 2000
+COPY_EXISTING	~%pxoiwd42_res%.spl~	~override/pxoIwd42.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_EMOTION_HOPE~	RET pxoiwd43_num = spell_num pxoiwd43_res = spell_res	END
+OUTER_SET pxoiwd43_num -= 2000
+COPY_EXISTING	~%pxoiwd43_res%.spl~	~override/pxoIwd43.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_EMOTION_FEAR~	RET pxoiwd44_num = spell_num pxoiwd44_res = spell_res	END
+OUTER_SET pxoiwd44_num -= 2000
+COPY_EXISTING	~%pxoiwd44_res%.spl~	~override/pxoIwd44.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_MORDENKAINENS_FORCE_MISSILES~	RET pxoiwd45_num = spell_num pxoiwd45_res = spell_res	END
+OUTER_SET pxoiwd45_num -= 2000
+COPY_EXISTING	~%pxoiwd45_res%.spl~	~override/pxoIwd45.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_SHOUT~	RET pxoiwd46_num = spell_num pxoiwd46_res = spell_res	END
+OUTER_SET pxoiwd46_num -= 2000
+COPY_EXISTING	~%pxoiwd46_res%.spl~	~override/pxoIwd46.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_VITRIOLIC_SPHERE~	RET pxoiwd47_num = spell_num pxoiwd47_res = spell_res	END
+OUTER_SET pxoiwd47_num -= 2000
+COPY_EXISTING	~%pxoiwd47_res%.spl~	~override/pxoIwd47.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_SHADOW_MONSTERS~	RET pxoiwd48_num = spell_num pxoiwd48_res = spell_res	END
+OUTER_SET pxoiwd48_num -= 2000
+COPY_EXISTING	~%pxoiwd48_res%.spl~	~override/pxoIwd48.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_SHROUD_OF_FLAME~	RET pxoiwd51_num = spell_num pxoiwd51_res = spell_res	END
+OUTER_SET pxoiwd51_num -= 2000
+COPY_EXISTING	~%pxoiwd51_res%.spl~	~override/pxoIwd51.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_SUMMON_SHADOW~	RET pxoiwd52_num = spell_num pxoiwd52_res = spell_res	END
+OUTER_SET pxoiwd52_num -= 2000
+COPY_EXISTING	~%pxoiwd52_res%.spl~	~override/pxoIwd52.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_CONJURE_LESSER_WATER_ELEMENTAL~	RET pxoiwd53_num = spell_num pxoiwd53_res = spell_res	END
+OUTER_SET pxoiwd53_num -= 2000
+COPY_EXISTING	~%pxoiwd53_res%.spl~	~override/pxoIwd53.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_DEMI_SHADOW_MONSTERS~	RET pxoiwd54_num = spell_num pxoiwd54_res = spell_res	END
+OUTER_SET pxoiwd54_num -= 2000
+COPY_EXISTING	~%pxoiwd54_res%.spl~	~override/pxoIwd54.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_OTILUKES_FREEZING_SPHERE~	RET pxoiwd61_num = spell_num pxoiwd61_res = spell_res	END
+OUTER_SET pxoiwd61_num -= 2000
+COPY_EXISTING	~%pxoiwd61_res%.spl~	~override/pxoIwd61.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_DARTS_OF_BONE~	RET pxoiwd62_num = spell_num pxoiwd62_res = spell_res	END
+OUTER_SET pxoiwd62_num -= 2000
+COPY_EXISTING	~%pxoiwd62_res%.spl~	~override/pxoIwd62.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_SOUL_EATER~	RET pxoiwd63_num = spell_num pxoiwd63_res = spell_res	END
+OUTER_SET pxoiwd63_num -= 2000
+COPY_EXISTING	~%pxoiwd63_res%.spl~	~override/pxoIwd63.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_TROLLISH_FORTITUDE~	RET pxoiwd64_num = spell_num pxoiwd64_res = spell_res	END
+OUTER_SET pxoiwd64_num -= 2000
+COPY_EXISTING	~%pxoiwd64_res%.spl~	~override/pxoIwd64.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_ANTIMAGIC_SHELL~	RET pxoiwd65_num = spell_num pxoiwd65_res = spell_res	END
+OUTER_SET pxoiwd65_num -= 2000
+COPY_EXISTING	~%pxoiwd65_res%.spl~	~override/pxoIwd65.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_LICH_TOUCH~	RET pxoiwd66_num = spell_num pxoiwd66_res = spell_res	END
+OUTER_SET pxoiwd66_num -= 2000
+COPY_EXISTING	~%pxoiwd66_res%.spl~	~override/pxoIwd66.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_SHADES~	RET pxoiwd67_num = spell_num pxoiwd67_res = spell_res	END
+OUTER_SET pxoiwd67_num -= 2000
+COPY_EXISTING	~%pxoiwd67_res%.spl~	~override/pxoIwd67.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_CONJURE_WATER_ELEMENTAL~	RET pxoiwd68_num = spell_num pxoiwd68_res = spell_res	END
+OUTER_SET pxoiwd68_num -= 2000
+COPY_EXISTING	~%pxoiwd68_res%.spl~	~override/pxoIwd68.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_ACID_STORM~	RET pxoiwd71_num = spell_num pxoiwd71_res = spell_res	END
+OUTER_SET pxoiwd71_num -= 2000
+COPY_EXISTING	~%pxoiwd71_res%.spl~	~override/pxoIwd71.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_SUFFOCATE~	RET pxoiwd72_num = spell_num pxoiwd72_res = spell_res	END
+OUTER_SET pxoiwd72_num -= 2000
+COPY_EXISTING	~%pxoiwd72_res%.spl~	~override/pxoIwd72.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_MONSTER_SUMMONING_5~	RET pxoiwd73_num = spell_num pxoiwd73_res = spell_res	END
+OUTER_SET pxoiwd73_num -= 2000
+COPY_EXISTING	~%pxoiwd73_res%.spl~	~override/pxoIwd73.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_MORDENKAINENS_SWORD_IWD~	RET pxoiwd74_num = spell_num pxoiwd74_res = spell_res	END
+OUTER_SET pxoiwd74_num -= 2000
+COPY_EXISTING	~%pxoiwd74_res%.spl~	~override/pxoIwd74.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_MALAVONS_RAGE~	RET pxoiwd75_num = spell_num pxoiwd75_res = spell_res	END
+OUTER_SET pxoiwd75_num -= 2000
+COPY_EXISTING	~%pxoiwd75_res%.spl~	~override/pxoIwd75.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_SEVEN_EYES~	RET pxoiwd76_num = spell_num pxoiwd76_res = spell_res	END
+OUTER_SET pxoiwd76_num -= 2000
+COPY_EXISTING	~%pxoiwd76_res%.spl~	~override/pxoIwd76.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_MIND_BLANK~	RET pxoiwd81_num = spell_num pxoiwd81_res = spell_res	END
+OUTER_SET pxoiwd81_num -= 2000
+COPY_EXISTING	~%pxoiwd81_res%.spl~	~override/pxoIwd81.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_GREAT_SHOUT~	RET pxoiwd82_num = spell_num pxoiwd82_res = spell_res	END
+OUTER_SET pxoiwd82_num -= 2000
+COPY_EXISTING	~%pxoiwd82_res%.spl~	~override/pxoIwd82.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_IRON_BODY~	RET pxoiwd83_num = spell_num pxoiwd83_res = spell_res	END
+OUTER_SET pxoiwd83_num -= 2000
+COPY_EXISTING	~%pxoiwd83_res%.spl~	~override/pxoIwd83.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_MONSTER_SUMMONING_6~	RET pxoiwd84_num = spell_num pxoiwd84_res = spell_res	END
+OUTER_SET pxoiwd84_num -= 2000
+COPY_EXISTING	~%pxoiwd84_res%.spl~	~override/pxoIwd84.spl~	LPF SPELL_TO_INNATE END
+LAF RES_NUM_OF_SPELL_NAME	STR_VAR spell_name = ~WIZARD_MONSTER_SUMMONING_7~	RET pxoiwd91_num = spell_num pxoiwd91_res = spell_res	END
+OUTER_SET pxoiwd91_num -= 2000
+COPY_EXISTING	~%pxoiwd91_res%.spl~	~override/pxoIwd91.spl~	LPF SPELL_TO_INNATE END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+END
+
+
+// MIH Spells: resolve installed SPWI resources and their CDIA scrolls.
+// Valeurs requises par le dialogue, même si MIH est absent.
+OUTER_SET pxomih4101_num = 0
+OUTER_SPRINT pxomih4101_check ~False()~
+OUTER_SET pxomih4102_num = 0
+OUTER_SPRINT pxomih4102_check ~False()~
+OUTER_SET pxomih4201_num = 0
+OUTER_SPRINT pxomih4201_check ~False()~
+OUTER_SET pxomih4202_num = 0
+OUTER_SPRINT pxomih4202_check ~False()~
+OUTER_SET pxomih4203_num = 0
+OUTER_SPRINT pxomih4203_check ~False()~
+OUTER_SET pxomih4204_num = 0
+OUTER_SPRINT pxomih4204_check ~False()~
+OUTER_SET pxomih4301_num = 0
+OUTER_SPRINT pxomih4301_check ~False()~
+OUTER_SET pxomih4302_num = 0
+OUTER_SPRINT pxomih4302_check ~False()~
+OUTER_SET pxomih4303_num = 0
+OUTER_SPRINT pxomih4303_check ~False()~
+OUTER_SET pxomih4304_num = 0
+OUTER_SPRINT pxomih4304_check ~False()~
+OUTER_SET pxomih4305_num = 0
+OUTER_SPRINT pxomih4305_check ~False()~
+OUTER_SET pxomih4306_num = 0
+OUTER_SPRINT pxomih4306_check ~False()~
+OUTER_SET pxomih4307_num = 0
+OUTER_SPRINT pxomih4307_check ~False()~
+OUTER_SET pxomih4308_num = 0
+OUTER_SPRINT pxomih4308_check ~False()~
+OUTER_SET pxomih4401_num = 0
+OUTER_SPRINT pxomih4401_check ~False()~
+OUTER_SET pxomih4402_num = 0
+OUTER_SPRINT pxomih4402_check ~False()~
+OUTER_SET pxomih4403_num = 0
+OUTER_SPRINT pxomih4403_check ~False()~
+OUTER_SET pxomih4404_num = 0
+OUTER_SPRINT pxomih4404_check ~False()~
+OUTER_SET pxomih4501_num = 0
+OUTER_SPRINT pxomih4501_check ~False()~
+OUTER_SET pxomih4502_num = 0
+OUTER_SPRINT pxomih4502_check ~False()~
+OUTER_SET pxomih4503_num = 0
+OUTER_SPRINT pxomih4503_check ~False()~
+OUTER_SET pxomih4504_num = 0
+OUTER_SPRINT pxomih4504_check ~False()~
+OUTER_SET pxomih4505_num = 0
+OUTER_SPRINT pxomih4505_check ~False()~
+OUTER_SET pxomih4601_num = 0
+OUTER_SPRINT pxomih4601_check ~False()~
+OUTER_SET pxomih4602_num = 0
+OUTER_SPRINT pxomih4602_check ~False()~
+OUTER_SET pxomih4701_num = 0
+OUTER_SPRINT pxomih4701_check ~False()~
+OUTER_SET pxomih4702_num = 0
+OUTER_SPRINT pxomih4702_check ~False()~
+OUTER_SET pxomih4703_num = 0
+OUTER_SPRINT pxomih4703_check ~False()~
+OUTER_SET pxomih4704_num = 0
+OUTER_SPRINT pxomih4704_check ~False()~
+OUTER_SET pxomih4705_num = 0
+OUTER_SPRINT pxomih4705_check ~False()~
+OUTER_SET pxomih4706_num = 0
+OUTER_SPRINT pxomih4706_check ~False()~
+OUTER_SET pxomih4801_num = 0
+OUTER_SPRINT pxomih4801_check ~False()~
+OUTER_SET pxomih4802_num = 0
+OUTER_SPRINT pxomih4802_check ~False()~
+OUTER_SET pxomih4803_num = 0
+OUTER_SPRINT pxomih4803_check ~False()~
+OUTER_SET pxomih4804_num = 0
+OUTER_SPRINT pxomih4804_check ~False()~
+OUTER_SET pxomih4805_num = 0
+OUTER_SPRINT pxomih4805_check ~False()~
+OUTER_SET pxomih4806_num = 0
+OUTER_SPRINT pxomih4806_check ~False()~
+OUTER_SET pxomih4807_num = 0
+OUTER_SPRINT pxomih4807_check ~False()~
+OUTER_SET pxomih4901_num = 0
+OUTER_SPRINT pxomih4901_check ~False()~
+OUTER_SET pxomih4902_num = 0
+OUTER_SPRINT pxomih4902_check ~False()~
+OUTER_SET pxomih4903_num = 0
+OUTER_SPRINT pxomih4903_check ~False()~
+
+ACTION_IF FILE_EXISTS_IN_GAME ~catjagsu.eff~ THEN BEGIN
+
+// @4101 - WIZARD_BARRIER
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_BARRIER~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_BARRIER~
+    RET pxomih4101_num = spell_num pxomih4101_res = spell_res
+  END
+  OUTER_SET pxomih4101_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4101_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4101_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4101_res%.spl~ ~override/pxoM4101.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4101_check ~PartyGoldGT(4999) XPGT(LastTalkedToBy,999) NumItemsPartyGT("cdia%pxomih4101_num%",0)~
+    END
+  END
+END
+
+// @4102 - WIZARD_FROST_FINGERS
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_FROST_FINGERS~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_FROST_FINGERS~
+    RET pxomih4102_num = spell_num pxomih4102_res = spell_res
+  END
+  OUTER_SET pxomih4102_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4102_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4102_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4102_res%.spl~ ~override/pxoM4102.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4102_check ~PartyGoldGT(4999) XPGT(LastTalkedToBy,999) NumItemsPartyGT("cdia%pxomih4102_num%",0)~
+    END
+  END
+END
+
+// @4201 - WIZARD_SPARK_SHOWER
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_SPARK_SHOWER~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_SPARK_SHOWER~
+    RET pxomih4201_num = spell_num pxomih4201_res = spell_res
+  END
+  OUTER_SET pxomih4201_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4201_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4201_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4201_res%.spl~ ~override/pxoM4201.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4201_check ~PartyGoldGT(9999) XPGT(LastTalkedToBy,1999) NumItemsPartyGT("cdia%pxomih4201_num%",0)~
+    END
+  END
+END
+
+// @4202 - WIZARD_SEEKING
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_SEEKING~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_SEEKING~
+    RET pxomih4202_num = spell_num pxomih4202_res = spell_res
+  END
+  OUTER_SET pxomih4202_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4202_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4202_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4202_res%.spl~ ~override/pxoM4202.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4202_check ~PartyGoldGT(9999) XPGT(LastTalkedToBy,1999) NumItemsPartyGT("cdia%pxomih4202_num%",0)~
+    END
+  END
+END
+
+// @4203 - WIZARD_SUMMON_CATS
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_SUMMON_CATS~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_SUMMON_CATS~
+    RET pxomih4203_num = spell_num pxomih4203_res = spell_res
+  END
+  OUTER_SET pxomih4203_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4203_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4203_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4203_res%.spl~ ~override/pxoM4203.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4203_check ~PartyGoldGT(9999) XPGT(LastTalkedToBy,1999) NumItemsPartyGT("cdia%pxomih4203_num%",0)~
+    END
+  END
+END
+
+// @4204 - WIZARD_THREESTONES
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_THREESTONES~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_THREESTONES~
+    RET pxomih4204_num = spell_num pxomih4204_res = spell_res
+  END
+  OUTER_SET pxomih4204_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4204_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4204_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4204_res%.spl~ ~override/pxoM4204.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4204_check ~PartyGoldGT(9999) XPGT(LastTalkedToBy,1999) NumItemsPartyGT("cdia%pxomih4204_num%",0)~
+    END
+  END
+END
+
+// @4301 - WIZARD_IMPROVED_MAGIC_MISSILE
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_IMPROVED_MAGIC_MISSILE~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_IMPROVED_MAGIC_MISSILE~
+    RET pxomih4301_num = spell_num pxomih4301_res = spell_res
+  END
+  OUTER_SET pxomih4301_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4301_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4301_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4301_res%.spl~ ~override/pxoM4301.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4301_check ~PartyGoldGT(14999) XPGT(LastTalkedToBy,2999) NumItemsPartyGT("cdia%pxomih4301_num%",0)~
+    END
+  END
+END
+
+// @4302 - WIZARD_HEROISM
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_HEROISM~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_HEROISM~
+    RET pxomih4302_num = spell_num pxomih4302_res = spell_res
+  END
+  OUTER_SET pxomih4302_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4302_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4302_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4302_res%.spl~ ~override/pxoM4302.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4302_check ~PartyGoldGT(14999) XPGT(LastTalkedToBy,2999) NumItemsPartyGT("cdia%pxomih4302_num%",0)~
+    END
+  END
+END
+
+// @4303 - WIZARD_BLINK
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_BLINK~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_BLINK~
+    RET pxomih4303_num = spell_num pxomih4303_res = spell_res
+  END
+  OUTER_SET pxomih4303_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4303_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4303_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4303_res%.spl~ ~override/pxoM4303.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4303_check ~PartyGoldGT(14999) XPGT(LastTalkedToBy,2999) NumItemsPartyGT("cdia%pxomih4303_num%",0)~
+    END
+  END
+END
+
+// @4304 - WIZARD_SCINTILLATING_SPHERE
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_SCINTILLATING_SPHERE~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_SCINTILLATING_SPHERE~
+    RET pxomih4304_num = spell_num pxomih4304_res = spell_res
+  END
+  OUTER_SET pxomih4304_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4304_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4304_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4304_res%.spl~ ~override/pxoM4304.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4304_check ~PartyGoldGT(14999) XPGT(LastTalkedToBy,2999) NumItemsPartyGT("cdia%pxomih4304_num%",0)~
+    END
+  END
+END
+
+// @4305 - WIZARD_MINOR_MALISON
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_MINOR_MALISON~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_MINOR_MALISON~
+    RET pxomih4305_num = spell_num pxomih4305_res = spell_res
+  END
+  OUTER_SET pxomih4305_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4305_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4305_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4305_res%.spl~ ~override/pxoM4305.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4305_check ~PartyGoldGT(14999) XPGT(LastTalkedToBy,2999) NumItemsPartyGT("cdia%pxomih4305_num%",0)~
+    END
+  END
+END
+
+// @4306 - WIZARD_GUST_OF_WIND
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_GUST_OF_WIND~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_GUST_OF_WIND~
+    RET pxomih4306_num = spell_num pxomih4306_res = spell_res
+  END
+  OUTER_SET pxomih4306_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4306_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4306_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4306_res%.spl~ ~override/pxoM4306.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4306_check ~PartyGoldGT(14999) XPGT(LastTalkedToBy,2999) NumItemsPartyGT("cdia%pxomih4306_num%",0)~
+    END
+  END
+END
+
+// @4307 - WIZARD_ALACRITY
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_ALACRITY~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_ALACRITY~
+    RET pxomih4307_num = spell_num pxomih4307_res = spell_res
+  END
+  OUTER_SET pxomih4307_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4307_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4307_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4307_res%.spl~ ~override/pxoM4307.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4307_check ~PartyGoldGT(14999) XPGT(LastTalkedToBy,2999) NumItemsPartyGT("cdia%pxomih4307_num%",0)~
+    END
+  END
+END
+
+// @4308 - WIZARD_BALL_LIGHTNING
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_BALL_LIGHTNING~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_BALL_LIGHTNING~
+    RET pxomih4308_num = spell_num pxomih4308_res = spell_res
+  END
+  OUTER_SET pxomih4308_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4308_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4308_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4308_res%.spl~ ~override/pxoM4308.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4308_check ~PartyGoldGT(14999) XPGT(LastTalkedToBy,2999) NumItemsPartyGT("cdia%pxomih4308_num%",0)~
+    END
+  END
+END
+
+// @4401 - WIZARD_IRON_MAIDEN
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_IRON_MAIDEN~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_IRON_MAIDEN~
+    RET pxomih4401_num = spell_num pxomih4401_res = spell_res
+  END
+  OUTER_SET pxomih4401_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4401_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4401_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4401_res%.spl~ ~override/pxoM4401.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4401_check ~PartyGoldGT(19999) XPGT(LastTalkedToBy,3999) NumItemsPartyGT("cdia%pxomih4401_num%",0)~
+    END
+  END
+END
+
+// @4402 - WIZARD_SLUMBER
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_SLUMBER~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_SLUMBER~
+    RET pxomih4402_num = spell_num pxomih4402_res = spell_res
+  END
+  OUTER_SET pxomih4402_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4402_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4402_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4402_res%.spl~ ~override/pxoM4402.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4402_check ~PartyGoldGT(19999) XPGT(LastTalkedToBy,3999) NumItemsPartyGT("cdia%pxomih4402_num%",0)~
+    END
+  END
+END
+
+// @4403 - WIZARD_RARYS_MNEMONIC_ENHANCER
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_RARYS_MNEMONIC_ENHANCER~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_RARYS_MNEMONIC_ENHANCER~
+    RET pxomih4403_num = spell_num pxomih4403_res = spell_res
+  END
+  OUTER_SET pxomih4403_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4403_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4403_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4403_res%.spl~ ~override/pxoM4403.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4403_check ~PartyGoldGT(19999) XPGT(LastTalkedToBy,3999) NumItemsPartyGT("cdia%pxomih4403_num%",0)~
+    END
+  END
+END
+
+// @4404 - WIZARD_EVARDS_BLACK_TENTACLES
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_EVARDS_BLACK_TENTACLES~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_EVARDS_BLACK_TENTACLES~
+    RET pxomih4404_num = spell_num pxomih4404_res = spell_res
+  END
+  OUTER_SET pxomih4404_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4404_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4404_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4404_res%.spl~ ~override/pxoM4404.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4404_check ~PartyGoldGT(19999) XPGT(LastTalkedToBy,3999) NumItemsPartyGT("cdia%pxomih4404_num%",0)~
+    END
+  END
+END
+
+// @4501 - WIZARD_SUPERHEROISM
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_SUPERHEROISM~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_SUPERHEROISM~
+    RET pxomih4501_num = spell_num pxomih4501_res = spell_res
+  END
+  OUTER_SET pxomih4501_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4501_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4501_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4501_res%.spl~ ~override/pxoM4501.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4501_check ~PartyGoldGT(24999) XPGT(LastTalkedToBy,4999) NumItemsPartyGT("cdia%pxomih4501_num%",0)~
+    END
+  END
+END
+
+// @4502 - WIZARD_SPELL_MATRIX
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_SPELL_MATRIX~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_SPELL_MATRIX~
+    RET pxomih4502_num = spell_num pxomih4502_res = spell_res
+  END
+  OUTER_SET pxomih4502_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4502_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4502_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4502_res%.spl~ ~override/pxoM4502.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4502_check ~PartyGoldGT(24999) XPGT(LastTalkedToBy,4999) NumItemsPartyGT("cdia%pxomih4502_num%",0)~
+    END
+  END
+END
+
+// @4503 - WIZARD_RAMAZITHS_SLIME_SUMMONS
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_RAMAZITHS_SLIME_SUMMONS~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_RAMAZITHS_SLIME_SUMMONS~
+    RET pxomih4503_num = spell_num pxomih4503_res = spell_res
+  END
+  OUTER_SET pxomih4503_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4503_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4503_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4503_res%.spl~ ~override/pxoM4503.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4503_check ~PartyGoldGT(24999) XPGT(LastTalkedToBy,4999) NumItemsPartyGT("cdia%pxomih4503_num%",0)~
+    END
+  END
+END
+
+// @4504 - WIZARD_SNILLOCS_MAJOR_MISSILE
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_SNILLOCS_MAJOR_MISSILE~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_SNILLOCS_MAJOR_MISSILE~
+    RET pxomih4504_num = spell_num pxomih4504_res = spell_res
+  END
+  OUTER_SET pxomih4504_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4504_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4504_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4504_res%.spl~ ~override/pxoM4504.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4504_check ~PartyGoldGT(24999) XPGT(LastTalkedToBy,4999) NumItemsPartyGT("cdia%pxomih4504_num%",0)~
+    END
+  END
+END
+
+// @4505 - WIZARD_PRESPERS_MOONBOW
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_PRESPERS_MOONBOW~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_PRESPERS_MOONBOW~
+    RET pxomih4505_num = spell_num pxomih4505_res = spell_res
+  END
+  OUTER_SET pxomih4505_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4505_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4505_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4505_res%.spl~ ~override/pxoM4505.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4505_check ~PartyGoldGT(24999) XPGT(LastTalkedToBy,4999) NumItemsPartyGT("cdia%pxomih4505_num%",0)~
+    END
+  END
+END
+
+// @4601 - WIZARD_MORDENKAINENS_LUCUBRATION
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_MORDENKAINENS_LUCUBRATION~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_MORDENKAINENS_LUCUBRATION~
+    RET pxomih4601_num = spell_num pxomih4601_res = spell_res
+  END
+  OUTER_SET pxomih4601_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4601_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4601_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4601_res%.spl~ ~override/pxoM4601.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4601_check ~PartyGoldGT(29999) XPGT(LastTalkedToBy,5999) NumItemsPartyGT("cdia%pxomih4601_num%",0)~
+    END
+  END
+END
+
+// @4602 - WIZARD_MIRAGE_ARCANA
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_MIRAGE_ARCANA~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_MIRAGE_ARCANA~
+    RET pxomih4602_num = spell_num pxomih4602_res = spell_res
+  END
+  OUTER_SET pxomih4602_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4602_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4602_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4602_res%.spl~ ~override/pxoM4602.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4602_check ~PartyGoldGT(29999) XPGT(LastTalkedToBy,5999) NumItemsPartyGT("cdia%pxomih4602_num%",0)~
+    END
+  END
+END
+
+// @4701 - WIZARD_SUMMON_DAO
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_SUMMON_DAO~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_SUMMON_DAO~
+    RET pxomih4701_num = spell_num pxomih4701_res = spell_res
+  END
+  OUTER_SET pxomih4701_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4701_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4701_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4701_res%.spl~ ~override/pxoM4701.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4701_check ~PartyGoldGT(34999) XPGT(LastTalkedToBy,6999) NumItemsPartyGT("cdia%pxomih4701_num%",0)~
+    END
+  END
+END
+
+// @4702 - WIZARD_SUMMON_MARID
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_SUMMON_MARID~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_SUMMON_MARID~
+    RET pxomih4702_num = spell_num pxomih4702_res = spell_res
+  END
+  OUTER_SET pxomih4702_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4702_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4702_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4702_res%.spl~ ~override/pxoM4702.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4702_check ~PartyGoldGT(34999) XPGT(LastTalkedToBy,6999) NumItemsPartyGT("cdia%pxomih4702_num%",0)~
+    END
+  END
+END
+
+// @4703 - WIZARD_FAERIE_SWORD
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_FAERIE_SWORD~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_FAERIE_SWORD~
+    RET pxomih4703_num = spell_num pxomih4703_res = spell_res
+  END
+  OUTER_SET pxomih4703_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4703_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4703_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4703_res%.spl~ ~override/pxoM4703.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4703_check ~PartyGoldGT(34999) XPGT(LastTalkedToBy,6999) NumItemsPartyGT("cdia%pxomih4703_num%",0)~
+    END
+  END
+END
+
+// @4704 - WIZARD_DOOM_LEGION
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_DOOM_LEGION~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_DOOM_LEGION~
+    RET pxomih4704_num = spell_num pxomih4704_res = spell_res
+  END
+  OUTER_SET pxomih4704_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4704_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4704_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4704_res%.spl~ ~override/pxoM4704.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4704_check ~PartyGoldGT(34999) XPGT(LastTalkedToBy,6999) NumItemsPartyGT("cdia%pxomih4704_num%",0)~
+    END
+  END
+END
+
+// @4705 - WIZARD_MAGNIFICENT_MANSION
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_MAGNIFICENT_MANSION~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_MAGNIFICENT_MANSION~
+    RET pxomih4705_num = spell_num pxomih4705_res = spell_res
+  END
+  OUTER_SET pxomih4705_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4705_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4705_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4705_res%.spl~ ~override/pxoM4705.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4705_check ~PartyGoldGT(34999) XPGT(LastTalkedToBy,6999) NumItemsPartyGT("cdia%pxomih4705_num%",0)~
+    END
+  END
+END
+
+// @4706 - WIZARD_STYGIAN_ICE_STORM
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_STYGIAN_ICE_STORM~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_STYGIAN_ICE_STORM~
+    RET pxomih4706_num = spell_num pxomih4706_res = spell_res
+  END
+  OUTER_SET pxomih4706_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4706_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4706_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4706_res%.spl~ ~override/pxoM4706.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4706_check ~PartyGoldGT(34999) XPGT(LastTalkedToBy,6999) NumItemsPartyGT("cdia%pxomih4706_num%",0)~
+    END
+  END
+END
+
+// @4801 - WIZARD_MAJOR_GLOBE_OF_INVULNERABILITY
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_MAJOR_GLOBE_OF_INVULNERABILITY~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_MAJOR_GLOBE_OF_INVULNERABILITY~
+    RET pxomih4801_num = spell_num pxomih4801_res = spell_res
+  END
+  OUTER_SET pxomih4801_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4801_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4801_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4801_res%.spl~ ~override/pxoM4801.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4801_check ~PartyGoldGT(39999) XPGT(LastTalkedToBy,7999) NumItemsPartyGT("cdia%pxomih4801_num%",0)~
+    END
+  END
+END
+
+// @4802 - WIZARD_POLAR_RAY
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_POLAR_RAY~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_POLAR_RAY~
+    RET pxomih4802_num = spell_num pxomih4802_res = spell_res
+  END
+  OUTER_SET pxomih4802_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4802_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4802_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4802_res%.spl~ ~override/pxoM4802.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4802_check ~PartyGoldGT(39999) XPGT(LastTalkedToBy,7999) NumItemsPartyGT("cdia%pxomih4802_num%",0)~
+    END
+  END
+END
+
+// @4803 - WIZARD_MASS_CHARM
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_MASS_CHARM~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_MASS_CHARM~
+    RET pxomih4803_num = spell_num pxomih4803_res = spell_res
+  END
+  OUTER_SET pxomih4803_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4803_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4803_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4803_res%.spl~ ~override/pxoM4803.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4803_check ~PartyGoldGT(39999) XPGT(LastTalkedToBy,7999) NumItemsPartyGT("cdia%pxomih4803_num%",0)~
+    END
+  END
+END
+
+// @4804 - WIZARD_SHOOTING_STARS
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_SHOOTING_STARS~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_SHOOTING_STARS~
+    RET pxomih4804_num = spell_num pxomih4804_res = spell_res
+  END
+  OUTER_SET pxomih4804_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4804_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4804_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4804_res%.spl~ ~override/pxoM4804.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4804_check ~PartyGoldGT(39999) XPGT(LastTalkedToBy,7999) NumItemsPartyGT("cdia%pxomih4804_num%",0)~
+    END
+  END
+END
+
+// @4805 - WIZARD_DEVASTATE
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_DEVASTATE~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_DEVASTATE~
+    RET pxomih4805_num = spell_num pxomih4805_res = spell_res
+  END
+  OUTER_SET pxomih4805_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4805_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4805_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4805_res%.spl~ ~override/pxoM4805.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4805_check ~PartyGoldGT(39999) XPGT(LastTalkedToBy,7999) NumItemsPartyGT("cdia%pxomih4805_num%",0)~
+    END
+  END
+END
+
+// @4806 - WIZARD_LIGHTNING_RING
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_LIGHTNING_RING~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_LIGHTNING_RING~
+    RET pxomih4806_num = spell_num pxomih4806_res = spell_res
+  END
+  OUTER_SET pxomih4806_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4806_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4806_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4806_res%.spl~ ~override/pxoM4806.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4806_check ~PartyGoldGT(39999) XPGT(LastTalkedToBy,7999) NumItemsPartyGT("cdia%pxomih4806_num%",0)~
+    END
+  END
+END
+
+// @4807 - WIZARD_AVISSARS_FLAMING_WEAPON
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_AVISSARS_FLAMING_WEAPON~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_AVISSARS_FLAMING_WEAPON~
+    RET pxomih4807_num = spell_num pxomih4807_res = spell_res
+  END
+  OUTER_SET pxomih4807_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4807_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4807_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4807_res%.spl~ ~override/pxoM4807.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4807_check ~PartyGoldGT(39999) XPGT(LastTalkedToBy,7999) NumItemsPartyGT("cdia%pxomih4807_num%",0)~
+    END
+  END
+END
+
+// @4901 - WIZARD_WEIRD
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_WEIRD~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_WEIRD~
+    RET pxomih4901_num = spell_num pxomih4901_res = spell_res
+  END
+  OUTER_SET pxomih4901_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4901_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4901_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4901_res%.spl~ ~override/pxoM4901.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4901_check ~PartyGoldGT(44999) XPGT(LastTalkedToBy,8999) NumItemsPartyGT("cdia%pxomih4901_num%",0)~
+    END
+  END
+END
+
+// @4902 - WIZARD_FORESIGHT
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_FORESIGHT~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_FORESIGHT~
+    RET pxomih4902_num = spell_num pxomih4902_res = spell_res
+  END
+  OUTER_SET pxomih4902_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4902_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4902_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4902_res%.spl~ ~override/pxoM4902.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4902_check ~PartyGoldGT(44999) XPGT(LastTalkedToBy,8999) NumItemsPartyGT("cdia%pxomih4902_num%",0)~
+    END
+  END
+END
+
+// @4903 - WIZARD_KHELBENS_DWEOMERDOOM
+
+ACTION_IF (IDS_OF_SYMBOL (~spell~ ~WIZARD_KHELBENS_DWEOMERDOOM~) >= 0) THEN BEGIN
+  LAF RES_NUM_OF_SPELL_NAME
+    STR_VAR spell_name = ~WIZARD_KHELBENS_DWEOMERDOOM~
+    RET pxomih4903_num = spell_num pxomih4903_res = spell_res
+  END
+  OUTER_SET pxomih4903_num -= 2000
+  ACTION_IF FILE_EXISTS_IN_GAME ~%pxomih4903_res%.spl~ THEN BEGIN
+    ACTION_IF FILE_EXISTS_IN_GAME ~cdia%pxomih4903_num%.itm~ THEN BEGIN
+      COPY_EXISTING ~%pxomih4903_res%.spl~ ~override/pxoM4903.spl~ LPF SPELL_TO_INNATE END
+      
+      OUTER_SPRINT pxomih4903_check ~PartyGoldGT(44999) XPGT(LastTalkedToBy,8999) NumItemsPartyGT("cdia%pxomih4903_num%",0)~
+    END
+  END
+END
+END // End du if MIH	 installé
+
+
+// Olvyn Spells: innate abilities and granting spells.
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI151.spl~ THEN BEGIN //Semi Multi Clerics
+// @6101 - Disruptive Surge (level 1)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI151.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI151.spl~ ~override/pxoO6101.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6102 - Inertia (level 1)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI152.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI152.spl~ ~override/pxoO6102.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6103 - Summon Kobold (level 1)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI154.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI154.spl~ ~override/pxoO6103.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6104 - Dimension Door (level 1)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI155.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI155.spl~ ~override/pxoO6104.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6105 - Jump (level 1)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI156.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI156.spl~ ~override/pxoO6105.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6106 - Hex (level 1)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI157.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI157.spl~ ~override/pxoO6106.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6107 - Reflect Attack (level 1)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI158.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI158.spl~ ~override/pxoO6107.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6108 - Taunt (level 1)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI159.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI159.spl~ ~override/pxoO6108.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6109 - Dimensional Chest (level 1)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI160.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI160.spl~ ~override/pxoO6109.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6110 - Icarian Flight (level 1)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI162.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI162.spl~ ~override/pxoO6110.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6111 - Chaos Teleport (level 1)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI163.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI163.spl~ ~override/pxoO6111.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6201 - Power Word, Pull (level 2)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI251.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI251.spl~ ~override/pxoO6201.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6202 - Ghostwalk (level 2)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI252.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI252.spl~ ~override/pxoO6202.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6203 - Power Word, Push (level 2)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI253.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI253.spl~ ~override/pxoO6203.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6204 - Intoxicate (level 2)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI254.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI254.spl~ ~override/pxoO6204.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6205 - Null Healing (level 2)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI255.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI255.spl~ ~override/pxoO6205.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6206 - Specific Spell Immunity (level 2)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI256.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI256.spl~ ~override/pxoO6206.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6207 - Levitate (level 2)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI257.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI257.spl~ ~override/pxoO6207.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6208 - Bounce Spell (level 2)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI258.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI258.spl~ ~override/pxoO6208.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6209 - Far Cast (level 2)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI260.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI260.spl~ ~override/pxoO6209.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6301 - Absorb Spell (level 3)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI351.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI351.spl~ ~override/pxoO6301.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6302 - Fly (level 3)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI352.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI352.spl~ ~override/pxoO6302.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6303 - Displacement (level 3)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI353.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI353.spl~ ~override/pxoO6303.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6304 - Terror (level 3)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI354.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI354.spl~ ~override/pxoO6304.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6305 - Control Slime (level 3)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI355.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI355.spl~ ~override/pxoO6305.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6306 - Legend Lore (level 3)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI356.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI356.spl~ ~override/pxoO6306.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6307 - Glyph of Spell Storing (level 3)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI357.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI357.spl~ ~override/pxoO6307.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6308 - Familiar Spell (level 3)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI358.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI358.spl~ ~override/pxoO6308.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6309 - Throw (level 3)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI359.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI359.spl~ ~override/pxoO6309.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6310 - Heightening (level 3)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI360.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI360.spl~ ~override/pxoO6310.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6311 - Mestil's Acid Breath (level 3)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI361.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI361.spl~ ~override/pxoO6311.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6401 - Wall of Fire (level 4)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI451.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI451.spl~ ~override/pxoO6401.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6402 - Phantasmal Killer (level 4)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI452.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI452.spl~ ~override/pxoO6402.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6403 - Ghoulish Feast (level 4)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI453.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI453.spl~ ~override/pxoO6403.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6404 - Backstab Sequencer (level 4)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI454.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI454.spl~ ~override/pxoO6404.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6405 - Redirect Spell (level 4)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI455.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI455.spl~ ~override/pxoO6405.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6406 - Copy Spell (level 4)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI456.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI456.spl~ ~override/pxoO6406.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6407 - Linked Portals (level 4)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI457.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI457.spl~ ~override/pxoO6407.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6408 - Vampiric Link (level 4)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI458.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI458.spl~ ~override/pxoO6408.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6409 - Recall Party (level 4)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI459.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI459.spl~ ~override/pxoO6409.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6410 - Chaos Cast (level 4)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI460.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI460.spl~ ~override/pxoO6410.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6501 - Life Transfer (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI551.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI551.spl~ ~override/pxoO6501.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6502 - Steal Spells (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI552.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI552.spl~ ~override/pxoO6502.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6503 - Ball Lightning (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI554.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI554.spl~ ~override/pxoO6503.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6504 - Major Mirror Image (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI555.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI555.spl~ ~override/pxoO6504.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6505 - Skeleton Horde (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI556.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI556.spl~ ~override/pxoO6505.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6506 - Commando Conjuration (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI557.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI557.spl~ ~override/pxoO6506.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6507 - Missile of Patience (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI558.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI558.spl~ ~override/pxoO6507.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6508 - Ghostform (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI559.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI559.spl~ ~override/pxoO6508.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6509 - Slime Drop (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI560.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI560.spl~ ~override/pxoO6509.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6510 - Critical Spell (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI562.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI562.spl~ ~override/pxoO6510.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6511 - Warrior Simulacrum (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI563.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI563.spl~ ~override/pxoO6511.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6512 - Wall of Force (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI564.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI564.spl~ ~override/pxoO6512.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6513 - Sacrificial Explosion (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI565.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI565.spl~ ~override/pxoO6513.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6514 - Gedlee's Electric Barrier (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI566.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI566.spl~ ~override/pxoO6514.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6515 - Rewind Time (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI567.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI567.spl~ ~override/pxoO6515.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6516 - Teleportation Circle (level 5)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI568.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI568.spl~ ~override/pxoO6516.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6601 - Isaac's Greater Missile Storm (level 6)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI651.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI651.spl~ ~override/pxoO6601.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6602 - Freeze Inanimates (level 6)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI652.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI652.spl~ ~override/pxoO6602.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6603 - Greater Nightmare (level 6)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI653.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI653.spl~ ~override/pxoO6603.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6604 - Spellshaping: Fireball (level 6)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI654.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI654.spl~ ~override/pxoO6604.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6605 - Slaying Sequencer (level 6)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI655.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI655.spl~ ~override/pxoO6605.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6606 - Mass Charm (level 6)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI656.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI656.spl~ ~override/pxoO6606.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6607 - Mind Fog (level 6)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI657.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI657.spl~ ~override/pxoO6607.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6608 - Empower Familiar (level 6)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI658.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI658.spl~ ~override/pxoO6608.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6609 - Bardic Sequencer (level 6)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI659.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI659.spl~ ~override/pxoO6609.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6610 - Create Pit (level 6)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI660.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI660.spl~ ~override/pxoO6610.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6701 - Mass Cast (level 7)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI751.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI751.spl~ ~override/pxoO6701.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6702 - Forcecage (level 7)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI753.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI753.spl~ ~override/pxoO6702.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6703 - Stygian Ice Storm (level 7)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI754.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI754.spl~ ~override/pxoO6703.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6704 - Death Trigger (level 7)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI755.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI755.spl~ ~override/pxoO6704.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6705 - Critical Sequencer (level 7)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI756.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI756.spl~ ~override/pxoO6705.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6706 - Reanimate (level 7)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI757.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI757.spl~ ~override/pxoO6706.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6707 - Skip Time (level 7)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI758.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI758.spl~ ~override/pxoO6707.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6708 - Extraordinary Luck (level 7)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI759.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI759.spl~ ~override/pxoO6708.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6709 - Lightning Stream (level 7)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI760.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI760.spl~ ~override/pxoO6709.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6710 - Insanity (level 7)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI762.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI762.spl~ ~override/pxoO6710.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6801 - Enhance Attribute (level 8)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI851.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI851.spl~ ~override/pxoO6801.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6802 - Globe of Invisibility (level 8)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI852.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI852.spl~ ~override/pxoO6802.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6803 - Otto's Irresistible Spin (level 8)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI853.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI853.spl~ ~override/pxoO6803.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6804 - Recurring Contingency (level 8)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI854.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI854.spl~ ~override/pxoO6804.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6805 - Omnipresence (level 8)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI855.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI855.spl~ ~override/pxoO6805.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6806 - Contingency Curse (level 8)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI856.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI856.spl~ ~override/pxoO6806.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6807 - Extend Vision (level 8)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI857.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI857.spl~ ~override/pxoO6807.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6808 - Sphere of Reversed Gravity (level 8)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI858.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI858.spl~ ~override/pxoO6808.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6809 - False Life (level 8)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI859.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI859.spl~ ~override/pxoO6809.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6810 - Enslave (level 8)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI860.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI860.spl~ ~override/pxoO6810.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6811 - Polar Ray (level 8)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI861.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI861.spl~ ~override/pxoO6811.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6812 - Clone Other (level 8)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI862.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI862.spl~ ~override/pxoO6812.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6813 - Metafireball (level 8)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI863.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI863.spl~ ~override/pxoO6813.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6901 - Perfect Invisibility (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI951.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI951.spl~ ~override/pxoO6901.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6902 - Mass Domination (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI952.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI952.spl~ ~override/pxoO6902.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6903 - Attain Perfection (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI953.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI953.spl~ ~override/pxoO6903.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6904 - Vampiric Feast (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI954.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI954.spl~ ~override/pxoO6904.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6905 - Mass Sequencer (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI955.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI955.spl~ ~override/pxoO6905.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6906 - Enoll Eva's Duplication (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI956.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI956.spl~ ~override/pxoO6906.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6907 - Executioner's Eyes (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI957.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI957.spl~ ~override/pxoO6907.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6908 - Phantasmal Dragon (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI958.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI958.spl~ ~override/pxoO6908.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6909 - Damage Turning (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI959.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI959.spl~ ~override/pxoO6909.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6910 - Eclectic Recall (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI960.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI960.spl~ ~override/pxoO6910.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6911 - Teleport Step (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI961.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI961.spl~ ~override/pxoO6911.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6912 - Necropotence (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI962.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI962.spl~ ~override/pxoO6912.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6913 - Mental agility (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI963.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI963.spl~ ~override/pxoO6913.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6914 - Freezing wave (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI964.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI964.spl~ ~override/pxoO6914.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6915 - Rampant lightning (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI965.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI965.spl~ ~override/pxoO6915.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6916 - protecion from Timestop (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI966.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI966.spl~ ~override/pxoO6916.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6917 - Culling Tought (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI967.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI967.spl~ ~override/pxoO6917.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+// @6918 - Sphere of Annihilation (level 9)
+ACTION_IF FILE_EXISTS_IN_GAME ~MEWI968.spl~ THEN BEGIN
+COPY_EXISTING ~MEWI968.spl~ ~override/pxoO6918.spl~ LPF SPELL_TO_INNATE END
+
+END
+
+END // End du if Olvyn installé
+
+// Dragon Summoning : sort de niveau 9.
+ACTION_IF FILE_EXISTS_IN_GAME ~SUMDRAG.spl~
+      AND FILE_EXISTS_IN_GAME ~SUMDRAG.itm~ THEN BEGIN
+  COPY_EXISTING ~SUMDRAG.spl~ ~override/pxoD2002.spl~
+    LPF SPELL_TO_INNATE END
+END
+
+COMPILE EVALUATE_BUFFER ~Derats_Oops/Divers/pxoops.d~
+
+BEGIN @20009 DESIGNATED 2 LABEL PX_Blips
+REQUIRE_COMPONENT ~Derats_Oops.tp2~ 1 @20010
+COPY	~Derats_Oops/Divers/pxdblips.cre~	~override~	SAY NAME1 @20008 	SAY NAME2 @20008
+	WRITE_ASCII 0x2cc ~pxdblips~ #8
+
+EXTEND_BOTTOM ~AR3000.BCS~	~Derats_Oops/Divers/AR3001.baf~
+
+INCLUDE ~Derats_Oops/Divers/pxdblips.tph~
+COMPILE EVALUATE_BUFFER ~Derats_Oops/Divers/pxdblips.d~
