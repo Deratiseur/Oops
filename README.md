@@ -9,6 +9,9 @@
 
 [Link to original Mod Forum](https://www.baldursgateworld.fr/viewtopic.php?t=34841)
 
+[Lisez moi complet en français.](https://htmlpreview.github.io/?https://github.com/Deratiseur/Oops/blob/main/Derats_Oops/Readme_French.html)  
+[Full Readme in english.](https://htmlpreview.github.io/?https://github.com/Deratiseur/Oops/blob/main/Derats_Oops/Readme_English.html)   
+
 ## Description:
 
 -------------
