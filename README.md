@@ -17,18 +17,25 @@
 
 -------------
 
-Vous trouverez Oops le magicien à coté de la Tour de Garde, au sud ouest. Il est là pour être accessible aussi bien dans SOA que dans TOB.
+Vous trouverez Oops le magicien à coté de la Tour de Garde, près du dolmen.
 
 Amenez un parchemin de sort à Oops, dites lui que vous voulez que le sort inscrit sur le parchemin devienne une de vos capacités spéciales, et si vous avez ce qu'il faut, vous obtiendrez une nouvelle capacité spéciale.\
-Chaque conversion détruit le parchemin et coûte au pj demandeur 1000 xp par niveau de sort et 10000 po par niveau de sort.
+Chaque conversion détruit le parchemin et coûte au pj demandeur 1000 xp par niveau de sort et 5000 po par niveau de sort.
 
-Exemple : Amenez à Oops un parchemin de "Hâte améliorée", et pour 60000 pos et 6000 xps il vous permettra de lancer "Hâte améliorée" en tant que capacité spéciale 1x/jour.
+Exemple : Amenez à Oops un parchemin de "Hâte améliorée", et pour 30000 pos et 6000 xps il vous permettra de lancer "Hâte améliorée" en tant que capacité spéciale 1x/jour.
 
 Renouvelable à volonté tant que vous avez de quoi payer et des parchemins à fournir.  
 
-Ça marche avec tous les sorts de base du jeu (sauf Identification), les sorts de <a href=https://github.com//Deratiseur/Interplan>L'Interplan</a>, les sorts de IWDEE et les sorts de SCS.  
+Ça marche avec
+ les sorts de base du jeu (sauf Identification)
+- les sorts de <a href=https://github.com//Deratiseur/Interplan>L'Interplan</a>
+- les sorts de IWDEE (installé par IWficiation ou SCS)
+- les sorts de Olvyn'spells
+- Les sort de Made in heaven spellpack
+- Les sorts Courbespace et Invocation de Dragon rouge.
 Le mod gère aussi des grimoires tirés d'autres mods (<a href=https://github.com//Deratiseur/Interplan>L'Interplan</a>, <a href=https://github.com/Spellhold-Studios/Semi-Multi-Clerics/>Semi Multi Cleric</a>, <a href=https://github.com/BGforgeNet/bg2-wildmage>Wild Mage Addition</a>).
 
+Depuis la v5, le mod inclut aussi Blips, le familier de Oops, qui peut faire apprendre n'importe quel sort à un ensorceleur. Cela coute 3 parchemins du sort concerné, 2000 xp par niveau de sort et 2000 pos par niveau de sort. Exemple : un ensorceleur veut apprendre le sort "Invocation de Dragon rouge, celà lui coutera 3 parchemins de ce sort, 18000 xps et 18000 po.
 ---------------------------
 
 You'll find Oops the magician next to the Watchtower, to the south-west. It's there to be accessed in both SOA and TOB.
