@@ -33,6 +33,7 @@ Renouvelable à volonté tant que vous avez de quoi payer et des parchemins à f
 - les sorts de Olvyn'spells
 - Les sort de Made in heaven spellpack
 - Les sorts Courbespace et Invocation de Dragon rouge.
+    
 Le mod gère aussi des grimoires tirés d'autres mods (<a href=https://github.com//Deratiseur/Interplan>L'Interplan</a>, <a href=https://github.com/Spellhold-Studios/Semi-Multi-Clerics/>Semi Multi Cleric</a>, <a href=https://github.com/BGforgeNet/bg2-wildmage>Wild Mage Addition</a>).
 
 Depuis la v5, le mod inclut aussi Blips, le familier de Oops, qui peut faire apprendre n'importe quel sort à un ensorceleur. Cela coute 3 parchemins du sort concerné, 2000 xp par niveau de sort et 2000 pos par niveau de sort. Exemple : un ensorceleur veut apprendre le sort "Invocation de Dragon rouge, celà lui coutera 3 parchemins de ce sort, 18000 xps et 18000 po.
