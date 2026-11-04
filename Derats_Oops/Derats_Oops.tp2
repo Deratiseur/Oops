@@ -7,7 +7,7 @@ README ~Derats_Oops/Documents/Readme-%LANGUAGE%.html~
 AUTO_TRA ~Derats_Oops/Languages/%s~ /////%s~
 
 ALWAYS
-	ACTION_IF GAME_IS ~BG2EE	EET~ THEN BEGIN
+	ACTION_IF GAME_IS ~BG2EE EET~ THEN BEGIN
 		ACTION_DEFINE_ARRAY px_noconvert BEGIN install END
 		ACTION_DEFINE_ARRAY px_reload BEGIN	pxoops END
 		LAF HANDLE_CHARSETS
@@ -29,7 +29,7 @@ LANGUAGE ~English~	~English~
 
 LANGUAGE ~Simplified Chinese (by MephistoSatanDevil)~ ~SChinese~ 
 	~Derats_Oops/Languages/English/Pxoops.tra~
-	~Derats_Oops/Languages/Chinese/Pxoops.tra~
+	~Derats_Oops/Languages/SChinese/install.tra~
 
 BEGIN @0 DESIGNATED 1 LABEL PX_Oops
 REQUIRE_PREDICATE GAME_IS ~TOB BGT EET BG2EE~ @0009
