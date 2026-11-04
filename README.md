@@ -7,7 +7,7 @@
 
 **Autor** : **Deratiseur**
 
-[Lien vers le sujet de discutions en français](https://www.baldursgateworld.fr/viewtopic.php?t=34841)
+[Lien vers le sujet de discutions en français](https://www.baldursgateworld.fr/viewtopic.php?t=34841)  
 [Link to original Mod Forum](https://forums.beamdog.com/discussion/89314/mod-oops-the-magician#p1)
 
 [Lisez moi complet en français.](https://htmlpreview.github.io/?https://github.com/Deratiseur/Oops/blob/main/Derats_Oops/Readme_French.html)  
