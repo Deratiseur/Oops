@@ -33,7 +33,8 @@ Renouvelable à volonté tant que vous avez de quoi payer et des parchemins à f
 - les sorts de [Olvyn's Spells](https://github.com/OlvynChuru/OlvynSpells) ;
 - les sorts de [Made in Heaven Spellpack](https://github.com/AngelGryph/MadeInHeaven_SpellPack) ;
 - le sort Courbespace de [Test Your Mettle](https://github.com/Argent77/A7-TestYourMettle) ;
-- le sort [Invocation de dragon rouge](https://github.com/SpellholdStudios/Red_Dragon_Summoning_Spell).
+- le sort [Invocation de dragon rouge](https://github.com/SpellholdStudios/Red_Dragon_Summoning_Spell);
+**si ses mods sont installés avant.**
 
 Le mod gère aussi des grimoires tirés d'autres mods : [l'Interplan](https://github.com/Deratiseur/Interplan), [Semi Multi Cleric](https://github.com/Spellhold-Studios/Semi-Multi-Clerics) et [Wild Mage Addition](https://github.com/BGforgeNet/bg2-wildmage).
 
@@ -61,7 +62,8 @@ It works with:
 - spells from [Olvyn's Spells](https://github.com/OlvynChuru/OlvynSpells);
 - spells from [Made in Heaven Spellpack](https://github.com/AngelGryph/MadeInHeaven_SpellPack);
 - the Spacewarp spell from [Test Your Mettle](https://github.com/Argent77/A7-TestYourMettle);
-- the [Red Dragon Summoning](https://github.com/SpellholdStudios/Red_Dragon_Summoning_Spell) spell.
+- the [Red Dragon Summoning](https://github.com/SpellholdStudios/Red_Dragon_Summoning_Spell) spell;  
+**if these mods are installed before.**
 
 The mod also handles grimoires from [Interplan](https://github.com/Deratiseur/Interplan), [Semi Multi Cleric](https://github.com/Spellhold-Studios/Semi-Multi-Clerics) and [Wild Mage Addition](https://github.com/BGforgeNet/bg2-wildmage).
 
